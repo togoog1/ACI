@@ -1,0 +1,19 @@
+<div id="banner">
+   <center>
+      <a target="banner" href="index.html" >
+        <img ng-src={{vm.Webaddress}}>
+      </a>
+   </center>
+</div>
+
+
+
+<hr>
+
+<h2>Add Place</h2>
+
+<input type="text" placeholder="Name..." ng-model="vm.Banner.name" />
+<input type="text" placeholder="URL..." ng-model="vm.Banner.URL" />
+
+
+<button type="button" ng-click="vm.addPlace()">Add</button>
