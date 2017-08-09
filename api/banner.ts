@@ -1,15 +1,15 @@
 import express = require('express');
 let router = express.Router();
-import Webaddress from '../models/banner';
+import WebAddress from '../models/banner';
 import Banner from '../models/banner';
 
 
 
 
-/* CREATE or UPDATE */
+/* Create new banner and update
 router.post('/', (req, res) => {
   if(req.body._id) {
-    Banner.findByIdAndUpdate(req.body._id, { "$set": { "name": req.body.name, "address": req.body.address }}, { "new": true, "upsert": true },
+    Banner.findByIdAndUpdate(req.body._id, { "$set": {"Webaddress": req.body.Webaddress }}, { "new": true, "upsert": true },
       function (err, updatedWebaddress) {
         if (err) {
           res.send(err)
@@ -20,7 +20,6 @@ router.post('/', (req, res) => {
     );
   } else {
     let banner:any = new Banner();
-    banner.name = req.body.name;
     banner.Webaddress = req.body.Webaddress;
     banner.save((err, newBanner) => {
       Webaddress.findOne({name: req.body.Webaddress}).exec((err, result:any) => {
@@ -40,19 +39,22 @@ router.post('/', (req, res) => {
       });
     })
   }
-})
+})*/
 
+/* Retrieve banner*/
+router.get('/', (req, res) => {
+console.log('hello')
+  WebAddress.find({}, function(err, results:any) {
+    console.log(results)
+if (err) {
+  console.log(err)
+    res.send(err)
+  } else {
+    console.log(results)
+    res.send(results[0])
+  }
+});
 
-router.get('/:tag', (req, res) => {
-  Webaddress.findOne({name: req.params['tag']}).populate('banners').exec(function (err, results:any) {
-    if (err) {
-      res.send(err)
-    } else {
-      res.json(results.banner)
-    }
-  });
-})
-
-
+});
 
 export default router;

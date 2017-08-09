@@ -1,23 +1,22 @@
 namespace aci.Controllers {
 
     export class HomeController {
-      public Webaddress
-
+      public WebAddress
       public banners
 
 
      public getBanner() {
-        this.bannerService.getBanner(this.Webaddress).then((result) => {
-     this.banners = result;
+        this.bannerService.getBanner(this.WebAddress).then((result) => {
+    this.banners = result;
 
-     })
-   }
+    })
+  }
 
 
 
       constructor(
         public $scope,
-    //    private bannerService
+      private bannerService
       ) {
 
 
@@ -150,22 +149,18 @@ namespace aci.Controllers {
     }
 
     export class GetStartedController {
-    public Webaddress
-   public banners
+        public WebAddress
+        public banners
 
 
-  public getBanner() {
-      this.BannerService.getBanner(this.Webaddress).then((result) => {
-   this.banners = result;
-
-    })
-   }
 
 
- public constructor(
-        private BannerService
-      ) {
-      this.getBanner();
+
+private constructor(
+        private bannerService
+     ) {
+       this.banners=this.bannerService.getBanner()
+       console.log(this.banners)
    }
 
 }

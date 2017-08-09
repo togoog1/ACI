@@ -6,28 +6,29 @@ namespace aci.Services {
 //banner
   export class BannerService {
     public BannerResource
+/* save banner
+    public saveBanner(banner) {
+          return this.BannerResource.save(banner);
+        }*/
 
-
-    public saveBanner(place) {
-          return this.BannerResource.save(place);
-        }
-
-    public getBanners(Webaddress) {
-      return this.BannerResource.query({tag: Webaddress}).$promise;
+//get banner
+    public getBanner(WebAddress) {
+      return this.BannerResource.get({tag: WebAddress});
     }
-
     public constructor(
       public $resource
     ) {
       this.BannerResource = $resource('/api/banner/:tag');
     }
   }
+angular.module('aci').service('bannerService', BannerService);
+
+
+
+
 
 
 //log in sercvices
-
-
-
 
 
   export class UserService {
@@ -132,7 +133,7 @@ namespace aci.Services {
 //about page drop down menu
 
 
-angular.module('aci').controller('AccordionDemoCtrl', function ($scope) {
+angular.module('aci').controller('Dropdown', function ($scope) {
   $scope.oneAtATime = true;
 
   $scope.groups = [

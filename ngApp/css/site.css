@@ -1,7 +1,7 @@
 
 body {
   background-color: silver
-  width: 60%;
+  margin: auto;
 }
 
 
@@ -31,6 +31,46 @@ a {
         margin:0 auto;
    }
 
+/* contact ccs*/
+#contact {
+
+}
+/* contact ccs*/
+/* Style inputs with type="text", select elements and textareas */
+input[type=text], select, textarea {
+    width: 100%; /* Full width */
+    padding: 12px; /* Some padding */
+    border: 1px solid #ccc; /* Gray border */
+    border-radius: 4px; /* Rounded borders */
+    box-sizing: border-box; /* Make sure that padding and width stays in place */
+    margin-top: 6px; /* Add a top margin */
+    margin-bottom: 16px; /* Bottom margin */
+    resize: vertical /* Allow the user to vertically resize the textarea (not horizontally) */
+}
+/* contact ccs*/
+/* Style the submit button with a specific background color etc */
+input[type=submit] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+/* contact ccs*/
+/* When moving the mouse over the submit button, add a darker green color */
+input[type=submit]:hover {
+    background-color: #45a049;
+}
+/* contact ccs*/
+/* Add a background color and some padding around the form */
+.container {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+}
+
+
 
   /*nav bar */
 #cssmenu,
@@ -43,7 +83,7 @@ a {
   padding: 0;
 }
 #cssmenu {
-  height: 40px;
+  height: 35px;
   display: block;
   border: 1px solid;
   border-radius: 5px;
@@ -88,11 +128,11 @@ a {
   text-decoration: none;
   text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.4);
   font-weight: 700;
-  font-size: 13px;
+  font-size: 14px;
   font-family: Arial, Helvetica, sans-serif;
   border-right: 1px solid #080808;
   color: #ffffff;
-  padding: 12px 20px;
+  padding: 10px 20px;
 }
 #cssmenu > ul > li:first-child > a {
   border-radius: 5px 0 0 5px;
@@ -120,7 +160,7 @@ a {
   border-top: 5px solid #ffffff;
 }
 #cssmenu > ul > li.has-sub:hover > a:before {
-  top: 19px;
+  top: 6px;
 }
 #cssmenu > ul > li.has-sub:hover > a {
   padding-bottom: 14px;
@@ -145,7 +185,7 @@ a {
   background: #3f3f3f;
   border-radius: 0 0 5px 5px;
   z-index: 999;
-  padding: 10px 0;
+  padding: 5px 0;
 }
 #cssmenu ul li > ul {
   width: 200px;
@@ -195,7 +235,7 @@ a {
   color: #ffffff;
 }
 #cssmenu > ul > li.has-sub > a:hover:before {
-  border-top: 5px solid #ffffff;
+  border-top: 6px solid #ffffff;
 }
 /*end nav bar */
 
@@ -210,11 +250,12 @@ a {
 
 
 
+
+
+
+
 /*carousel */
 #carousel {
-
-  width: 60%;
-
   display: block;
   border: 3px solid;
   border-radius: 3px;
@@ -222,6 +263,47 @@ a {
   border-color: #080808;
   margin: auto;
   padding: 0;
+  margin-top: 2px;
+}
+
+.col-md-1 {
+  display: block;
+  border: 2px solid;
+  border-radius: 3px;
+  width: 60%;
+  border-color: #080808;
+  margin: auto;
+  text-align: center;
+  padding: 0;
+
+}
+
+.col-md-6 {
+  display: block;
+  border: 2px solid;
+  border-radius: 3px;
+  width: 60%;
+  border-color: #080808;
+  margin: auto;
+  text-align: center;
+  padding: 0;
+}
+
+.interval {
+  display: block;
+  border: 2px solid;
+  border-radius: 3px;
+  width: 30%;
+  border-color: #080808;
+  margin: auto;
+  text-align: center;
+  padding: 0;
+}
+
+.gallery {
+  display: block;
+  margin: auto;
+
 }
 
 
@@ -237,7 +319,7 @@ p {
 }
 
 
-
+/*footer */
 .footer-distributed{
 
 	background-color: #292c2f;

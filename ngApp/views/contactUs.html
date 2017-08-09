@@ -1,31 +1,52 @@
-<!-- Carousel -->
-<div>
-<div id=carousel style="height: 305px">
-  <div uib-carousel active="active" interval="myInterval" no-wrap="noWrapSlides">
-    <div uib-slide ng-repeat="slide in slides track by slide.id" index="slide.id">
-      <img ng-src="{{slide.image}}" style="margin:auto;">
-      <div class="carousel-caption">
-        <h4>Slide {{slide.id}}</h4>
-        <p>{{slide.text}}</p>
-      </div>
-    </div>
-  </div>
+<!-- Nav Bar-->
+<div id='cssmenu'>
+<ul>
+   <li><a href='/'><span>Home</span></a></li>
+   <li class='active has-sub'><a href='#'><span>Products</span></a>
+      <ul>
+         <li class='has-sub'><a href='/products'><span>Product 1</span></a>
+            <ul>
+               <li><a href='#'><span>Sub Product</span></a></li>
+               <li class='last'><a href='#'><span>Sub Product</span></a></li>
+            </ul>
+         </li>
+         <li class='has-sub'><a href='#'><span>Product 2</span></a>
+            <ul>
+               <li><a href='#'><span>Sub Product</span></a></li>
+               <li class='last'><a href='#'><span>Sub Product</span></a></li>
+            </ul>
+         </li>
+      </ul>
+   </li>
+   <li><a href='/about'><span>About</span></a></li>
+   <li class='last'><a href='/contactUs'><span>Contact Us</span></a></li>
+   <li class='last'><a href='/getStarted'><span>Get Started</span></a></li>
+   <li id='login' class='last'><a href='/logIn'><span>Log In</span></a></li>
+</ul>
 </div>
-<div class="row">
-  <div class="col-md-1">
-    <button type="button" class="btn btn-info" ng-click="addSlide()">Add Slide</button>
-    <button type="button" class="btn btn-info" ng-click="randomize()">Randomize slides</button>
-    <div class="checkbox">
-      <label>
-        <input type="checkbox" ng-model="noWrapSlides">
-        Disable Slide Looping
-      </label>
-    </div>
-  </div>
-  <div class="col-md-6">
-    Interval, in milliseconds: <input type="number" class="form-control" ng-model="myInterval">
-    <br />Enter a negative number or 0 to stop the interval.
-  </div>
+
+
+
+<div id='contact' class="container">
+  <form action="/action_page.php">
+
+    <label for="fname">First Name</label>
+    <input type="text" id="fname" name="firstname" placeholder="Your name..">
+
+    <label for="lname">Last Name</label>
+    <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+
+    <label for="country">Country</label>
+    <select id="country" name="country">
+      <option value="australia">Australia</option>
+      <option value="canada">Canada</option>
+      <option value="usa">USA</option>
+    </select>
+
+    <label for="subject">Subject</label>
+    <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
+
+    <input type="submit" value="Submit">
+
+  </form>
 </div>
-</div>
-<!-- Carousel End -->
