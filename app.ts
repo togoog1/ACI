@@ -10,6 +10,7 @@ import * as passport from 'passport';
 
 //import routes from './routes/index';
 import users from './routes/users';
+import banners from './api/banner';
 require('./models/user');
 require('./config/passport');
 
@@ -38,7 +39,7 @@ app.use(passport.initialize());
 mongoose.connect('mongodb://togoog1:Splintershard1@ds019054.mlab.com:19054/aci-security');
 
 
-
+app.use('/api/banner/', banners)
 app.use('/userRoutes/api/', users);
 
 

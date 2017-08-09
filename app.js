@@ -7,6 +7,7 @@ var bodyParser = require("body-parser");
 var mongoose = require("mongoose");
 var passport = require("passport");
 var users_1 = require("./routes/users");
+var banner_1 = require("./api/banner");
 require('./models/user');
 require('./config/passport');
 var app = express();
@@ -22,6 +23,7 @@ app.use('/ngApp', express.static(path.join(__dirname, 'ngApp')));
 app.use('/api', express.static(path.join(__dirname, 'api')));
 app.use(passport.initialize());
 mongoose.connect('mongodb://togoog1:Splintershard1@ds019054.mlab.com:19054/aci-security');
+app.use('/api/banner/', banner_1.default);
 app.use('/userRoutes/api/', users_1.default);
 app.get('/*', function (req, res, next) {
     if (/.js|.html|.css|templates|js|scripts/.test(req.path) || req.xhr) {
