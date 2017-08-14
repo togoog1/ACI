@@ -149,12 +149,20 @@ namespace aci.Controllers {
     }
 
     export class GetStartedController {
-        public WebAddress
+
         public banners
+        public WebAddress
 
+        public addBanner() {
+          console.log("add Banners")
+                this.bannerService.saveBanner(this.banners);
+              }
 
-
-
+        public getBanner() {
+                this.bannerService.getBanner(this.WebAddress).then((result) => {
+                this.banners = result;
+              })
+              }
 
 private constructor(
         private bannerService
@@ -164,6 +172,14 @@ private constructor(
    }
 
 }
+
+
+
+
+
+
+
+
 
 
     export class LogInController {

@@ -129,6 +129,16 @@ var aci;
                 this.banners = this.bannerService.getBanner();
                 console.log(this.banners);
             }
+            GetStartedController.prototype.addBanner = function () {
+                console.log("add Banners");
+                this.bannerService.saveBanner(this.banners);
+            };
+            GetStartedController.prototype.getBanner = function () {
+                var _this = this;
+                this.bannerService.getBanner(this.WebAddress).then(function (result) {
+                    _this.banners = result;
+                });
+            };
             return GetStartedController;
         }());
         Controllers.GetStartedController = GetStartedController;

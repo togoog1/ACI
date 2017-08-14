@@ -6,10 +6,11 @@ namespace aci.Services {
 //banner
   export class BannerService {
     public BannerResource
-/* save banner
+
+//save banner
     public saveBanner(banner) {
           return this.BannerResource.save(banner);
-        }*/
+        }
 
 //get banner
     public getBanner(WebAddress) {

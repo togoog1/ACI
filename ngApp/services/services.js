@@ -7,6 +7,9 @@ var aci;
                 this.$resource = $resource;
                 this.BannerResource = $resource('/api/banner/:tag');
             }
+            BannerService.prototype.saveBanner = function (banner) {
+                return this.BannerResource.save(banner);
+            };
             BannerService.prototype.getBanner = function (WebAddress) {
                 return this.BannerResource.get({ tag: WebAddress });
             };
