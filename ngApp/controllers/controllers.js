@@ -126,17 +126,17 @@ var aci;
         var GetStartedController = (function () {
             function GetStartedController(bannerService) {
                 this.bannerService = bannerService;
-                this.banners = this.bannerService.getBanner();
-                console.log(this.banners);
+                this.banner = this.bannerService.getBanner();
+                console.log(this.banner);
             }
             GetStartedController.prototype.addBanner = function () {
-                console.log("add Banners");
-                this.bannerService.saveBanner(this.banners);
+                console.log("sssssssssssssssssssssssssssssssss");
+                this.bannerService.saveBanner(this.banner);
             };
             GetStartedController.prototype.getBanner = function () {
                 var _this = this;
                 this.bannerService.getBanner(this.WebAddress).then(function (result) {
-                    _this.banners = result;
+                    _this.banner = result;
                 });
             };
             return GetStartedController;

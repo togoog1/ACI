@@ -10,6 +10,7 @@ namespace aci.Services {
 //save banner
     public saveBanner(banner) {
           return this.BannerResource.save(banner);
+          
         }
 
 //get banner

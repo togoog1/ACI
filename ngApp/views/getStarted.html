@@ -1,8 +1,8 @@
 <div id="banner">
    <center>
       <a target="banner" href="index.html" >
-        <img ng-src={{vm.WebAddress}}>
-        <img ng-src={{vm.getBanner}}>
+        <img ng-src={{vm.banner.WebAddress}}>
+        
       </a>
    </center>
 </div>
@@ -17,7 +17,7 @@
 
 
 <h2>Add Place</h2>
-<input type="text" placeholder="WebAddress..." ng-model="vm.Banner.WebAddress" />
+<input type="text" placeholder="WebAddress..." ng-model="vm.banner.WebAddress" />
 <button type="button" ng-click="vm.addBanner()">Add</button>
 
 
@@ -28,9 +28,8 @@
 
 
 <ul>
-  <li ng-repeat="p in vm.getBanner">{{p.WebAddress}}</li>
+  <li ng-repeat="p in vm.getBanner">{{p.banner.WebAddress}}</li>
 </ul>
+<p>{{vm.banner.WebAddress}}</p>
 
-
-
-<img ng-src={{vm.WebAddress}}>
+<img ng-src={{vm.banner.WebAddress}}>
