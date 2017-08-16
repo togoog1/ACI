@@ -1,35 +1,79 @@
-<div id="banner">
-   <center>
-      <a target="banner" href="index.html" >
-        <img ng-src={{vm.banner.WebAddress}}>
-        
-      </a>
-   </center>
+
+<h2>Home</h2>
+
+
+
+<div style="border-top: 1px solid #000000; padding-bottom: 25px;"></div>
+
+<p>Search by category</p>
+<select ng-model="vm.category" ng-change="vm.getProducts()">
+
+  <option value="Cabnets">Cabnets</option>
+  <option value="Storefront Signs">Storefront Sign</option>
+  <option value="Isle Signs">Isle Sign</option>
+</select>
+
+<div class="btn-group"  ng-model="vm.category" ng-click="vm.getProducts()">
+<button class="P-sorting"  value="Cabnets">Cabnets1</button>
+<button class="P-sorting" value="Storefront Signs">Storefront Sign</button>
+<button class="P-sorting" value="Isle Signs">Isle Sign</button>
 </div>
 
 
+<button class="P-sorting" ng-model="vm.category" ng-click="vm.getProducts()" value="Cabnets">Cabnets2</button>
+<button class="P-sorting" ng-model="vm.category" ng-click="vm.getProducts(Cabnets)" >Cabnets3</button>
+<button class="P-sorting" ng-model="vm.category" ng-click="vm.getProducts(Cabnets)" >Cabnets3</button>
 
 
+<div class="brands_products"><!--brands_products-->
+  <h2>Categories</h2>
+  <div class="brands-name">
+    <ul class="nav nav-pills nav-stacked">
 
-<hr>
+      <input class="P-sorting" ng-model="vm.category" ng-change="vm.getProducts()" value="Cabnets">Cabnets</input>
+      <li><a class="P-sorting" href="#">Storefront Signs</a></li>
+      <li><a class="P-sorting" href="#">Isle Signs</a></li>
+      <li><a class="P-sorting" href="#">PH</a></li>
+
+    </ul>
+  </div>
+</div><!--/brands_products-->
 
 
-
-
-<h2>Add Place</h2>
-<input type="text" placeholder="WebAddress..." ng-model="vm.banner.WebAddress" />
-<button type="button" ng-click="vm.addBanner()">Add</button>
-
-
-
-
-<p>{{vm.WebAddress}}</p>
-<hr>
 
 
 <ul>
-  <li ng-repeat="p in vm.getBanner">{{p.banner.WebAddress}}</li>
+  <li ng-repeat="p in vm.products">Product{{p.name}}</li>
 </ul>
-<p>{{vm.banner.WebAddress}}</p>
 
-<img ng-src={{vm.banner.WebAddress}}>
+
+
+
+<h2>Add Product</h2>
+<h4>name</h4>
+<input type="text" productholder="Name..." ng-model="vm.product.name" />
+<h4>price</h4>
+<input type="text" productholder="price..." ng-model="vm.product.price" />
+<h4>image</h4>
+<input type="text" productholder="image..." ng-model="vm.product.image" />
+<select ng-model="vm.product.category">
+  <option value="Cabnets">Cabnets</option>
+  <option value="Storefront Sign">Storefront Sign</option>
+  <option value="Isle Sign">Isle Sign</option>
+</select>
+
+
+
+
+
+
+
+<button type="button" ng-click="vm.addProduct()">Add</button>
+
+
+<h2>Edit Product</h2>
+
+<input type="text" productholder="New Name..." ng-model="vm.product.name" />
+<input type="text" productholder="New price..." ng-model="vm.product.price" />
+<input type="text" productholder="New image..." ng-model="vm.product.image" />
+<button type="button" ng-click="vm.editProduct()">Edit</button>

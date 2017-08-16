@@ -10,7 +10,8 @@ import * as passport from 'passport';
 
 //import routes from './routes/index';
 import users from './routes/users';
-import banners from './api/banner';
+import leaderboard from './api/leaderboard';
+import products from './api/products';
 require('./models/user');
 require('./config/passport');
 
@@ -39,8 +40,9 @@ app.use(passport.initialize());
 mongoose.connect('mongodb://togoog1:Splintershard1@ds019054.mlab.com:19054/aci-security');
 
 
-app.use('/api/banner/', banners)
+app.use('/api/leaderboard/', leaderboard)
 app.use('/userRoutes/api/', users);
+app.use('/api/products', products);
 
 
 // redirect 404 to home for the sake of AngularJS client-side routes

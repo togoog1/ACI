@@ -2,21 +2,39 @@ var aci;
 (function (aci) {
     var Services;
     (function (Services) {
-        var BannerService = (function () {
-            function BannerService($resource) {
+        var ProductService = (function () {
+            function ProductService($resource) {
                 this.$resource = $resource;
-                this.BannerResource = $resource('/api/banner/:tag');
+                this.ProductResource = $resource('/api/products/:tag');
             }
-            BannerService.prototype.saveBanner = function (banner) {
-                return this.BannerResource.save(banner);
+            ProductService.prototype.saveProduct = function (product) {
+                return this.ProductResource.save(product);
             };
-            BannerService.prototype.getBanner = function (WebAddress) {
-                return this.BannerResource.get({ tag: WebAddress });
+            ProductService.prototype.getProducts = function (category) {
+                return this.ProductResource.query({ tag: category }).$promise;
             };
-            return BannerService;
+            ProductService.prototype.removeProduct = function (productId) {
+                return this.ProductResource.delete({ tag: productId });
+            };
+            return ProductService;
         }());
-        Services.BannerService = BannerService;
-        angular.module('aci').service('bannerService', BannerService);
+        Services.ProductService = ProductService;
+        angular.module('aci').service('productService', ProductService);
+        var LeaderboardService = (function () {
+            function LeaderboardService($resource) {
+                this.$resource = $resource;
+                this.LeaderboardResource = $resource('/api/leaderboard/:tag');
+            }
+            LeaderboardService.prototype.saveLeaderboard = function (leaderboard) {
+                return this.LeaderboardResource.save(leaderboard);
+            };
+            LeaderboardService.prototype.getLeaderboard = function (WebAddress) {
+                return this.LeaderboardResource.get({ tag: WebAddress });
+            };
+            return LeaderboardService;
+        }());
+        Services.LeaderboardService = LeaderboardService;
+        angular.module('aci').service('leaderboardService', LeaderboardService);
         var UserService = (function () {
             function UserService($resource) {
                 this.$resource = $resource;

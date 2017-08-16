@@ -1,15 +1,15 @@
 import express = require('express');
 let router = express.Router();
-import WebAddress from '../models/banner';
-import Banner from '../models/banner';
+import WebAddress from '../models/leaderboard';
+import Leaderboard from '../models/leaderboard';
 
 
 
 
-/* Create new banner and update*/
+/* Create new Leaderboard and update*/
 router.post('/', (req, res) => {
   if(req.body._id) {
-    Banner.findByIdAndUpdate(req.body._id, { "$set": {"WebAddress": req.body.Webaddress }}, { "new": true, "upsert": true },
+    Leaderboard.findByIdAndUpdate(req.body._id, { "$set": {"WebAddress": req.body.WebAddress }}, { "new": true, "upsert": true },
       function (err, updatedWebAddress) {
         if (err) {
           res.send(err)
@@ -19,14 +19,14 @@ router.post('/', (req, res) => {
       }
     );
   } else {
-    let banner:any = new Banner();
-    banner.WebAddress = req.body.WebAddress;
-    banner.save((err, newBanner) => {
+    let leaderboard:any = new Leaderboard();
+    leaderboard.WebAddress = req.body.WebAddress;
+    leaderboard.save((err, newLeaderboard) => {
       WebAddress.findOne({name: req.body.WebAddress}).exec((err, result:any) => {
         if (err) {
           res.send(err)
         } else {
-          WebAddress.findByIdAndUpdate(result._id, { "$push": { "banner": newBanner._id }}, { "new": true, "upsert": true },
+          WebAddress.findByIdAndUpdate(result._id, { "$push": { "Leaderboard": newLeaderboard._id }}, { "new": true, "upsert": true },
             function (err, updatedWebAddress) {
               if (err) {
                 res.send(err)
@@ -41,7 +41,7 @@ router.post('/', (req, res) => {
   }
 })
 
-/* Retrieve banner*/
+/* Retrieve Leaderboard*/
 router.get('/', (req, res) => {
 console.log('hello')
   WebAddress.find({}, function(err, results:any) {

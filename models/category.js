@@ -3,6 +3,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var mongoose = require("mongoose");
 var CategorySchema = new mongoose.Schema({
     name: String,
-    places: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Place' }]
+    products: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Product' }]
 });
 exports.default = mongoose.model('Category', CategorySchema);

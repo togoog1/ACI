@@ -6,7 +6,7 @@
     "start": "node ./bin/www"
   },
   "dependencies": {
-    "@types/angular": "^1.5.13",
+    "@types/angular": "^1.6.29",
     "@types/angular-animate": "^1.5.4",
     "@types/angular-resource": "^1.5.4",
     "@types/angular-ui-bootstrap": "^0.13.33",

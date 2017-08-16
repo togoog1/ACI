@@ -1,26 +1,38 @@
 namespace aci.Controllers {
 
     export class HomeController {
+
+
+
+
+
+      public leaderboard
       public WebAddress
-      public banners
+
+      public addLeaderboard() {
+        console.log("sssssssssssssssssssssssssssssssss")
+              this.leaderboardService.saveLeaderboard(this.leaderboard);
+            }
+
+      public getLeaderboard() {
+
+              this.leaderboardService.getLeaderboard(this.WebAddress).then((result) => {
+              this.leaderboard = result;
+            })
+            }
 
 
-     public getBanner() {
-        this.bannerService.getBanner(this.WebAddress).then((result) => {
-    this.banners = result;
-
-    })
-  }
 
 
 
       constructor(
         public $scope,
-      private bannerService
+      private leaderboardService
       ) {
 
 
-
+        this.leaderboard=this.leaderboardService.getLeaderboard()
+        console.log(this.leaderboard)
         $scope.myInterval = 5000;
         $scope.noWrapSlides = false;
         $scope.active = 0;
@@ -80,9 +92,34 @@ namespace aci.Controllers {
     }
 
     export class AboutController {
+
+      public leaderboard
+      public WebAddress
+
+      public addLeaderboard() {
+        console.log("sssssssssssssssssssssssssssssssss")
+              this.leaderboardService.saveLeaderboard(this.leaderboard);
+            }
+
+      public getLeaderboard() {
+
+              this.leaderboardService.getLeaderboard(this.WebAddress).then((result) => {
+              this.leaderboard = result;
+            })
+            }
+
+
+
       constructor(
+
+        private leaderboardService,
         public $scope
       ) {
+        //leaderboard
+        this.leaderboard=this.leaderboardService.getLeaderboard()
+        console.log(this.leaderboard)
+
+        //carousel
         $scope.myInterval = 5000;
         $scope.noWrapSlides = false;
         $scope.active = 0;
@@ -143,34 +180,127 @@ namespace aci.Controllers {
 
     export class ProductsController {
 
+      public leaderboard
+      public WebAddress
+
+      public addLeaderboard() {
+        console.log("sssssssssssssssssssssssssssssssss")
+              this.leaderboardService.saveLeaderboard(this.leaderboard);
+            }
+
+      public getLeaderboard() {
+
+              this.leaderboardService.getLeaderboard(this.WebAddress).then((result) => {
+              this.leaderboard = result;
+            })
+            }
+
+
+
+          public  constructor(
+              public $scope,
+            private leaderboardService,
+            public $log
+          ) {
+
+            this.leaderboard=this.leaderboardService.getLeaderboard()
+            console.log(this.leaderboard)
+
+        /*    $scope.items = [
+              'The first choice!',
+              'And another choice for you.',
+              'but wait! A third!'
+            ];
+
+            $scope.status = {
+              isopen: false
+            };
+
+            $scope.toggled = function(open) {
+              $log.log('Dropdown is now: ', open);
+            };
+
+            $scope.toggleDropdown = function($event) {
+              $event.preventDefault();
+              $event.stopPropagation();
+              $scope.status.isopen = !$scope.status.isopen;
+            };
+
+            $scope.appendToEl = angular.element(document.querySelector('#dropdown-long-content'));
+          });*/
+
+          }
+
+//inline dropdown
+
+
+
+
+
     }
     export class ContactUsController {
 
+      public leaderboard
+      public WebAddress
+
+      public addLeaderboard() {
+        console.log("sssssssssssssssssssssssssssssssss")
+              this.leaderboardService.saveLeaderboard(this.leaderboard);
+            }
+
+      public getLeaderboard() {
+console.log("rthtrhrth")
+              this.leaderboardService.getLeaderboard(this.WebAddress).then((result) => {
+              this.leaderboard = result;
+            })
+            }
+
+            constructor(
+              public $scope,
+            private leaderboardService
+          ) {
+
+            this.leaderboard=this.leaderboardService.getLeaderboard()
+            console.log(this.leaderboard)
+          }
+
+
+
     }
+
+
+
+
+
 
     export class GetStartedController {
 
-        public banner
-        public WebAddress
+      public category
+            public products
+            public product
+            public productId
 
-        public addBanner() {
-          console.log("sssssssssssssssssssssssssssssssss")
-                this.bannerService.saveBanner(this.banner);
-              }
-
-        public getBanner() {
-
-                this.bannerService.getBanner(this.WebAddress).then((result) => {
-                this.banner = result;
+            public getProducts() {
+              this.productService.getProducts(this.category).then((result) => {
+                this.products = result;
               })
-              }
-
+            }
+            public deleteProduct(productId) {
+              this.productService.removeProduct(productId);
+            }
+            public addProduct() {
+              this.productService.saveProduct(this.product);
+            }
+            public editProduct() {
+                this.product._id = this.productId;
+                this.productService.saveProduct(this.product);
+            }
 private constructor(
-        private bannerService
+        public $stateParams,
+        private productService
      ) {
+this.productId = $stateParams['id'];
 
-       this.banner=this.bannerService.getBanner()
-       console.log(this.banner)
    }
 
 }
@@ -185,7 +315,26 @@ private constructor(
 
 
     export class LogInController {
+
       public userInfo
+      public leaderboard
+      public WebAddress
+
+      public addLeaderboard() {
+        console.log("sssssssssssssssssssssssssssssssss")
+              this.leaderboardService.saveLeaderboard(this.leaderboard);
+            }
+
+      public getLeaderboard() {
+
+              this.leaderboardService.getLeaderboard(this.WebAddress).then((result) => {
+              this.leaderboard = result;
+            })
+            }
+
+
+
+
 
       public login() {
         this.userService.loginUser(this.userInfo).then((data) => {
@@ -194,13 +343,41 @@ private constructor(
         })
       }
       public constructor(
+        private leaderboardService,
         private userService,
         public $window
       ) {
+        this.leaderboard=this.leaderboardService.getLeaderboard()
+        console.log(this.leaderboard)
       }
     }
 
     export class RegisterController {
+
+      public leaderboard
+      public WebAddress
+
+      public addLeaderboard() {
+        console.log("sssssssssssssssssssssssssssssssss")
+              this.leaderboardService.saveLeaderboard(this.leaderboard);
+            }
+
+      public getLeaderboard() {
+
+              this.leaderboardService.getLeaderboard(this.WebAddress).then((result) => {
+              this.leaderboard = result;
+            })
+            }
+
+            constructor(
+              public $scope,
+            private leaderboardService
+          ) {
+
+            this.leaderboard=this.leaderboardService.getLeaderboard()
+            console.log(this.leaderboard)
+          }
+
 
     }
 

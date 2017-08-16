@@ -6,6 +6,13 @@ body {
 
 
 
+.P-sorting {
+
+  border: 1px solid #ccc; /* Gray border */
+}
+
+
+
 a {
   position: relative;
   margin: auto;
@@ -14,7 +21,7 @@ a {
 /* About page drop down texts*/
 #aboutDrop{
   display: block;
-  width: 1175px;
+  width: 1200px;
   margin: auto;
   padding: 0;
   text-align: left;
@@ -87,7 +94,7 @@ input[type=submit]:hover {
   display: block;
   border: 1px solid;
   border-radius: 5px;
-  width: 1175px;
+  width: 1210px;
   border-color: #080808;
   margin: auto;
   padding: 0;
@@ -259,7 +266,7 @@ input[type=submit]:hover {
   display: block;
   border: 3px solid;
   border-radius: 3px;
-  width: 60%;
+  width: 1200px;
   border-color: #080808;
   margin: auto;
   padding: 0;

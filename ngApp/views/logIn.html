@@ -1,3 +1,42 @@
+<div id="leaderboard">
+   <center>
+      <a target="leaderboard" href="index.html" >
+        <img ng-src={{vm.leaderboard.WebAddress}}>
+
+      </a>
+   </center>
+</div>
+
+<!-- Nav Bar-->
+<div id='cssmenu'>
+<ul>
+   <li><a href='/'><span>Home</span></a></li>
+   <li class='active has-sub'><a href='#'><span>Products</span></a>
+      <ul>
+         <li class='has-sub'><a href='/products'><span>Cabnets</span></a>
+            <ul>
+               <li><a href='#'><span>Sub Product</span></a></li>
+               <li class='last'><a href='#'><span>Sub Product</span></a></li>
+            </ul>
+         </li>
+         <li class='has-sub'><a href='#'><span>Signs/Decor</span></a>
+            <ul>
+               <li><a href='#'><span>Sub Product</span></a></li>
+               <li class='last'><a href='#'><span>Sub Product</span></a></li>
+            </ul>
+         </li>
+      </ul>
+   </li>
+   <li><a href='/about'><span>About</span></a></li>
+   <li class='last'><a href='/contactUs'><span>Contact Us</span></a></li>
+   <li class='last'><a href='/getStarted'><span>Get Started</span></a></li>
+   <li id='login' class='last'><a href='/logIn'><span>Log In</span></a></li>
+</ul>
+</div>
+
+
+
+
 <h2>Login</h2>
 <input type="text" placeholder="username" ng-model="vm.userInfo.username"/>
 <input type="password" placeholder="password" ng-model="vm.userInfo.password"/>

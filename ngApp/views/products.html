@@ -1,3 +1,11 @@
+<div id="leaderboard">
+   <center>
+      <a target="leaderboard" href="index.html" >
+        <img ng-src={{vm.leaderboard.WebAddress}}>
+
+      </a>
+   </center>
+</div>
 
 
 
@@ -30,88 +38,42 @@
 
 <body>
 
+
+
+
+
+
+
+
+
+
+
 	<section>
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-3">
 					<div class="left-sidebar">
-						<h2>Category</h2>
-						<div class="panel-group category-products" id="accordian">
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h4 class="panel-title">
-										<a data-toggle="collapse" data-parent="#accordian" href="#sportswear">
-											<!--Cabnets and sub categories-->
-											<span class="badge pull-right"><i class="fa fa-plus"></i></span>
-										Cabnets
-										</a>
-									</h4>
-								</div>
-								<div id="sportswear" class="panel-collapse collapse">
-									<div class="panel-body">
-										<ul>
-											<li><a href="#">Base </a></li>
-											<li><a href="#">Tall </a></li>
-											<li><a href="#">Wall </a></li>
-											<li><a href="#">Specialty</a></li>
-											<li><a href="#">Inline </a></li>
-										</ul>
-									</div>
-								</div>
-							</div>
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h4 class="panel-title">
-										<a data-toggle="collapse" data-parent="#accordian" href="#mens">
-											<!--category-productsr-->
-											<span class="badge pull-right"><i class="fa fa-plus"></i></span>
-											Storefront Signs
-										</a>
-									</h4>
-								</div>
-								<div id="mens" class="panel-collapse collapse">
-									<div class="panel-body">
-										<ul>
-											<li><a href="#">Green</a></li>
-											<li><a href="#">Blue</a></li>
-											<li><a href="#">Yellow</a></li>
 
-										</ul>
-									</div>
-								</div>
-							</div>
 
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h4 class="panel-title">
-										<a data-toggle="collapse" data-parent="#accordian" href="#womens">
-											<span class="badge pull-right"><i class="fa fa-plus"></i></span>
-											Isle Signs
-										</a>
-									</h4>
-								</div>
-								<div id="womens" class="panel-collapse collapse">
-									<div class="panel-body">
-										<ul>
-											<li><a href="#">PH</a></li>
-											<li><a href="#">PH</a></li>
-											<li><a href="#">PH</a></li>
-											<li><a href="#">PH</a></li>
-											<li><a href="#">PH</a></li>
-										</ul>
-									</div>
-								</div>
-							</div>
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h4 class="panel-title"><a href="#">PH</a></h4>
-								</div>
-							</div>
 
-						</div><!--/category-products-->
+            <div class="brands_products"><!--brands_products-->
+              <h2>Categories</h2>
+              <div class="brands-name">
+                <ul class="nav nav-pills nav-stacked">
+
+                  <li><a class="P-sorting" href="#">Cabnets</a></li>
+                  <li><a class="P-sorting" href="#">Storefront Signs</a></li>
+                  <li><a class="P-sorting" href="#">Isle Signs</a></li>
+                  <li><a class="P-sorting" href="#">PH</a></li>
+
+                </ul>
+              </div>
+            </div><!--/brands_products-->
+
+
 
 						<div class="brands_products"><!--brands_products-->
-							<h2>Sorting Filters</h2>
+							<h1>Soritng Filters</h1>
 							<div class="brands-name">
 								<ul class="nav nav-pills nav-stacked">
 									<li><a href="#"> <span class="pull-right">(<--->)</span>Sort By price</a></li>
@@ -137,14 +99,14 @@
 												<div class="single-products">
 															<div class="productinfo text-center">
 																			<img src="images/home/recommend2.jpg" alt="" />
-																			<h2>$price PH</h2>
+																			<h2>Item place holder</h2>
 																			<p>Description place holder</p>
 																			<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
 															</div>
 												</div>
 								 </div>
 						 </div>
-
+<hr>
 					</div><!--/category-tab-->
 
 				</div>
@@ -216,3 +178,60 @@
 	  </div>
 
 	</footer>
+
+
+
+  <div class="btn-group" uib-dropdown>
+              <button id="btn-append-to-single-button" type="button" class="btn btn-primary" uib-dropdown-toggle>
+                Inline Dropdown <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="btn-append-to-single-button">
+                <li role="menuitem"><a href="#">Action</a></li>
+                <li role="menuitem"><a href="#">Another action</a></li>
+                <li role="menuitem"><a href="#">Something else here</a></li>
+                <li class="divider"></li>
+                <li role="menuitem"><a href="#">Separated link</a></li>
+              </ul>
+            </div>
+
+
+
+
+
+*/angular dropdowns  /*
+            <section>
+              <div class="container">
+                  <div class="row">
+                  <div class="col-sm-3">
+                  <div class="left-sidebar">
+                      <h2>Category</h2>
+                      <div class="btn-group" uib-dropdown>
+                          <button id="btn-append-to-single-button" type="button" class="btn btn-primary" uib-dropdown-toggle <span class="badge pull-right">
+                            Cabnets <span class="caret"></span>
+                          </button>
+                            <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="btn-append-to-single-button">
+                              <li role="menuitem"><a href="#">Action</a></li>
+                              <li role="menuitem"><a href="#">Another action</a></li>
+                              <li role="menuitem"><a href="#">Something else here</a></li>
+                              <li class="divider"></li>
+                              <li role="menuitem"><a href="#">Separated link</a></li>
+                            </ul>
+                      </div>
+                      <div class="btn-group" uib-dropdown>
+                          <button id="btn-append-to-single-button" type="button" class="btn btn-primary" uib-dropdown-toggle>
+                            Storefront Signs <span class="caret"></span>
+                          </button>
+                            <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="btn-append-to-single-button">
+                              <li role="menuitem"><a href="#">Action</a></li>
+                              <li role="menuitem"><a href="#">Another action</a></li>
+                              <li role="menuitem"><a href="#">Something else here</a></li>
+                              <li class="divider"></li>
+                              <li role="menuitem"><a href="#">Separated link</a></li>
+                            </ul>
+                      </div>
+
+                  </div>
+                  </div>
+                  </div>
+              </div>
+            </section>

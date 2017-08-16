@@ -1,29 +1,57 @@
 namespace aci.Services {
 
 
+  //testing
+  export class ProductService {
+    public ProductResource
+
+    public saveProduct(product) {
+      return this.ProductResource.save(product);
+    }
+
+    public getProducts(category) {
+      return this.ProductResource.query({tag: category}).$promise;
+    }
+
+    public removeProduct(productId) {
+      return this.ProductResource.delete({tag: productId})
+    }
+
+    public constructor(
+      public $resource
+    ) {
+      this.ProductResource = $resource('/api/products/:tag');
+    }
+  }
+
+  angular.module('aci').service('productService', ProductService);
 
 
-//banner
-  export class BannerService {
-    public BannerResource
 
-//save banner
-    public saveBanner(banner) {
-          return this.BannerResource.save(banner);
-          
+
+//leaderboard
+  export class LeaderboardService {
+    public LeaderboardResource
+
+//save leaderboard
+    public saveLeaderboard(leaderboard) {
+          return this.LeaderboardResource.save(leaderboard);
+
         }
 
-//get banner
-    public getBanner(WebAddress) {
-      return this.BannerResource.get({tag: WebAddress});
+//get leaderboard
+    public getLeaderboard(WebAddress) {
+      return this.LeaderboardResource.get({tag: WebAddress});
     }
     public constructor(
       public $resource
     ) {
-      this.BannerResource = $resource('/api/banner/:tag');
+      this.LeaderboardResource = $resource('/api/leaderboard/:tag');
     }
   }
-angular.module('aci').service('bannerService', BannerService);
+angular.module('aci').service('leaderboardService', LeaderboardService);
+
+
 
 
 
