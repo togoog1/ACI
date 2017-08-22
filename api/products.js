@@ -6,7 +6,7 @@ var category_1 = require("../models/category");
 var product_1 = require("../models/product");
 router.post('/', function (req, res) {
     if (req.body._id) {
-        product_1.default.findByIdAndUpdate(req.body._id, { "$set": { "name": req.body.name, "price": req.body.price, "image": req.body.image } }, { "new": true, "upsert": true }, function (err, updatedCategory) {
+        product_1.default.findByIdAndUpdate(req.body._id, { "$set": { "name": req.body.name, "price": req.body.price, "image": req.body.image, "description": req.body.description, "numberinstock": req.body.numberinstock } }, { "new": true, "upsert": true }, function (err, updatedCategory) {
             if (err) {
                 res.send(err);
             }
@@ -20,6 +20,8 @@ router.post('/', function (req, res) {
         product.name = req.body.name;
         product.price = req.body.price;
         product.image = req.body.image;
+        product.description = req.body.description;
+        product.numberinstock = req.body.numberinstock;
         product.save(function (err, newProduct) {
             category_1.default.findOne({ name: req.body.category }).exec(function (err, result) {
                 if (err) {
@@ -40,6 +42,7 @@ router.post('/', function (req, res) {
     }
 });
 router.get('/:tag', function (req, res) {
+    console.log(req.params["tag"]);
     category_1.default.findOne({ name: req.params['tag'] }).populate('products').exec(function (err, results) {
         if (err) {
             res.send(err);

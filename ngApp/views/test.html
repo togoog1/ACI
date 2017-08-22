@@ -1,36 +1,34 @@
 
-<div id="banner">
-   <center>
-      <a target="banner" href="index.html" >
-        <img ng-src={{vm.banner.WebAddress}}>
+<br>
 
-      </a>
-   </center>
+<label>
+    &nbsp; <b> Filter by Make</b>
+    <select ng-model="vm.makeId" ng-change="vm.getMatchingMakes()">
+        <option ng-repeat="car in vm.makes" value="{{car.id}}">{{car.name}}</option>
+    </select>
+</label>
+<hr />
+
+
+<table cellspacing="2" cellpadding="2" ng-class="{highlight:doHilight}">
+    <tr ng-repeat="car in vm.matchingMakes"
+        ng-class="{highlight:doHilight }"
+        ng-mouseenter="highlight=true"
+        ng-mouseleave="highlight=false">
+        <td>
+            <p>{{car.ShortDescription}} &nbsp;&nbsp;</p>
+        </td>
+        <td>
+            <img class="modalI" ng-src="{{car.ImageUrl}}" ng-click="vm.showModal(car)" />
+        </td>
+    </tr>
+</table>
+
+
+
+
+Hide HTML: <input type="checkbox" ng-model="myVar">
+<div ng-hide="myVar">
+<h1>Welcome</h1>
+<p>Welcome to my home.</p>
 </div>
-
-
-
-
-
-<hr>
-
-
-
-
-<h2>Add Place</h2>
-<input type="text" placeholder="WebAddress..." ng-model="vm.banner.WebAddress" />
-<button type="button" ng-click="vm.addBanner()">Add</button>
-
-
-
-
-<p>{{vm.WebAddress}}</p>
-<hr>
-
-
-<ul>
-  <li ng-repeat="p in vm.getBanner">{{p.banner.WebAddress}}</li>
-</ul>
-<p>{{vm.banner.WebAddress}}</p>
-
-<img ng-src={{vm.banner.WebAddress}}>

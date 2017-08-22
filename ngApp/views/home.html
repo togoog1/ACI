@@ -1,7 +1,10 @@
+
+<div class="container row ">
+
 <!-- Site logo and high bar-->
 <div id="leaderboard">
    <center>
-      <a target="leaderboard" href="index.html" >
+      <a target="leaderboard" href="/" >
         <img ng-src={{vm.leaderboard.WebAddress}}>
 
       </a>
@@ -21,18 +24,8 @@
    <li><a href='/'><span>Home</span></a></li>
    <li class='active has-sub'><a href='#'><span>Products</span></a>
       <ul>
-         <li class='has-sub'><a href='/products'><span>Cabnets</span></a>
-            <ul>
-               <li><a href='#'><span>Sub Product</span></a></li>
-               <li class='last'><a href='#'><span>Sub Product</span></a></li>
-            </ul>
-         </li>
-         <li class='has-sub'><a href='#'><span>Signs/Decor</span></a>
-            <ul>
-               <li><a href='#'><span>Sub Product</span></a></li>
-               <li class='last'><a href='#'><span>Sub Product</span></a></li>
-            </ul>
-         </li>
+      <li><a href='/products'><span>Cabnets</span></a></li>
+      <li><a href='#'><span>Signs/Decor</span></a></li>
       </ul>
    </li>
    <li><a href='/about'><span>About</span></a></li>
@@ -61,7 +54,9 @@
         <div class="carousel-caption">
           <h4>Slide {{slide.id}}</h4>
           <p>{{slide.text}}</p>
+          <a class="col-sm-3 pull-4" href="#">View Full Gallery</a>
         </div>
+
       </div>
     </div>
   </div>
@@ -83,10 +78,6 @@
   </div>
 </div>
 <!-- Carousel End -->
-
-<button class="gallery" type="button" class="btn btn-primary" ng-model="singleModel" >
-    View Full Gallery
-</button>
 
 <br>
 
@@ -162,3 +153,7 @@
   </div>
 
 </footer>
+
+
+
+</div>

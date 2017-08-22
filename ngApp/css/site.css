@@ -1,14 +1,58 @@
+.modalI {
+    width: 400px;
+    padding:1px;
+    border:3px solid #021a40;
+}
 
-body {
-  background-color: silver
-  margin: auto;
+
+#leaderboard {
+  width: 100%;
+  padding: 10px;
+}
+
+
+.left-sidebar{
+  border: 1px solid black;
+}
+
+.Sorting-c {
+  padding: 20px;
+}
+
+.p-items{
+  background: silver;
+    border-radius: 8px;
+    border:1px solid black;
+}
+
+.p-box {
+  background: silver;
+    border-radius: 8px;
+    border:1px solid black;
 }
 
 
 
+.p-image{
+ width: 100px;
+
+}
+
 .P-sorting {
 
-  border: 1px solid #ccc; /* Gray border */
+
+  width: 200px;
+    border: 1px solid #ccc; /* Gray border */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border: 1px solid black; /* Gray border */
+    border-radius: 5px;
+
 }
 
 
@@ -21,7 +65,7 @@ a {
 /* About page drop down texts*/
 #aboutDrop{
   display: block;
-  width: 1200px;
+
   margin: auto;
   padding: 0;
   text-align: left;
@@ -71,11 +115,7 @@ input[type=submit]:hover {
 }
 /* contact ccs*/
 /* Add a background color and some padding around the form */
-.container {
-    border-radius: 5px;
-    background-color: #f2f2f2;
-    padding: 20px;
-}
+
 
 
 
@@ -94,7 +134,7 @@ input[type=submit]:hover {
   display: block;
   border: 1px solid;
   border-radius: 5px;
-  width: 1210px;
+
   border-color: #080808;
   margin: auto;
   padding: 0;
@@ -266,35 +306,26 @@ input[type=submit]:hover {
   display: block;
   border: 3px solid;
   border-radius: 3px;
-  width: 1200px;
+
   border-color: #080808;
   margin: auto;
   padding: 0;
   margin-top: 2px;
 }
 
-.col-md-1 {
+
+
+.row {
   display: block;
   border: 2px solid;
-  border-radius: 3px;
-  width: 60%;
-  border-color: #080808;
-  margin: auto;
-  text-align: center;
-  padding: 0;
 
-}
-
-.col-md-6 {
-  display: block;
-  border: 2px solid;
-  border-radius: 3px;
-  width: 60%;
-  border-color: #080808;
   margin: auto;
-  text-align: center;
+
   padding: 0;
 }
+
+
+
 
 .interval {
   display: block;
@@ -317,8 +348,9 @@ input[type=submit]:hover {
 p {
     display: block;
 
-    text-align: center;
-    width: 60%;
+    text-align: left;
+    width: auto;
+    height: 100px;
     border-color: #080808;
     margin: auto;
     padding: 0;
@@ -336,7 +368,7 @@ p {
 
 	font: bold 16px sans-serif;
   display: block;
-  width: 1175px;
+
   margin: auto;
   padding: 30px;
   border: 3px solid;

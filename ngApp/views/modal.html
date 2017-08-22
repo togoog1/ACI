@@ -1,0 +1,25 @@
+<div class="modal-header">
+    <h1 class="modal-title">Product Details</h1>
+</div>
+<div class="modal-body" ng-cloak>
+  <table class="table">
+      <tr>
+          <img class="modalI" ng-src={{modal.product.image}}>
+      </tr>
+</table>
+
+    <table class="table">
+        <tr>
+            <th>Make</th>
+            <td>{{modal.product.name}}</td>
+        </tr>
+        <tr>
+            <th>Full Description</th>
+            <td>{{modal.product.description}}</td>
+        </tr>
+    </table>
+
+</div>
+<div class="modal-footer">
+    <button class="btn-primary" ng-click="modal.ok()">OK</button>
+</div>

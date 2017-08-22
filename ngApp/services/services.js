@@ -51,52 +51,28 @@ var aci;
         }());
         Services.UserService = UserService;
         angular.module('aci').service('userService', UserService);
-        angular.module('aci').controller('CarouselDemoCtrl', function ($scope) {
-            $scope.myInterval = 5000;
-            $scope.noWrapSlides = false;
-            $scope.active = 0;
-            var slides = $scope.slides = [];
-            var currIndex = 0;
-            $scope.addSlide = function () {
-                var newWidth = 600 + slides.length + 1;
-                slides.push({
-                    image: '//unsplash.it/' + newWidth + '/300',
-                    text: ['Nice image', 'Awesome photograph', 'That is so cool', 'I love that'][slides.length % 4],
-                    id: currIndex++
-                });
+        var CarService = (function () {
+            function CarService($resource) {
+                this.$resource = $resource;
+                this.CarResource = $resource('/api/cars/:id');
+                this.MakeResource = $resource('/api/makes');
+            }
+            CarService.prototype.getMatchingMakes = function (makeId) {
+                return this.CarResource.query({ id: makeId });
             };
-            $scope.randomize = function () {
-                var indexes = generateIndexesArray();
-                assignNewIndexesToSlides(indexes);
+            CarService.prototype.getAllMakes = function () {
+                return this.MakeResource.query();
             };
-            for (var i = 0; i < 4; i++) {
-                $scope.addSlide();
-            }
-            function assignNewIndexesToSlides(indexes) {
-                for (var i = 0, l = slides.length; i < l; i++) {
-                    slides[i].id = indexes.pop();
-                }
-            }
-            function generateIndexesArray() {
-                var indexes = [];
-                for (var i = 0; i < currIndex; ++i) {
-                    indexes[i] = i;
-                }
-                return shuffle(indexes);
-            }
-            function shuffle(array) {
-                var tmp, current, top = array.length;
-                if (top) {
-                    while (--top) {
-                        current = Math.floor(Math.random() * (top + 1));
-                        tmp = array[current];
-                        array[current] = array[top];
-                        array[top] = tmp;
-                    }
-                }
-                return array;
-            }
-        });
+            CarService.prototype.listCars = function () {
+                return this.CarResource.query();
+            };
+            CarService.prototype.getCar = function (carId) {
+                return this.CarResource.get({ id: carId });
+            };
+            return CarService;
+        }());
+        Services.CarService = CarService;
+        angular.module('aci').service('carService', CarService);
         angular.module('aci').controller('Dropdown', function ($scope) {
             $scope.oneAtATime = true;
             $scope.groups = [

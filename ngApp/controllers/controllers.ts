@@ -1,5 +1,7 @@
 namespace aci.Controllers {
 
+  const apiUrl = '/api/cars/search/';
+
     export class HomeController {
 
 
@@ -29,6 +31,31 @@ namespace aci.Controllers {
         public $scope,
       private leaderboardService
       ) {
+        //if check webtoken. access tokens payload.
+
+
+        // Image factory
+      //var createImage = function(src, title) {
+    //      imageArray[0] = new Image();
+//imageArray[0].src = "my-image-01.png";
+//          imageArray[0].imageCaption = "A caption for the image";
+
+//      };
+
+        // array of images
+    //    var images = [];
+
+        // push two images to the array
+    //    images.push(createImage("foo.jpg", "foo title"));
+  //      images.push(createImage("bar.jpg", "bar title"));
+
+        // output
+  //      console.log(images);
+
+
+
+
+
 
 
         this.leaderboard=this.leaderboardService.getLeaderboard()
@@ -40,12 +67,16 @@ namespace aci.Controllers {
         let currIndex = 0;
 
         $scope.addSlide = function() {
+
+
           let newWidth = 600 + slides.length + 1;
           slides.push({
             image: '//unsplash.it/' + newWidth + '/300',
             text: ['Nice image','Awesome photograph','That is so cool','I love that'][slides.length % 4],
             id: currIndex++
+
           });
+console.log(this.slides)
         };
 
         $scope.randomize = function() {
@@ -195,14 +226,38 @@ namespace aci.Controllers {
             })
             }
 
+                  public category
+                  public products
+                  public product
+                  public productId
+
+                  public getProducts(category) {
+                    this.productService.getProducts(category).then((result) => {
+                      this.products = result;
+                      console.log(this.products)
+                    })
+                  }
+                  public deleteProduct(productId) {
+                    this.productService.removeProduct(productId);
+                  }
+                  public addProduct() {
+                    this.productService.saveProduct(this.product);
+                  }
+                  public editProduct() {
+                      this.product._id = this.productId;
+                      this.productService.saveProduct(this.product);
+                  }
+
 
 
           public  constructor(
               public $scope,
             private leaderboardService,
-            public $log
+            public $log,
+            private productService,
+            public $stateParams,
           ) {
-
+            this.productId = $stateParams['id'];
             this.leaderboard=this.leaderboardService.getLeaderboard()
             console.log(this.leaderboard)
 
@@ -275,14 +330,15 @@ console.log("rthtrhrth")
 
     export class GetStartedController {
 
-      public category
+            public category
             public products
             public product
             public productId
 
-            public getProducts() {
-              this.productService.getProducts(this.category).then((result) => {
+            public getProducts(category) {
+              this.productService.getProducts(category).then((result) => {
                 this.products = result;
+                console.log(this.products)
               })
             }
             public deleteProduct(productId) {
@@ -295,9 +351,24 @@ console.log("rthtrhrth")
                 this.product._id = this.productId;
                 this.productService.saveProduct(this.product);
             }
+            public showModal(product) {
+                 this.$uibModal.open({
+                     templateUrl: '/ngApp/views/modal.html',
+                     controller: 'DialogController',
+                     controllerAs: 'modal',
+                     resolve: {
+                          product: () => product
+                     },
+                     size: 'lg'
+                 });
+             }
 private constructor(
         public $stateParams,
-        private productService
+        private productService,
+        private $log,
+        private $document,
+        private $uibModal: angular.ui.bootstrap.IModalService,
+        public $http
      ) {
 this.productId = $stateParams['id'];
 
@@ -305,6 +376,19 @@ this.productId = $stateParams['id'];
 
 }
 
+
+
+
+
+//modal service
+class DialogController {
+    public ok() {
+        this.$uibModalInstance.close();
+}
+    constructor(public product:object, private $uibModalInstance: angular.ui.bootstrap.IModalServiceInstance) { }
+}
+//end
+angular.module('aci').controller('DialogController', DialogController);
 
 
 
@@ -380,6 +464,122 @@ this.productId = $stateParams['id'];
 
 
     }
+
+export class TestController {
+public cars;
+public makes;
+public makeId;
+public carId;
+public selectedMake = 0;
+public selectedModel;
+public search;
+public matchingMakes;
+
+public getMatchingMakes() {
+  this.matchingMakes = this.carService.getMatchingMakes(this.makeId);
+console.log(this.matchingMakes);
+
+}
+
+
+
+
+
+public getCars() {
+    if (this.selectedMake == 0)
+        return this.cars
+    else
+        return this.cars.filter(x => x.carMakeId == this.selectedMake);
+}
+
+
+
+public fetch() {
+console.log(apiUrl+this.search)
+this.$http.get(apiUrl + this.search).then((res) => {
+//  console.log(res);
+this.cars = res.data;
+});
+}
+
+
+
+
+
+
+
+
+//  export function showModalUI(carId: number, $uibModal: angular.ui.bootstrap.IModalService, cars, makes) {
+
+//       let car = cars.find(x => x.id == carId);
+    // let make = makes.find(x => x.id == car.carMakeId);
+
+//modal stuff
+public showModal(car) {
+     this.$uibModal.open({
+         templateUrl: '/ngApp/views/modal.html',
+         controller: 'DialogController',
+         controllerAs: 'modal',
+         resolve: {
+              car: () => car
+         },
+         size: 'lg'
+     });
+ }
+
+ constructor(private carService: aci.Services.CarService, private $uibModal: angular.ui.bootstrap.IModalService, public $http) {
+     this.cars = this.carService.listCars();
+     this.makes = this.carService.getAllMakes();
+     //this.$http.get('/api/cars')
+                 //  .then((response) => {
+                   //    this.cars = response.data;
+                 //  })
+
+ }
+}
+
+
+
+
+
+
+
+
+
+
+//ng-hide controller
+export class TestnghideController {
+
+
+
+constructor(private $scope){
+
+      var showApp = angular.module('showApp', []).controller('testnghideController', function($scope) {
+    // set the default value of our number
+      $scope.myNumber = 0;
+
+    // function to evaluate if a number is even
+      $scope.isEven = function(value) {
+      if (value % 2 == 0)
+        return true;
+      else
+        return false;
+      };
+    });
+/**/
+
+
+}
+
+
+
+
+
+}
+
+
+
+//angular.module('aci').controller('testnghideController', testnghideController);
 
 
 

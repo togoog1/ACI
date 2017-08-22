@@ -1,4 +1,10 @@
-<div id="leaderboard">
+<div class="container row bg-success">
+
+
+
+
+
+<div class="row" id="leaderboard">
    <center>
       <a target="leaderboard" href="index.html" >
         <img ng-src={{vm.leaderboard.WebAddress}}>
@@ -10,7 +16,7 @@
 
 
 <!-- Nav Bar-->
-<div id='cssmenu'>
+<div class="row" id='cssmenu'>
 <ul>
    <li><a href='/'><span>Home</span></a></li>
    <li class='active has-sub'><a href='#'><span>Products</span></a>
@@ -36,7 +42,21 @@
 </ul>
 </div>
 
-<body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -50,29 +70,26 @@
 
 	<section>
 		<div class="container">
-			<div class="row">
-				<div class="col-sm-3">
+			<div class="row bg-warning">
+				<div class="col-sm-3 bg-danger">
 					<div class="left-sidebar">
 
 
-
-            <div class="brands_products"><!--brands_products-->
+<!--Category buttons-->
+            <div class="brands_products">
               <h2>Categories</h2>
-              <div class="brands-name">
+              <div class="Sorting-c">
                 <ul class="nav nav-pills nav-stacked">
-
-                  <li><a class="P-sorting" href="#">Cabnets</a></li>
-                  <li><a class="P-sorting" href="#">Storefront Signs</a></li>
-                  <li><a class="P-sorting" href="#">Isle Signs</a></li>
-                  <li><a class="P-sorting" href="#">PH</a></li>
-
+                  <li><button class="P-sorting" ng-click="vm.getProducts('Cabnets')" >Cabnets</button></li>
+                  <li><button class="P-sorting" ng-click="vm.getProducts('Storefront Signs')" value="Storefront Signs">Storefront Signs</button></li>
+                  <li><button class="P-sorting" ng-click="vm.getProducts('Isle Signs')" value="Isle Signs">Isle Signs</button></li>
                 </ul>
               </div>
-            </div><!--/brands_products-->
+            </div>
 
 
 
-						<div class="brands_products"><!--brands_products-->
+						<div class="brands_products">
 							<h1>Soritng Filters</h1>
 							<div class="brands-name">
 								<ul class="nav nav-pills nav-stacked">
@@ -91,17 +108,33 @@
 					</div>
 				</div>
 
+<p>{{vm.products}}</p>
+<img ng-src={{vm.products}} alt="">
+
+
 				<div class="col-sm-9 padding-right">
 					<div class="features_items"><!--features_items-->
 						<h2 class="title text-center">Featured Prebuilts</h2>
-							<div class="col-sm-4">
+							<div class="col-sm-12 bg-info">
 								 <div class="product-image-wrapper">
-												<div class="single-products">
-															<div class="productinfo text-center">
-																			<img src="images/home/recommend2.jpg" alt="" />
-																			<h2>Item place holder</h2>
+												<div class="p-items">
+															<div class="productinfo text-center" ng-repeat="p in vm.products">
+<div class="p-box">
+
+
+																			<img class="col-sm-3 bg-warning " src={{p.image}}>
+																			<a href="/">{{p.name}}</a>
 																			<p>Description place holder</p>
+                                      <ul>
+                                        <li >Price: {{p.price}}</li>
+                                      <li >Product: {{p.name}}</li>
+                                      <li >Price: {{p.description}}</li>
+                                      <li >Price: {{p.numberinstock}}</li>
+                                      </ul>
+
 																			<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+
+                                      </div>
 															</div>
 												</div>
 								 </div>
@@ -180,58 +213,4 @@
 	</footer>
 
 
-
-  <div class="btn-group" uib-dropdown>
-              <button id="btn-append-to-single-button" type="button" class="btn btn-primary" uib-dropdown-toggle>
-                Inline Dropdown <span class="caret"></span>
-              </button>
-              <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="btn-append-to-single-button">
-                <li role="menuitem"><a href="#">Action</a></li>
-                <li role="menuitem"><a href="#">Another action</a></li>
-                <li role="menuitem"><a href="#">Something else here</a></li>
-                <li class="divider"></li>
-                <li role="menuitem"><a href="#">Separated link</a></li>
-              </ul>
-            </div>
-
-
-
-
-
-*/angular dropdowns  /*
-            <section>
-              <div class="container">
-                  <div class="row">
-                  <div class="col-sm-3">
-                  <div class="left-sidebar">
-                      <h2>Category</h2>
-                      <div class="btn-group" uib-dropdown>
-                          <button id="btn-append-to-single-button" type="button" class="btn btn-primary" uib-dropdown-toggle <span class="badge pull-right">
-                            Cabnets <span class="caret"></span>
-                          </button>
-                            <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="btn-append-to-single-button">
-                              <li role="menuitem"><a href="#">Action</a></li>
-                              <li role="menuitem"><a href="#">Another action</a></li>
-                              <li role="menuitem"><a href="#">Something else here</a></li>
-                              <li class="divider"></li>
-                              <li role="menuitem"><a href="#">Separated link</a></li>
-                            </ul>
-                      </div>
-                      <div class="btn-group" uib-dropdown>
-                          <button id="btn-append-to-single-button" type="button" class="btn btn-primary" uib-dropdown-toggle>
-                            Storefront Signs <span class="caret"></span>
-                          </button>
-                            <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="btn-append-to-single-button">
-                              <li role="menuitem"><a href="#">Action</a></li>
-                              <li role="menuitem"><a href="#">Another action</a></li>
-                              <li role="menuitem"><a href="#">Something else here</a></li>
-                              <li class="divider"></li>
-                              <li role="menuitem"><a href="#">Separated link</a></li>
-                            </ul>
-                      </div>
-
-                  </div>
-                  </div>
-                  </div>
-              </div>
-            </section>
+</div>

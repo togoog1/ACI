@@ -1,0 +1,42 @@
+<div class="container">
+
+    <div class="page-header text-center">
+       <h1>ngShow and ngHide: Functions</h1>
+    </div>
+
+    <!-- ANIMALS =========================================================== -->
+    <div class="row">
+      <div class="col-xs-4">
+        <form>
+          <div class="form-group">
+            <label>Type a Number</label>
+            <input type="text" class="form-control" ng-model="myNumber">
+          </div>
+        </form>
+      </div>
+
+      <div class="col-xs-8 jumbotron text-center">
+
+        <!-- show if our function evaluates to false -->
+        <div ng-show="isEven(myNumber)">
+          <h2>The number is even.</h2>
+        </div>
+
+        <!-- show if our function evaluates to false -->
+        <div ng-show="!isEven(myNumber)">
+          <h2>The number is odd.</h2>
+        </div>
+      </div>
+    </div>
+
+</div>
+
+
+
+
+
+Hide HTML: <input type="checkbox" ng-model="myVar">
+<div ng-hide="myVar">
+<h1>Welcome</h1>
+<p>Welcome to my home.</p>
+</div>

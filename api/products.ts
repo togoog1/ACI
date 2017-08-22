@@ -7,7 +7,7 @@ import Product from '../models/product';
 /* CREATE or UPDATE */
 router.post('/', (req, res) => {
   if(req.body._id) {
-    Product.findByIdAndUpdate(req.body._id, { "$set": { "name": req.body.name, "price": req.body.price, "image": req.body.image }}, { "new": true, "upsert": true },
+    Product.findByIdAndUpdate(req.body._id, { "$set": { "name": req.body.name, "price": req.body.price, "image": req.body.image,  "description": req.body.description,  "numberinstock": req.body.numberinstock }}, { "new": true, "upsert": true },
       function (err, updatedCategory) {
         if (err) {
           res.send(err)
@@ -21,6 +21,8 @@ router.post('/', (req, res) => {
     product.name = req.body.name;
     product.price = req.body.price;
     product.image = req.body.image;
+    product.description = req.body.description;
+    product.numberinstock = req.body.numberinstock;
     product.save((err, newProduct) => {
       Category.findOne({name: req.body.category}).exec((err, result:any) => {
         if (err) {
@@ -43,7 +45,9 @@ router.post('/', (req, res) => {
 
 /* READ */
 router.get('/:tag', (req, res) => {
+  console.log(req.params["tag"])
   Category.findOne({name: req.params['tag']}).populate('products').exec(function (err, results:any) {
+
     if (err) {
       res.send(err)
     } else {

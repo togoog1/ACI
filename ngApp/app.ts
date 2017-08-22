@@ -49,6 +49,18 @@ namespace aci {
                 controller: aci.Controllers.RegisterController,
                 controllerAs: 'vm'
             })
+            .state('test', {
+                url: '/test',
+                templateUrl: '/ngApp/views/test.html',
+                controller: aci.Controllers.TestController,
+                controllerAs: 'vm'
+            })
+            .state('testnghide', {
+                url: '/testnghide',
+                templateUrl: '/ngApp/views/testnghide.html',
+                controller: aci.Controllers.TestnghideController,
+                controllerAs: 'vm'
+            })
             .state('notFound', {
                 url: '/notFound',
                 templateUrl: '/ngApp/views/notFound.html'
