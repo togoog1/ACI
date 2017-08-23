@@ -40,9 +40,7 @@ app.use(passport.initialize());
 mongoose.connect('mongodb://togoog1:Splintershard1@ds019054.mlab.com:19054/aci-security');
 
 
-//car dealership
-app.use('/api', require('./api/cars'));
-app.use('/api', require('./api/makes'));
+
 
 
 app.use('/api/leaderboard/', leaderboard)

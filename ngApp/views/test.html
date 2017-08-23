@@ -32,3 +32,44 @@ Hide HTML: <input type="checkbox" ng-model="myVar">
 <h1>Welcome</h1>
 <p>Welcome to my home.</p>
 </div>
+
+
+
+<div class="container row">
+<div id="banner">
+   <center>
+      <a target="banner" href="index.html" >
+        <img ng-src={{vm.banner.WebAddress}}>
+
+      </a>
+   </center>
+</div>
+
+
+
+
+
+<hr>
+
+
+
+
+<h2>Add Place</h2>
+<input type="text" placeholder="WebAddress..." ng-model="vm.banner.WebAddress" />
+<button type="button" ng-click="vm.addBanner()">Add</button>
+
+
+
+
+<p>{{vm.WebAddress}}</p>
+<hr>
+
+
+<ul>
+  <li ng-repeat="p in vm.getBanner">{{p.banner.WebAddress}}</li>
+</ul>
+<p>{{vm.banner.WebAddress}}</p>
+
+<img ng-src={{vm.banner.WebAddress}}>
+
+</div>

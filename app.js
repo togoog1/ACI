@@ -24,8 +24,6 @@ app.use('/ngApp', express.static(path.join(__dirname, 'ngApp')));
 app.use('/api', express.static(path.join(__dirname, 'api')));
 app.use(passport.initialize());
 mongoose.connect('mongodb://togoog1:Splintershard1@ds019054.mlab.com:19054/aci-security');
-app.use('/api', require('./api/cars'));
-app.use('/api', require('./api/makes'));
 app.use('/api/leaderboard/', leaderboard_1.default);
 app.use('/userRoutes/api/', users_1.default);
 app.use('/api/products', products_1.default);

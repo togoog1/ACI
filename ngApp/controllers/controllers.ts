@@ -65,60 +65,67 @@ namespace aci.Controllers {
         $scope.active = 0;
         let slides = $scope.slides = [];
         let currIndex = 0;
+        let image = [
+          {image:'http://www.ikea.com/us/en/images/products/brimnes-cabinet-with-doors-black__0333977_PE523388_S4.JPG', text:'hi', id:0},
+          {image:'http://www.ikea.com/us/en/images/products/brimnes-cabinet-with-doors-black__0333977_PE523388_S4.JPG', text:'hi', id:1},
+          {image:'http://www.ikea.com/us/en/images/products/brimnes-cabinet-with-doors-black__0333977_PE523388_S4.JPG', text:'hi', id:2},
+          {image:'http://www.ikea.com/us/en/images/products/brimnes-cabinet-with-doors-black__0333977_PE523388_S4.JPG', text:'hi', id:3},
+          {image:'http://www.ikea.com/us/en/images/products/brimnes-cabinet-with-doors-black__0333977_PE523388_S4.JPG', text:'hi', id:4}
 
+                    ]
         $scope.addSlide = function() {
+          if(currIndex === 0){
+            let newWidth = 600 + slides.length + 1;
+            slides.push(image[currIndex]);
+            console.log(this.slides)
+            $scope.randomize = function() {
+              let indexes = generateIndexesArray();
+              assignNewIndexesToSlides(indexes);
+            };
 
-
-          let newWidth = 600 + slides.length + 1;
-          slides.push({
-            image: '//unsplash.it/' + newWidth + '/300',
-            text: ['Nice image','Awesome photograph','That is so cool','I love that'][slides.length % 4],
-            id: currIndex++
-
-          });
-console.log(this.slides)
-        };
-
-        $scope.randomize = function() {
-          let indexes = generateIndexesArray();
-          assignNewIndexesToSlides(indexes);
-        };
-
-        for (let i = 0; i < 4; i++) {
-          $scope.addSlide();
-        }
-
-        // Randomize logic below
-
-        function assignNewIndexesToSlides(indexes) {
-          for (let i = 0, l = slides.length; i < l; i++) {
-            slides[i].id = indexes.pop();
-          }
-        }
-
-        function generateIndexesArray() {
-          let indexes = [];
-          for (let i = 0; i < currIndex; ++i) {
-            indexes[i] = i;
-          }
-          return shuffle(indexes);
-        }
-
-        // http://stackoverflow.com/questions/962802#962890
-        function shuffle(array) {
-          let tmp, current, top = array.length;
-
-          if (top) {
-            while (--top) {
-              current = Math.floor(Math.random() * (top + 1));
-              tmp = array[current];
-              array[current] = array[top];
-              array[top] = tmp;
+            for (let i = 0; i < 4; i++) {
+              $scope.addSlide();
             }
+
+            // Randomize logic below
+
+            function assignNewIndexesToSlides(indexes) {
+              for (let i = 0, l = slides.length; i < l; i++) {
+                slides[i].id = indexes.pop();
+              }
+            }
+
+            function generateIndexesArray() {
+              let indexes = [];
+              for (let i = 0; i < currIndex; ++i) {
+                indexes[i] = i;
+              }
+              return shuffle(indexes);
+            }
+
+            // http://stackoverflow.com/questions/962802#962890
+            function shuffle(array) {
+              let tmp, current, top = array.length;
+
+              if (top) {
+                while (--top) {
+                  current = Math.floor(Math.random() * (top + 1));
+                  tmp = array[current];
+                  array[current] = array[top];
+                  array[top] = tmp;
+                }
+              }
+              return array;
+            }
+          } else {
+            currIndex++
           }
-          return array;
+
+
         }
-      }
+        }
+
+
 
     }
 
@@ -205,6 +212,7 @@ console.log(this.slides)
           }
           return array;
         }
+
       }
 
     }
@@ -351,13 +359,13 @@ console.log("rthtrhrth")
                 this.product._id = this.productId;
                 this.productService.saveProduct(this.product);
             }
-            public showModal(product) {
+            public showModal(animalName:string) {
                  this.$uibModal.open({
                      templateUrl: '/ngApp/views/modal.html',
                      controller: 'DialogController',
-                     controllerAs: 'modal',
+                     controllerAs: 'vm',
                      resolve: {
-                          product: () => product
+                          dataFromGetStartedController: () => animalName
                      },
                      size: 'lg'
                  });
@@ -382,10 +390,31 @@ this.productId = $stateParams['id'];
 
 //modal service
 class DialogController {
+  public category
+  public products
+  public product
+  public productId
     public ok() {
         this.$uibModalInstance.close();
 }
-    constructor(public product:object, private $uibModalInstance: angular.ui.bootstrap.IModalServiceInstance) { }
+public getProducts(category) {
+  this.productService.getProducts(category).then((result) => {
+    this.products = result;
+    console.log(this.products)
+  })
+}
+public deleteProduct(productId) {
+  this.productService.removeProduct(productId);
+}
+public addProduct() {
+  this.productService.saveProduct(this.product);
+}
+public editProduct() {
+
+   this.productService.saveProduct(this.dataFromGetStartedController);
+console.log( )
+}
+    constructor(private productService, public dataFromGetStartedController , private $uibModalInstance: angular.ui.bootstrap.IModalServiceInstance) { }
 }
 //end
 angular.module('aci').controller('DialogController', DialogController);
@@ -397,12 +426,31 @@ angular.module('aci').controller('DialogController', DialogController);
 
 
 
-
-    export class LogInController {
-
-      public userInfo
+export class LogInController {
       public leaderboard
       public WebAddress
+
+      public userInfo
+      public isAdmin
+
+      public login() {
+        if(this.isAdmin === true) {
+            this.userInfo.role = 'admin';
+            this.createSession();
+          }
+      else {
+          this.userInfo.role ='guest';
+          this.createSession();
+        }
+      }
+
+      public createSession(){
+          this.userService.loginUser(this.userInfo).then((data) => {
+              this.$window.localStorage.setItem("token", JSON.stringify(data.token));
+              this.$state.go('home');
+        })
+      }
+
 
       public addLeaderboard() {
         console.log("sssssssssssssssssssssssssssssssss")
@@ -419,17 +467,11 @@ angular.module('aci').controller('DialogController', DialogController);
 
 
 
-
-      public login() {
-        this.userService.loginUser(this.userInfo).then((data) => {
-          this.$window.localStorage.setItem("token", JSON.stringify(data.token));
-          alert('login successful');
-        })
-      }
       public constructor(
         private leaderboardService,
         private userService,
-        public $window
+        public $window,
+        public $state
       ) {
         this.leaderboard=this.leaderboardService.getLeaderboard()
         console.log(this.leaderboard)
@@ -440,6 +482,13 @@ angular.module('aci').controller('DialogController', DialogController);
 
       public leaderboard
       public WebAddress
+      public user
+
+public signup() {
+  this.userService.registerUser(this.user).then(() => {
+    alert('signup successful, please login');
+  })
+}
 
       public addLeaderboard() {
         console.log("sssssssssssssssssssssssssssssssss")
@@ -454,6 +503,7 @@ angular.module('aci').controller('DialogController', DialogController);
             }
 
             constructor(
+              private userService,
               public $scope,
             private leaderboardService
           ) {
@@ -466,80 +516,27 @@ angular.module('aci').controller('DialogController', DialogController);
     }
 
 export class TestController {
-public cars;
-public makes;
-public makeId;
-public carId;
-public selectedMake = 0;
-public selectedModel;
-public search;
-public matchingMakes;
+  public leaderboard
+  public WebAddress
 
-public getMatchingMakes() {
-  this.matchingMakes = this.carService.getMatchingMakes(this.makeId);
-console.log(this.matchingMakes);
+  public addLeaderboard() {
+    console.log("sssssssssssssssssssssssssssssssss")
+          this.leaderboardService.saveLeaderboard(this.leaderboard);
+        }
+
+  public getLeaderboard() {
+
+          this.leaderboardService.getLeaderboard(this.WebAddress).then((result) => {
+          this.leaderboard = result;
+        })
+        }
+
+ constructor(private leaderboardService, private carService: aci.Services.CarService, private $uibModal: angular.ui.bootstrap.IModalService, public $http) {
 
 }
 
 
-
-
-
-public getCars() {
-    if (this.selectedMake == 0)
-        return this.cars
-    else
-        return this.cars.filter(x => x.carMakeId == this.selectedMake);
 }
-
-
-
-public fetch() {
-console.log(apiUrl+this.search)
-this.$http.get(apiUrl + this.search).then((res) => {
-//  console.log(res);
-this.cars = res.data;
-});
-}
-
-
-
-
-
-
-
-
-//  export function showModalUI(carId: number, $uibModal: angular.ui.bootstrap.IModalService, cars, makes) {
-
-//       let car = cars.find(x => x.id == carId);
-    // let make = makes.find(x => x.id == car.carMakeId);
-
-//modal stuff
-public showModal(car) {
-     this.$uibModal.open({
-         templateUrl: '/ngApp/views/modal.html',
-         controller: 'DialogController',
-         controllerAs: 'modal',
-         resolve: {
-              car: () => car
-         },
-         size: 'lg'
-     });
- }
-
- constructor(private carService: aci.Services.CarService, private $uibModal: angular.ui.bootstrap.IModalService, public $http) {
-     this.cars = this.carService.listCars();
-     this.makes = this.carService.getAllMakes();
-     //this.$http.get('/api/cars')
-                 //  .then((response) => {
-                   //    this.cars = response.data;
-                 //  })
-
- }
-}
-
-
-
 
 
 
@@ -549,28 +546,51 @@ public showModal(car) {
 
 //ng-hide controller
 export class TestnghideController {
+  public isAdmin
+
+public payload
 
 
-
-constructor(private $scope){
-
-      var showApp = angular.module('showApp', []).controller('testnghideController', function($scope) {
-    // set the default value of our number
-      $scope.myNumber = 0;
-
-    // function to evaluate if a number is even
-      $scope.isEven = function(value) {
-      if (value % 2 == 0)
-        return true;
-      else
-        return false;
-      };
-    });
-/**/
-
-
+public create(){
+  if(this.payload.role === 'admin') {
+    alert('Sucess!');
+  } else {
+    alert('Denied. admins only')
+  }
 }
 
+public read(){
+    alert('Sucess!');
+}
+
+public update(){
+  if(this.payload.role === 'admin') {
+    alert('Sucess!');
+  } else {
+    alert('Denied. admins only')
+  }
+}
+public delete(){
+  if(this.payload.role === 'admin') {
+    alert('Sucess!');
+  } else {
+    alert('Denied. admins only')
+  }
+}
+
+
+
+
+
+constructor(){
+let test=true
+  if(test){
+    this.isAdmin=true
+    }
+    else{
+      this.isAdmin=false
+    }
+  }
 
 
 

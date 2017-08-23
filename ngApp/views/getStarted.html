@@ -1,4 +1,4 @@
-<div class="container row bg-success">
+<div class="container row">
 
 <!--
  -->
@@ -14,6 +14,9 @@
 </div>
 
 
+
+
+
 </div>
 
 
@@ -22,13 +25,18 @@
 
 <div class="container" ng-repeat="p in vm.products">
 
-          <img class="col-sm-3 bg-warning" src={{p.image}} ng-click="vm.showModal(product)">
-          <p>Product{{p.name}}</p>
+          <img class="col-sm-3 bg-warning" src={{p.image}}>
+          </p>
+          <ul>
+            <li >Name:{{p.name}}</li>
+          <li >Price: {{p.price}}</li>
+
+          <li >Description: {{p.description}}</li>
+          <li >Number in stock: {{p.numberinstock}}</li>
+          </ul>
+          <button class="P-sorting" ng-click="vm.showModal(p)" >Edit product</button>
 
 </div>
-
-
-
 
 
 <br>

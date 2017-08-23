@@ -56,6 +56,18 @@ var aci;
             controller: aci.Controllers.TestnghideController,
             controllerAs: 'vm'
         })
+            .state('shoppingcart', {
+            url: '/shoppingcart',
+            templateUrl: '/ngApp/views/shoppingcart.html',
+            controller: aci.Controllers.ShoppingcartController,
+            controllerAs: 'vm'
+        })
+            .state('gallery', {
+            url: '/gallery',
+            templateUrl: '/ngApp/views/gallery.html',
+            controller: aci.Controllers.GalleryController,
+            controllerAs: 'vm'
+        })
             .state('notFound', {
             url: '/notFound',
             templateUrl: '/ngApp/views/notFound.html'

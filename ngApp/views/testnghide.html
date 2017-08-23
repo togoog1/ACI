@@ -1,3 +1,18 @@
+
+<div class="container">
+  <button type="button" ng-click="vm.create()">Create</button>
+  <button type="button" ng-click="vm.read()">Read</button>
+  <button type="button" ng-click="vm.update()">Update</button>
+  <button type="button" ng-click="vm.delete()">Delete</button>
+
+</div>
+
+
+
+
+
+
+
 <div class="container">
 
     <div class="page-header text-center">
@@ -18,12 +33,12 @@
       <div class="col-xs-8 jumbotron text-center">
 
         <!-- show if our function evaluates to false -->
-        <div ng-show="isEven(myNumber)">
+        <div ng-show="isAdmin">
           <h2>The number is even.</h2>
         </div>
 
         <!-- show if our function evaluates to false -->
-        <div ng-show="!isEven(myNumber)">
+        <div ng-show="!isAdmin">
           <h2>The number is odd.</h2>
         </div>
       </div>

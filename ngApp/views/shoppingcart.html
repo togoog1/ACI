@@ -1,0 +1,83 @@
+
+<h1>Checkout</h1>
+
+
+
+<h1>Shipping Address</h1>
+
+<h1>Payment Method</h1>
+
+<button
+    class="btn btn-block btn-primary"
+    ng-click="cart.checkout('Stripe')"
+    ng-disabled="cart.getTotalCount() < 1">
+    <i class="icon-ok icon-white" /> check out using Stripe
+</button>
+
+
+
+
+
+
+<div >
+														<img class="col-sm-3 bg-warning " src={{p.image}}>
+                              </p>
+                                <ul>
+                                  <li >Name:{{p.name}}</li>
+                                <li >Price: {{p.price}}</li>
+
+                                  <li >Description: {{p.description}}</li>
+                                  <li >Number in stock: {{p.numberinstock}}</li>
+                                  </ul>
+
+
+                              </div>
+
+
+<td>Order total</td>
+
+                    <div class="container">
+
+
+                      <button type="button" name="button">Place your order</button>
+                        <p class="">Order total: {{total}}</p>
+
+
+
+
+
+
+                  </div>
+
+
+
+
+
+
+
+<div class="container">
+
+
+<button type="button" name="button">Place your order</button>
+<p class="">Order total: {{total}}</p>
+
+
+</div>
+
+
+
+
+
+<h1>Review Items</h1>
+
+
+
+<div class="p-box">
+  <ul>
+ <li><p>*Why has sales tax been applied?<a href="#"> See tax and seller information. </a></p></li>
+ <li><p>Need help? Check our<a href="#"> Help pages </a>or <a href="#">contact us</a></p></li>
+ <li><p>For each sale we will include a digital reciept sent to your email address</p></li>
+ <p>Important information about  <a href="#">sales tax </a> you may owe in your state </p>
+ <p>Need to add more items to your order? Continue shopping on the ACI homepage.</p>
+ </ul>
+</div>
