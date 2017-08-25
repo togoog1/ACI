@@ -1,4 +1,10 @@
 
+
+
+
+
+
+
 <div class="container row">
 
 <!-- Site logo and high bar-->
@@ -44,25 +50,31 @@
 
 
 
-
   <!-- Carousel -->
 <div>
-  <div id=carousel style="height: 305px">
+  <div id=carousel class="col-md-12">
     <div uib-carousel active="active" interval="myInterval" no-wrap="noWrapSlides">
-      <div uib-slide ng-repeat="slide in slides track by slide.id" index="slide.id">
-        <img ng-src="{{slide.image}}" style="margin:auto;">
+      <div uib-slide ng-repeat="slide in slides track by slide.id" index="slide.id" >
+
+        <img ng-src="{{slide.image}}" style="margin:auto;" >
+
         <div class="carousel-caption">
+
           <h4>Slide {{slide.id}}</h4>
           <p>{{slide.text}}</p>
-          <a class="col-sm-3 pull-4" href="#">View Full Gallery</a>
         </div>
 
       </div>
+
     </div>
   </div>
+  <div class="container">
+    <a class="col-sm-2 galleryB" href="#">View Full Gallery</a>
+  </div>
+
   <div class="row">
-    <div class="col-md-1">
-      <button type="button" class="btn btn-info" ng-click="addSlide()">Add Slide</button>
+    <div class="col-md-6">
+
       <button type="button" class="btn btn-info" ng-click="randomize()">Randomize slides</button>
       <div class="checkbox">
         <label>
@@ -74,6 +86,7 @@
     <div class="col-md-6">
       Interval, in milliseconds: <input class="interval" type="number" class="form-control" ng-model="myInterval">
       <br />Enter a negative number or 0 to stop the interval.
+      <button class="P-sorting" ng-click="vm.showLeaderboardModal()" >Change leaderboard</button>
     </div>
   </div>
 </div>
@@ -85,7 +98,21 @@
 
 
 
-<div id='General' class="container">
+
+
+<ui-gmap-google-map center='vm.center' zoom='vm.zoom'>
+    <ui-gmap-markers
+        models="vm.markers"
+        coords="'self'"
+        icon="'icon'"
+        options="'options'">
+    </ui-gmap-markers>
+</ui-gmap-google-map>
+
+
+
+
+<div id='General' class="container ">
   <p > We are a full service company with a wide range of capabilities. Established in 1989.
     We provide full design, manufacture and Installation services. In addition, our installation fleet
     with crews are ready to deliver and install all of our products. We are currently located in a 20,000 sq.

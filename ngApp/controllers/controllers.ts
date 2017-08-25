@@ -25,109 +25,90 @@ namespace aci.Controllers {
 
 
 
-
-
+//Home controller constructor
       constructor(
         public $scope,
       private leaderboardService
       ) {
-        //if check webtoken. access tokens payload.
-
-
-        // Image factory
-      //var createImage = function(src, title) {
-    //      imageArray[0] = new Image();
-//imageArray[0].src = "my-image-01.png";
-//          imageArray[0].imageCaption = "A caption for the image";
-
-//      };
-
-        // array of images
-    //    var images = [];
-
-        // push two images to the array
-    //    images.push(createImage("foo.jpg", "foo title"));
-  //      images.push(createImage("bar.jpg", "bar title"));
-
-        // output
-  //      console.log(images);
-
-
-
-
-
-
 
         this.leaderboard=this.leaderboardService.getLeaderboard()
         console.log(this.leaderboard)
+
+
+
         $scope.myInterval = 5000;
         $scope.noWrapSlides = false;
         $scope.active = 0;
-        let slides = $scope.slides = [];
-        let currIndex = 0;
-        let image = [
-          {image:'http://www.ikea.com/us/en/images/products/brimnes-cabinet-with-doors-black__0333977_PE523388_S4.JPG', text:'hi', id:0},
-          {image:'http://www.ikea.com/us/en/images/products/brimnes-cabinet-with-doors-black__0333977_PE523388_S4.JPG', text:'hi', id:1},
-          {image:'http://www.ikea.com/us/en/images/products/brimnes-cabinet-with-doors-black__0333977_PE523388_S4.JPG', text:'hi', id:2},
-          {image:'http://www.ikea.com/us/en/images/products/brimnes-cabinet-with-doors-black__0333977_PE523388_S4.JPG', text:'hi', id:3},
-          {image:'http://www.ikea.com/us/en/images/products/brimnes-cabinet-with-doors-black__0333977_PE523388_S4.JPG', text:'hi', id:4}
+        var slides = $scope.slides = [];
+        var currIndex = 0;
 
-                    ]
         $scope.addSlide = function() {
-          if(currIndex === 0){
-            let newWidth = 600 + slides.length + 1;
-            slides.push(image[currIndex]);
-            console.log(this.slides)
-            $scope.randomize = function() {
-              let indexes = generateIndexesArray();
-              assignNewIndexesToSlides(indexes);
-            };
+          var newWidth = 600 + slides.length + 1;
+          slides.push({
+            image: 'https://image.ibb.co/iUwvZ5/carouselpic2.jpg',
+            text: ['Image 1'][slides.length % 1],
+            id: currIndex++
+          });
+          slides.push({
+            image: 'https://image.ibb.co/iUwvZ5/carouselpic2.jpg',
+            text: ['image 2'][slides.length % 1],
+            id: currIndex++
+          });
+          slides.push({
+            image: 'https://image.ibb.co/iUwvZ5/carouselpic2.jpg',
+            text: ['image3'][slides.length % 1],
+            id: currIndex++
+          });
 
-            for (let i = 0; i < 4; i++) {
-              $scope.addSlide();
+        };
+
+        $scope.randomize = function() {
+          var indexes = generateIndexesArray();
+          assignNewIndexesToSlides(indexes);
+        };
+
+        for (var i = 0; i < 1; i++) {
+          $scope.addSlide();
+        }
+
+        // Randomize logic below
+
+        function assignNewIndexesToSlides(indexes) {
+          for (var i = 0, l = slides.length; i < l; i++) {
+            slides[i].id = indexes.pop();
+          }
+        }
+
+        function generateIndexesArray() {
+          var indexes = [];
+          for (var i = 0; i < currIndex; ++i) {
+            indexes[i] = i;
+          }
+          return shuffle(indexes);
+        }
+
+        // http://stackoverflow.com/questions/962802#962890
+        function shuffle(array) {
+          var tmp, current, top = array.length;
+
+          if (top) {
+            while (--top) {
+              current = Math.floor(Math.random() * (top + 1));
+              tmp = array[current];
+              array[current] = array[top];
+              array[top] = tmp;
             }
-
-            // Randomize logic below
-
-            function assignNewIndexesToSlides(indexes) {
-              for (let i = 0, l = slides.length; i < l; i++) {
-                slides[i].id = indexes.pop();
-              }
-            }
-
-            function generateIndexesArray() {
-              let indexes = [];
-              for (let i = 0; i < currIndex; ++i) {
-                indexes[i] = i;
-              }
-              return shuffle(indexes);
-            }
-
-            // http://stackoverflow.com/questions/962802#962890
-            function shuffle(array) {
-              let tmp, current, top = array.length;
-
-              if (top) {
-                while (--top) {
-                  current = Math.floor(Math.random() * (top + 1));
-                  tmp = array[current];
-                  array[current] = array[top];
-                  array[top] = tmp;
-                }
-              }
-              return array;
-            }
-          } else {
-            currIndex++
           }
 
+          return array;
+        }}
 
-        }
-        }
 
 
 
     }
+
+
 
     export class AboutController {
 
@@ -255,7 +236,17 @@ namespace aci.Controllers {
                       this.product._id = this.productId;
                       this.productService.saveProduct(this.product);
                   }
-
+                  public showProductModal(product:string) {
+                       this.$uibModal.open({
+                           templateUrl: '/ngApp/views/productmodal.html',
+                           controller: 'DialogController',
+                           controllerAs: 'vm',
+                           resolve: {
+                                dataFromProductsController: () => product
+                           },
+                           size: 'lg'
+                       });
+                   }
 
 
           public  constructor(
@@ -264,6 +255,7 @@ namespace aci.Controllers {
             public $log,
             private productService,
             public $stateParams,
+            private $uibModal: angular.ui.bootstrap.IModalService
           ) {
             this.productId = $stateParams['id'];
             this.leaderboard=this.leaderboardService.getLeaderboard()
@@ -274,21 +266,17 @@ namespace aci.Controllers {
               'And another choice for you.',
               'but wait! A third!'
             ];
-
             $scope.status = {
               isopen: false
             };
-
             $scope.toggled = function(open) {
               $log.log('Dropdown is now: ', open);
             };
-
             $scope.toggleDropdown = function($event) {
               $event.preventDefault();
               $event.stopPropagation();
               $scope.status.isopen = !$scope.status.isopen;
             };
-
             $scope.appendToEl = angular.element(document.querySelector('#dropdown-long-content'));
           });*/
 
@@ -359,13 +347,13 @@ console.log("rthtrhrth")
                 this.product._id = this.productId;
                 this.productService.saveProduct(this.product);
             }
-            public showModal(animalName:string) {
+            public showProductModal(product:string) {
                  this.$uibModal.open({
-                     templateUrl: '/ngApp/views/modal.html',
+                     templateUrl: '/ngApp/views/productmodal.html',
                      controller: 'DialogController',
                      controllerAs: 'vm',
                      resolve: {
-                          dataFromGetStartedController: () => animalName
+                          dataFromProductsController: () => product
                      },
                      size: 'lg'
                  });
@@ -411,10 +399,10 @@ public addProduct() {
 }
 public editProduct() {
 
-   this.productService.saveProduct(this.dataFromGetStartedController);
+   this.productService.saveProduct(this.dataFromProductsController);
 console.log( )
 }
-    constructor(private productService, public dataFromGetStartedController , private $uibModalInstance: angular.ui.bootstrap.IModalServiceInstance) { }
+    constructor(private productService, public dataFromProductsController , private $uibModalInstance: angular.ui.bootstrap.IModalServiceInstance) { }
 }
 //end
 angular.module('aci').controller('DialogController', DialogController);
@@ -537,6 +525,16 @@ export class TestController {
 
 
 }
+
+export class Test2Controller{
+
+
+
+
+
+}
+
+
 
 
 

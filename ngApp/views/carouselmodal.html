@@ -1,0 +1,39 @@
+<div class="modal-header">
+    <h1 class="modal-title">Carousel Details</h1>
+</div>
+<div class="modal-body" ng-cloak>
+
+
+    <table class="table">
+      <tr>
+          <button type="button" class="btn btn-info" ng-click="randomize()">Randomize slides</button>
+
+      </tr>
+
+        <tr>
+
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" ng-model="noWrapSlides">
+                Disable Slide Looping
+              </label>
+            </div>
+        </tr>
+        <tr>
+            <div class="col-md-6">
+              Interval, in milliseconds: <input class="interval" type="number" class="form-control" ng-model="myInterval" >
+              <br />Enter a negative number or 0 to stop the interval.
+            </div>
+        </tr>
+    </table>
+
+
+
+
+
+
+
+</div>
+<div class="modal-footer">
+    <button class="btn-primary" ng-click="vm.ok()">OK</button>
+</div>

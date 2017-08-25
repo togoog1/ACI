@@ -1,46 +1,3 @@
-<div class="container row">
-
-
-
-
-
-<div class="row" id="leaderboard">
-   <center>
-      <a target="leaderboard" href="index.html" >
-        <img ng-src={{vm.leaderboard.WebAddress}}>
-
-      </a>
-   </center>
-</div>
-
-
-
-<!-- Nav Bar-->
-<div class="row" id='cssmenu'>
-<ul>
-   <li><a href='/'><span>Home</span></a></li>
-   <li class='active has-sub'><a href='#'><span>Products</span></a>
-      <ul>
-         <li class='has-sub'><a href='/products'><span>Cabnets</span></a>
-            <ul>
-               <li><a href='#'><span>Sub Product</span></a></li>
-               <li class='last'><a href='#'><span>Sub Product</span></a></li>
-            </ul>
-         </li>
-         <li class='has-sub'><a href='#'><span>Signs/Decor</span></a>
-            <ul>
-               <li><a href='#'><span>Sub Product</span></a></li>
-               <li class='last'><a href='#'><span>Sub Product</span></a></li>
-            </ul>
-         </li>
-      </ul>
-   </li>
-   <li><a href='/about'><span>About</span></a></li>
-   <li class='last'><a href='/contactUs'><span>Contact Us</span></a></li>
-   <li class='last'><a href='/getStarted'><span>Get Started</span></a></li>
-   <li id='login' class='last'><a href='/logIn'><span>Log In</span></a></li>
-</ul>
-</div>
 
 
 
@@ -48,6 +5,7 @@
 
 
 
+	<section class="container bg-success" >
 
 
 
@@ -55,163 +13,68 @@
 
 
 
+			<div class="row-sm-12">
 
 
+<div class="col-sm-3 bg-danger p-spacing">
+		 <div class="left-sidebar">
+            <div class="p-spacing">
+                                          <h2>Categories</h2>
+                    <div class="Sorting-c">
+                                <ul class="nav nav-pills nav-stacked">
+                                    <li><button class="P-sorting" ng-click="vm.getProducts('Cabnets')" >Cabnets</button></li>
+                                    <li><button class="P-sorting" ng-click="vm.getProducts('Storefront Signs')" value="Storefront Signs">Storefront Signs</button></li>
+                                    <li><button class="P-sorting" ng-click="vm.getProducts('Isle Signs')" value="Isle Signs">Isle Signs</button></li>
+                                </ul>
+                   </div>
+            </div>
 
+						<div class="brands_products">
+							                             <h1>Soritng Filters</h1>
+							                    <div>
+								                      <ul class="nav nav-pills nav-stacked">
+									                         <li><a href="#"> <span class="pull-right">(<--->)</span>Sort By price</a></li>
+									                         <li><a href="#"> <span class="pull-right">(<--->)</span>Sort by color</a></li>
+									                         <li><a href="#"> <span class="pull-right">(<--->)</span>sort by look</a></li>
+                                           <li><a href="#"> <span class="pull-right">(<--->)</span>sort by look</a></li>
+                                           <li><a href="#"> <span class="pull-right">(<--->)</span>sort by look</a></li>
+                                           <li><a href="#"> <span class="pull-right">(<--->)</span>sort by look</a></li>
 
-
-
-
-
-
-
-
-
-
-	<section>
-		<div class="container">
-			<div class="row bg-warning">
-				<div class="col-sm-3 bg-danger">
-					<div class="left-sidebar">
-
-
-<!--Category buttons-->
-            <div class="brands_products">
-              <h2>Categories</h2>
-              <div class="Sorting-c">
-                <ul class="nav nav-pills nav-stacked">
-                  <li><button class="P-sorting" ng-click="vm.getProducts('Cabnets')" >Cabnets</button></li>
-                  <li><button class="P-sorting" ng-click="vm.getProducts('Storefront Signs')" value="Storefront Signs">Storefront Signs</button></li>
-                  <li><button class="P-sorting" ng-click="vm.getProducts('Isle Signs')" value="Isle Signs">Isle Signs</button></li>
-                </ul>
-              </div>
+								                      </ul>
+							                    </div>
             </div>
 
 
+			</div>
+</div>
 
-						<div class="brands_products">
-							<h1>Soritng Filters</h1>
-							<div class="brands-name">
-								<ul class="nav nav-pills nav-stacked">
-									<li><a href="#"> <span class="pull-right">(<--->)</span>Sort By price</a></li>
-									<li><a href="#"> <span class="pull-right">(<--->)</span>Sort by color</a></li>
-									<li><a href="#"> <span class="pull-right">(<--->)</span>sort by look</a></li>
+<div class="col-sm-9 bg-success">
 
-								</ul>
-							</div>
-						</div><!--/brands_products-->
-
-						<div class="shipping text-center"><!--shipping-->
-							<img src="images/home/shipping.jpg" alt="" />
-						</div><!--/shipping-->
-
-					</div>
-				</div>
-
-<p>{{vm.products}}</p>
-<img ng-src={{vm.products}} alt="">
-
-
-				<div class="col-sm-9 padding-right">
-					<div class="features_items"><!--features_items-->
 						<h2 class="title text-center">Featured Prebuilts</h2>
-							<div class="col-sm-12 bg-info">
-								 <div class="product-image-wrapper">
-												<div class="p-items">
-															<div class="productinfo text-center" ng-repeat="p in vm.products">
-<div class="p-box">
 
 
-																			<img class="col-sm-3 bg-warning " src={{p.image}}>
+								<div class="p-spacing">
+															<div class="col-sm-12 p-items" ng-repeat="p in vm.products">
+																			<img class="col-sm-7 p-image " src={{p.image}}>
 
-                                      </p>
+                                      <div class=" container p-text bg-danger col-sm-5">
                                       <ul>
                                         <li >Name:{{p.name}}</li>
-                                      <li >Price: {{p.price}}</li>
-
-                                      <li >Description: {{p.description}}</li>
-                                      <li >Number in stock: {{p.numberinstock}}</li>
+                                        <li >Price: {{p.price}}</li>
+                                        <li >Description: {{p.description}}</li>
+                                        <li >Number in stock: {{p.numberinstock}}</li>
                                       </ul>
-
-																			<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-
+                                      <button class="P-sorting" ng-click="vm.showProductModal(p)" >Edit Product</button>
+                                      <button class="P-sorting" ng-click="vm.showProductModal(p)" >View Product</button>
                                       </div>
-															</div>
-												</div>
-								 </div>
-						 </div>
-<hr>
-					</div><!--/category-tab-->
+                              </div>
+                                     <button class="P-sorting" ng-click="vm.showProductModal(p)" >Add Product</button>
+               </div>
 
-				</div>
-			</div>
-		</div>
+
+
+
+
+
+
 	</section>
-
-
-
-
-
-
-
-
-
-	<footer class="footer-distributed">
-
-	  <div class="footer-left">
-
-	    <h3>Allen Commercial Industries<span>.Inc</span></h3>
-
-	    <p class="footer-links">
-	      <a href="/">Home</a>
-	      ·
-	      <a href="/products">Products</a>
-	      ·
-	      <a href="/about">About</a>
-	      ·
-	      <a href="/contactUs">Contact Us</a>
-	      ·
-	      <a href="/getStarted">Get Started</a>
-	    </p>
-
-	    <p class="footer-company-name">Allen Commercial industries &copy; 2017</p>
-	  </div>
-
-	  <div class="footer-center">
-
-	    <div>
-	      <i class="fa fa-map-marker"></i>
-	      <p><span>11301 Mosier Valley Rd</span> Euless, Texas 76040</p>
-	    </div>
-
-	    <div>
-	      <i class="fa fa-phone"></i>
-	      <p>817-267-4919</p>
-	    </div>
-
-	    <div>
-	      <i class="fa fa-envelope"></i>
-	      <p><a href="mailto:support@ACI.com">support@ACI.com</a></p>
-	    </div>
-
-	  </div>
-
-	  <div class="footer-right">
-
-	    <p class="footer-company-about">
-	      <span>About the company</span>
-	      Feel free to follow us on social media for news and updates.
-	    </p>
-
-	    <div class="footer-icons">
-	      <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-	      <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-	      <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
-
-	    </div>
-	  </div>
-
-	</footer>
-
-
-</div>

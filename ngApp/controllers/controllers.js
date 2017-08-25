@@ -14,54 +14,55 @@ var aci;
                 $scope.active = 0;
                 var slides = $scope.slides = [];
                 var currIndex = 0;
-                var image = [
-                    { image: 'http://www.ikea.com/us/en/images/products/brimnes-cabinet-with-doors-black__0333977_PE523388_S4.JPG', text: 'hi', id: 0 },
-                    { image: 'http://www.ikea.com/us/en/images/products/brimnes-cabinet-with-doors-black__0333977_PE523388_S4.JPG', text: 'hi', id: 1 },
-                    { image: 'http://www.ikea.com/us/en/images/products/brimnes-cabinet-with-doors-black__0333977_PE523388_S4.JPG', text: 'hi', id: 2 },
-                    { image: 'http://www.ikea.com/us/en/images/products/brimnes-cabinet-with-doors-black__0333977_PE523388_S4.JPG', text: 'hi', id: 3 },
-                    { image: 'http://www.ikea.com/us/en/images/products/brimnes-cabinet-with-doors-black__0333977_PE523388_S4.JPG', text: 'hi', id: 4 }
-                ];
                 $scope.addSlide = function () {
-                    if (currIndex === 0) {
-                        var newWidth = 600 + slides.length + 1;
-                        slides.push(image[currIndex]);
-                        console.log(this.slides);
-                        $scope.randomize = function () {
-                            var indexes = generateIndexesArray();
-                            assignNewIndexesToSlides(indexes);
-                        };
-                        for (var i = 0; i < 4; i++) {
-                            $scope.addSlide();
-                        }
-                        function assignNewIndexesToSlides(indexes) {
-                            for (var i = 0, l = slides.length; i < l; i++) {
-                                slides[i].id = indexes.pop();
-                            }
-                        }
-                        function generateIndexesArray() {
-                            var indexes = [];
-                            for (var i = 0; i < currIndex; ++i) {
-                                indexes[i] = i;
-                            }
-                            return shuffle(indexes);
-                        }
-                        function shuffle(array) {
-                            var tmp, current, top = array.length;
-                            if (top) {
-                                while (--top) {
-                                    current = Math.floor(Math.random() * (top + 1));
-                                    tmp = array[current];
-                                    array[current] = array[top];
-                                    array[top] = tmp;
-                                }
-                            }
-                            return array;
-                        }
-                    }
-                    else {
-                        currIndex++;
-                    }
+                    var newWidth = 600 + slides.length + 1;
+                    slides.push({
+                        image: 'https://image.ibb.co/iUwvZ5/carouselpic2.jpg',
+                        text: ['Image 1'][slides.length % 1],
+                        id: currIndex++
+                    });
+                    slides.push({
+                        image: 'https://image.ibb.co/iUwvZ5/carouselpic2.jpg',
+                        text: ['image 2'][slides.length % 1],
+                        id: currIndex++
+                    });
+                    slides.push({
+                        image: 'https://image.ibb.co/iUwvZ5/carouselpic2.jpg',
+                        text: ['image3'][slides.length % 1],
+                        id: currIndex++
+                    });
                 };
+                $scope.randomize = function () {
+                    var indexes = generateIndexesArray();
+                    assignNewIndexesToSlides(indexes);
+                };
+                for (var i = 0; i < 1; i++) {
+                    $scope.addSlide();
+                }
+                function assignNewIndexesToSlides(indexes) {
+                    for (var i = 0, l = slides.length; i < l; i++) {
+                        slides[i].id = indexes.pop();
+                    }
+                }
+                function generateIndexesArray() {
+                    var indexes = [];
+                    for (var i = 0; i < currIndex; ++i) {
+                        indexes[i] = i;
+                    }
+                    return shuffle(indexes);
+                }
+                function shuffle(array) {
+                    var tmp, current, top = array.length;
+                    if (top) {
+                        while (--top) {
+                            current = Math.floor(Math.random() * (top + 1));
+                            tmp = array[current];
+                            array[current] = array[top];
+                            array[top] = tmp;
+                        }
+                    }
+                    return array;
+                }
             }
             HomeController.prototype.addLeaderboard = function () {
                 console.log("sssssssssssssssssssssssssssssssss");
@@ -141,12 +142,13 @@ var aci;
         }());
         Controllers.AboutController = AboutController;
         var ProductsController = (function () {
-            function ProductsController($scope, leaderboardService, $log, productService, $stateParams) {
+            function ProductsController($scope, leaderboardService, $log, productService, $stateParams, $uibModal) {
                 this.$scope = $scope;
                 this.leaderboardService = leaderboardService;
                 this.$log = $log;
                 this.productService = productService;
                 this.$stateParams = $stateParams;
+                this.$uibModal = $uibModal;
                 this.productId = $stateParams['id'];
                 this.leaderboard = this.leaderboardService.getLeaderboard();
                 console.log(this.leaderboard);
@@ -177,6 +179,17 @@ var aci;
             ProductsController.prototype.editProduct = function () {
                 this.product._id = this.productId;
                 this.productService.saveProduct(this.product);
+            };
+            ProductsController.prototype.showProductModal = function (product) {
+                this.$uibModal.open({
+                    templateUrl: '/ngApp/views/productmodal.html',
+                    controller: 'DialogController',
+                    controllerAs: 'vm',
+                    resolve: {
+                        dataFromProductsController: function () { return product; }
+                    },
+                    size: 'lg'
+                });
             };
             return ProductsController;
         }());
@@ -229,13 +242,13 @@ var aci;
                 this.product._id = this.productId;
                 this.productService.saveProduct(this.product);
             };
-            GetStartedController.prototype.showModal = function (animalName) {
+            GetStartedController.prototype.showProductModal = function (product) {
                 this.$uibModal.open({
-                    templateUrl: '/ngApp/views/modal.html',
+                    templateUrl: '/ngApp/views/productmodal.html',
                     controller: 'DialogController',
                     controllerAs: 'vm',
                     resolve: {
-                        dataFromGetStartedController: function () { return animalName; }
+                        dataFromProductsController: function () { return product; }
                     },
                     size: 'lg'
                 });
@@ -244,9 +257,9 @@ var aci;
         }());
         Controllers.GetStartedController = GetStartedController;
         var DialogController = (function () {
-            function DialogController(productService, dataFromGetStartedController, $uibModalInstance) {
+            function DialogController(productService, dataFromProductsController, $uibModalInstance) {
                 this.productService = productService;
-                this.dataFromGetStartedController = dataFromGetStartedController;
+                this.dataFromProductsController = dataFromProductsController;
                 this.$uibModalInstance = $uibModalInstance;
             }
             DialogController.prototype.ok = function () {
@@ -266,7 +279,7 @@ var aci;
                 this.productService.saveProduct(this.product);
             };
             DialogController.prototype.editProduct = function () {
-                this.productService.saveProduct(this.dataFromGetStartedController);
+                this.productService.saveProduct(this.dataFromProductsController);
                 console.log();
             };
             return DialogController;
@@ -357,6 +370,12 @@ var aci;
             return TestController;
         }());
         Controllers.TestController = TestController;
+        var Test2Controller = (function () {
+            function Test2Controller() {
+            }
+            return Test2Controller;
+        }());
+        Controllers.Test2Controller = Test2Controller;
         var TestnghideController = (function () {
             function TestnghideController() {
                 var test = true;

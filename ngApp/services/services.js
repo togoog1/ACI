@@ -73,6 +73,19 @@ var aci;
         }());
         Services.CarService = CarService;
         angular.module('aci').service('carService', CarService);
+        angular.module('aci').filter('cribsFilter', function () {
+            return function (listings, priceInfo) {
+                var filtered = [];
+                var min = priceInfo.min;
+                var max = priceInfo.max;
+                angular.forEach(listings, function (listing) {
+                    if (listing.price >= min && listing.price <= max) {
+                        filtered.push(listing);
+                    }
+                });
+                return filtered;
+            };
+        });
         angular.module('aci').controller('Dropdown', function ($scope) {
             $scope.oneAtATime = true;
             $scope.groups = [

@@ -126,13 +126,32 @@ angular.module('aci').service('leaderboardService', LeaderboardService);
 
 
 
+  angular.module('aci').filter('cribsFilter', function() {
+
+      return function(listings, priceInfo) {
+
+        var filtered = [];
+
+        var min = priceInfo.min;
+        var max = priceInfo.max;
+
+        angular.forEach(listings, function(listing) {
+
+          if(listing.price >= min && listing.price <= max) {
+
+            filtered.push(listing);
+          }
+        });
+
+        return filtered;
+      }
+    });
 
 
 
 
 
-
-//about page drop down menu
+//about page drop down menu .................................
 
 
 angular.module('aci').controller('Dropdown', function ($scope) {
@@ -162,6 +181,9 @@ angular.module('aci').controller('Dropdown', function ($scope) {
     isFirstDisabled: false
   };
 });
+
+
+
 
 
 

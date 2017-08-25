@@ -1,38 +1,127 @@
-<div class="container row">
-<div id="banner">
-   <center>
-      <a target="banner" href="index.html" >
-        <img ng-src={{vm.banner.WebAddress}}>
 
-      </a>
-   </center>
+<section class="container bg-success" >
+
+
+
+
+
+
+
+		<div class="row-sm-12">
+
+
+<div class="col-sm-3 bg-danger p-spacing">
+	 <div class="left-sidebar">
+					<div class="p-spacing">
+																				<h2>Categories</h2>
+									<div class="Sorting-c">
+															<ul class="nav nav-pills nav-stacked">
+																	<li><button class="P-sorting" ng-click="vm.getProducts('Cabnets')" >Cabnets</button></li>
+																	<li><button class="P-sorting" ng-click="vm.getProducts('Storefront Signs')" value="Storefront Signs">Storefront Signs</button></li>
+																	<li><button class="P-sorting" ng-click="vm.getProducts('Isle Signs')" value="Isle Signs">Isle Signs</button></li>
+															</ul>
+								 </div>
+					</div>
+
+					<div class="brands_products">
+																				 <h1>Soritng Filters</h1>
+																<div>
+																		<ul class="nav nav-pills nav-stacked">
+																				 <li><a href="#"> <span class="pull-right">(<--->)</span>Sort By price</a></li>
+																				 <li><a href="#"> <span class="pull-right">(<--->)</span>Sort by color</a></li>
+																				 <li><a href="#"> <span class="pull-right">(<--->)</span>sort by look</a></li>
+																				 <li><a href="#"> <span class="pull-right">(<--->)</span>sort by look</a></li>
+																				 <li><a href="#"> <span class="pull-right">(<--->)</span>sort by look</a></li>
+																				 <li><a href="#"> <span class="pull-right">(<--->)</span>sort by look</a></li>
+
+																		</ul>
+																</div>
+					</div>
+
+
+		</div>
 </div>
 
+<div class="col-sm-9 bg-success">
+
+					<h2 class="title text-center">Featured Prebuilts</h2>
+
+
+							<div class="p-spacing">
+														<div class="col-sm-12 p-items" ng-repeat="p in vm.products | cribsFilter:priceInfo">
+																		<img class="col-sm-7 p-image " src={{p.image}}>
+
+																		<div class=" container p-text bg-danger col-sm-5">
+																		<ul>
+																			<li >Name:{{p.name}}</li>
+																			<li >Price: {{p.price}}</li>
+																			<li >Description: {{p.description}}</li>
+																			<li >Number in stock: {{p.numberinstock}}</li>
+																		</ul>
+																		<button class="P-sorting" ng-click="vm.showModal(p)" >Edit Product</button>
+																		<button class="P-sorting" ng-click="vm.showModal(p)" >View Product</button>
+																		</div>
+														</div>
+																	 <button class="P-sorting" ng-click="vm.showModal(p)" >Add Product</button>
+						 </div>
 
 
 
 
-<hr>
+
+
+
+</section>
 
 
 
 
-<h2>Add Place</h2>
-<input type="text" placeholder="WebAddress..." ng-model="vm.banner.WebAddress" />
-<button type="button" ng-click="vm.addBanner()">Add</button>
+		<div class="container">
+		  <!-- Min and Max Price Selection -->
+		  <div class="col-sm-12 price-form">
+				<div class="row price-form-row">
+
+          <div class="col-sm-6">
+            <div class="input-group">
+              <span class="input-group-addon">Min Price</span>
+              <select name="maxPrice" id="minPrice" ng-model="priceInfo.min" class="form-control">
+                <option value="100000">$10</option>
+                <option value="200000">$20</option>
+                <option value="300000">$30</option>
+                <option value="400000">$40</option>
+                <option value="500000">$50</option>
+                <option value="600000">$60</option>
+                <option value="700000">$70</option>
+                <option value="800000">$80</option>
+                <option value="900000">$90</option>
+                <option value="1000000">$100</option>
+              </select>
+            </div>
+          </div>
+
+
+			    <div class="col-sm-6">
+			      <div class="input-group">
+			        <span class="input-group-addon">Max Price</span>
+			        <select name="maxPrice" id="maxPrice" ng-model="priceInfo.max" class="form-control">
+			          <option value="100000">$10</option>
+			          <option value="200000">$20</option>
+			          <option value="300000">$30</option>
+			          <option value="400000">$40</option>
+			          <option value="500000">$50</option>
+			          <option value="600000">$60</option>
+			          <option value="700000">$70</option>
+			          <option value="800000">$80</option>
+			          <option value="900000">$90</option>
+			          <option value="1000000">$100</option>
+			        </select>
+			      </div>
+			    </div>
+
+				</div>
 
 
 
 
-<p>{{vm.WebAddress}}</p>
-<hr>
-
-
-<ul>
-  <li ng-repeat="p in vm.getBanner">{{p.banner.WebAddress}}</li>
-</ul>
-<p>{{vm.banner.WebAddress}}</p>
-
-<img ng-src={{vm.banner.WebAddress}}>
-
-</div>
+		  </div>
+	  </div>

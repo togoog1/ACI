@@ -1,6 +1,6 @@
 var aci;
 (function (aci) {
-    angular.module('aci', ['ui.router', 'ngResource', 'ui.bootstrap']).config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
+    angular.module('aci', ['ui.router', 'ngResource', 'ui.bootstrap', 'uiGmapgoogle-maps']).config(function ($stateProvider, $urlRouterProvider, $locationProvider, uiGmapGoogleMapApiProvider) {
         $stateProvider
             .state('home', {
             url: '/',
@@ -56,6 +56,12 @@ var aci;
             controller: aci.Controllers.TestnghideController,
             controllerAs: 'vm'
         })
+            .state('test2', {
+            url: '/test2',
+            templateUrl: '/ngApp/views/test2.html',
+            controller: aci.Controllers.Test2Controller,
+            controllerAs: 'vm',
+        })
             .state('shoppingcart', {
             url: '/shoppingcart',
             templateUrl: '/ngApp/views/shoppingcart.html',
@@ -68,11 +74,18 @@ var aci;
             controller: aci.Controllers.GalleryController,
             controllerAs: 'vm'
         })
+            .state('productview', {
+            url: '/productview',
+            templateUrl: '/ngApp/views/productview.html',
+            controller: aci.Controllers.ProductviewController,
+            controllerAs: 'vm'
+        })
             .state('notFound', {
             url: '/notFound',
             templateUrl: '/ngApp/views/notFound.html'
         });
         $urlRouterProvider.otherwise('/notFound');
         $locationProvider.html5Mode(true);
+        uiGmapGoogleMapApiProvider.configure({});
     });
 })(aci || (aci = {}));
