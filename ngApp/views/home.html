@@ -1,21 +1,14 @@
 
 
-
-
-
-
-
 <div class="container row">
+  <div >
+     <center>
+        <a target="leaderboard" href="index.html" >
+          <img class="leaderboard" ng-src={{vm.leaderboard.WebAddress}}>
 
-<!-- Site logo and high bar-->
-<div id="leaderboard">
-   <center>
-      <a target="leaderboard" href="/" >
-        <img ng-src={{vm.leaderboard.WebAddress}}>
-
-      </a>
-   </center>
-</div>
+        </a>
+     </center>
+  </div>
 
 
 
@@ -68,38 +61,89 @@
 
     </div>
   </div>
-  <div class="container">
-    <a class="col-sm-2 galleryB" href="#">View Full Gallery</a>
+
+
+  <br>
+<div class="row ">
+  <div class="col-md-2">
+    <button type="button" class="btn btn-primary" ng-model="singleModel" >View Full Gallery</button>
   </div>
 
-  <div class="row">
-    <div class="col-md-6">
-
-      <button type="button" class="btn btn-info" ng-click="randomize()">Randomize slides</button>
-      <div class="checkbox">
-        <label>
-          <input type="checkbox" ng-model="noWrapSlides">
-          Disable Slide Looping
-        </label>
-      </div>
-    </div>
-    <div class="col-md-6">
-      Interval, in milliseconds: <input class="interval" type="number" class="form-control" ng-model="myInterval">
-      <br />Enter a negative number or 0 to stop the interval.
-      <button class="P-sorting" ng-click="vm.showLeaderboardModal()" >Change leaderboard</button>
-    </div>
+  <div class="col-md-3">
+    <button class="P-sorting " ng-click="vm.showLeaderboardModal()" >Change leaderboard</button>
   </div>
 </div>
-<!-- Carousel End -->
 
+
+
+
+
+<div class="row">
+
+  <div class="container col-md-6 textbox ">
+    <div class="background">
+
+
+      <h3>About Us</h3>
+          <p >We are a full service company with a wide range of capabilities. Established in 1989.
+          We provide full design, manufacture and Installation services.</p>
+
+      <h3>Our Capabuilities</h3>
+          <p >In addition, our installation fleet
+          with crews are ready to deliver and install all of our products. We are currently located in a 20,000 sq.
+          ft. facility on 2.5 acres centrally located in the Dallas Ft. Worth area.</p>
+          <p >Design is the limit!</p>
+  </div>
 <br>
 
+  <div class="background">
+
+
+<h3>About Us</h3>
+    <p >We are a full service company with a wide range of capabilities. Established in 1989.
+    We provide full design, manufacture and Installation services.</p>
+
+<h3>Our Capabuilities</h3>
+    <p >In addition, our installation fleet
+    with crews are ready to deliver and install all of our products. We are currently located in a 20,000 sq.
+    ft. facility on 2.5 acres centrally located in the Dallas Ft. Worth area.</p>
+    <p >Design is the limit!</p>
+</div>
+<br>
+<div class="background">
+
+
+<h3>About Us</h3>
+<p >      Established in 1989.
+  We provide full design, manufacture and Installation services.</p>
+
+
+</div>
+</div>
 
 
 
 
 
+<div class="container col-md-6 gmaps " >
+  <div class="background">
 
+
+  <h3>About Us</h3>
+  <p >     We are a full service company with a wide range of capabilities. Established in 1989.
+    We provide full design, manufacture and Installation services.</p>
+
+<h3>Our Capabuilities</h3>
+  <p >   In addition, our installation fleet
+    with crews are ready to deliver and install all of our products. We are currently located in a 20,000 sq.
+    ft. facility on 2.5 acres centrally located in the Dallas Ft. Worth area.</p>
+
+<p >   Design is the limit!</p>
+</div>
+<br>
+<div class="background">
+
+<h3>Find us on google maps</h3>
 <ui-gmap-google-map center='vm.center' zoom='vm.zoom'>
     <ui-gmap-markers
         models="vm.markers"
@@ -108,27 +152,19 @@
         options="'options'">
     </ui-gmap-markers>
 </ui-gmap-google-map>
-
-
-
-
-<div id='General' class="container ">
-  <p > We are a full service company with a wide range of capabilities. Established in 1989.
-    We provide full design, manufacture and Installation services. In addition, our installation fleet
-    with crews are ready to deliver and install all of our products. We are currently located in a 20,000 sq.
-    ft. facility on 2.5 acres centrally located in the Dallas Ft. Worth area.
-
-  Design is the limit!</p>
+</div>
 </div>
 
 
 
+</div>
 
-<footer class="footer-distributed">
 
-  <div class="footer-left">
+<footer class="row fcontainer border">
 
-    <h3>Allen Commercial Industries<span>.Inc</span></h3>
+  <div class="col-md-5 fborder1">
+
+    <h2><u>Allen Commercial Industries<span>.Inc</span></u></h2>
 
     <p class="footer-links">
       <a href="/">Home</a>
@@ -141,46 +177,43 @@
       ·
       <a href="/getStarted">Get Started</a>
     </p>
-
-    <p class="footer-company-name">Allen Commercial industries &copy; 2017</p>
+<br>
+    <p><small>Allen Commercial industries &copy; 2017</small></p>
   </div>
 
-  <div class="footer-center">
-
-    <div>
-      <i class="fa fa-map-marker"></i>
-      <p><span>11301 Mosier Valley Rd</span> Euless, Texas 76040</p>
+  <div class="col-md-3 fborder2">
+<h2><u>Company Details</u></h2>
+    <div class="footerspacing">
+      <h4>Street address</h4>
+      <p><i class="fa fa-map-marker"></i><span>11301 Mosier Valley Rd</span> Euless, Texas 76040</p>
     </div>
-
-    <div>
-      <i class="fa fa-phone"></i>
-      <p>817-267-4919</p>
+    <div class="footerspacing">
+      <h4>Contact a representitive</h4>
+      <p><i class="fa fa-phone"></i>  817-267-4919</p>
     </div>
-
-    <div>
-      <i class="fa fa-envelope"></i>
-      <p><a href="mailto:support@ACI.com">support@ACI.com</a></p>
+    <div class="footerspacing">
+      <h4>Email Support</h4>
+      <p><i class="fa fa-envelope"></i><a href="mailto:support@ACI.com">  support@ACI.com</a></p>
     </div>
 
   </div>
 
-  <div class="footer-right">
+  <div class="col-md-3 fborder3">
 
-    <p class="footer-company-about">
-      <span>About the company</span>
+    <p class="ftext border">
+      <h2><u>About the company</u></h2>
       Feel free to follow us on social media for news and updates.
     </p>
-
+<br>
     <div class="footer-icons">
       <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
       <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
       <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
-
+      <a href="#"><i class="fa fa-github" aria-hidden="true"></i></a>
     </div>
   </div>
 
 </footer>
-
 
 
 </div>

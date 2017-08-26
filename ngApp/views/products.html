@@ -64,7 +64,7 @@
                                         <li >Description: {{p.description}}</li>
                                         <li >Number in stock: {{p.numberinstock}}</li>
                                       </ul>
-                                      <button class="P-sorting" ng-click="vm.showProductModal(p)" >Edit Product</button>
+                                      <button class="P-sorting" ng-click="vm.showProductModal(p)" ng-show="vm.isAdmin" >Edit Product</button>
                                       <button class="P-sorting" ng-click="vm.showProductModal(p)" >View Product</button>
                                       </div>
                               </div>

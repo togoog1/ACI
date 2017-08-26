@@ -55,3 +55,16 @@ Hide HTML: <input type="checkbox" ng-model="myVar">
 <h1>Welcome</h1>
 <p>Welcome to my home.</p>
 </div>
+
+
+
+
+
+<!-- show if our function evaluates to false -->
+        <div ng-show="vm.isAdmin">
+          <h2>this is an admin</h2>
+        </div>
+        <!-- show if our function evaluates to false -->
+        <div ng-show="!vm.isAdmin">
+          <h2>this is not an admin.</h2>
+        </div>

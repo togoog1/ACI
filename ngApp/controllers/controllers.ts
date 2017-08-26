@@ -4,10 +4,24 @@ namespace aci.Controllers {
 
     export class HomeController {
 
+      public center = {latitude: 32.8091084, longitude: -97.12631440000001};
+      public zoom = 12;
+      public markers = [
+        {
+              id: 0,
+              options: {
+                  title: 'Allen Commercial Industries',
+              },
+              latitude: 32.8091084,
+              longitude: -97.12631440000001
+          },
+                    ];
 
 
 
 
+                    public payload
+                    public isAdmin
       public leaderboard
       public WebAddress
 
@@ -30,6 +44,17 @@ namespace aci.Controllers {
         public $scope,
       private leaderboardService
       ) {
+        //admin ng-show
+        let token = window.localStorage['token'];
+        if(token) {
+          this.payload = JSON.parse(window.atob(token.split('.')[1]));
+          if(this.payload.role === 'admin') {
+            this.isAdmin = true;
+          } else {
+            this.isAdmin = false;
+          }
+        }
+
 
         this.leaderboard=this.leaderboardService.getLeaderboard()
         console.log(this.leaderboard)
@@ -111,6 +136,8 @@ namespace aci.Controllers {
 
 
     export class AboutController {
+      public payload
+      public isAdmin
 
       public leaderboard
       public WebAddress
@@ -134,46 +161,67 @@ namespace aci.Controllers {
         private leaderboardService,
         public $scope
       ) {
+        //admin ng-show
+        let token = window.localStorage['token'];
+        if(token) {
+          this.payload = JSON.parse(window.atob(token.split('.')[1]));
+          if(this.payload.role === 'admin') {
+            this.isAdmin = true;
+          } else {
+            this.isAdmin = false;
+          }
+        }
+
         //leaderboard
         this.leaderboard=this.leaderboardService.getLeaderboard()
         console.log(this.leaderboard)
 
-        //carousel
         $scope.myInterval = 5000;
         $scope.noWrapSlides = false;
         $scope.active = 0;
-        let slides = $scope.slides = [];
-        let currIndex = 0;
+        var slides = $scope.slides = [];
+        var currIndex = 0;
 
         $scope.addSlide = function() {
-          let newWidth = 600 + slides.length + 1;
+          var newWidth = 600 + slides.length + 1;
           slides.push({
-            image: '//unsplash.it/' + newWidth + '/300',
-            text: ['Nice image','Awesome photograph','That is so cool','I love that'][slides.length % 4],
+            image: 'https://image.ibb.co/iUwvZ5/carouselpic2.jpg',
+            text: ['Image 1'][slides.length % 1],
             id: currIndex++
           });
+          slides.push({
+            image: 'https://image.ibb.co/iUwvZ5/carouselpic2.jpg',
+            text: ['image 2'][slides.length % 1],
+            id: currIndex++
+          });
+          slides.push({
+            image: 'https://image.ibb.co/iUwvZ5/carouselpic2.jpg',
+            text: ['image3'][slides.length % 1],
+            id: currIndex++
+          });
+
         };
 
         $scope.randomize = function() {
-          let indexes = generateIndexesArray();
+          var indexes = generateIndexesArray();
           assignNewIndexesToSlides(indexes);
         };
 
-        for (let i = 0; i < 4; i++) {
+        for (var i = 0; i < 1; i++) {
           $scope.addSlide();
         }
 
         // Randomize logic below
 
         function assignNewIndexesToSlides(indexes) {
-          for (let i = 0, l = slides.length; i < l; i++) {
+          for (var i = 0, l = slides.length; i < l; i++) {
             slides[i].id = indexes.pop();
           }
         }
 
         function generateIndexesArray() {
-          let indexes = [];
-          for (let i = 0; i < currIndex; ++i) {
+          var indexes = [];
+          for (var i = 0; i < currIndex; ++i) {
             indexes[i] = i;
           }
           return shuffle(indexes);
@@ -181,7 +229,7 @@ namespace aci.Controllers {
 
         // http://stackoverflow.com/questions/962802#962890
         function shuffle(array) {
-          let tmp, current, top = array.length;
+          var tmp, current, top = array.length;
 
           if (top) {
             while (--top) {
@@ -191,6 +239,7 @@ namespace aci.Controllers {
               array[top] = tmp;
             }
           }
+
           return array;
         }
 
@@ -214,7 +263,8 @@ namespace aci.Controllers {
               this.leaderboard = result;
             })
             }
-
+            public payload
+              public isAdmin
                   public category
                   public products
                   public product
@@ -257,6 +307,24 @@ namespace aci.Controllers {
             public $stateParams,
             private $uibModal: angular.ui.bootstrap.IModalService
           ) {
+
+
+
+                  let token = window.localStorage['token'];
+                  if(token) {
+                    this.payload = JSON.parse(window.atob(token.split('.')[1]));
+                    if(this.payload.role === 'admin') {
+                      this.isAdmin = true;
+                    } else {
+                      this.isAdmin = false;
+                    }
+                  }
+
+
+
+
+
+
             this.productId = $stateParams['id'];
             this.leaderboard=this.leaderboardService.getLeaderboard()
             console.log(this.leaderboard)
@@ -290,6 +358,8 @@ namespace aci.Controllers {
 
     }
     export class ContactUsController {
+      public payload
+      public isAdmin
 
       public leaderboard
       public WebAddress
@@ -310,6 +380,17 @@ console.log("rthtrhrth")
               public $scope,
             private leaderboardService
           ) {
+            //admin ng-show
+            let token = window.localStorage['token'];
+            if(token) {
+              this.payload = JSON.parse(window.atob(token.split('.')[1]));
+              if(this.payload.role === 'admin') {
+                this.isAdmin = true;
+              } else {
+                this.isAdmin = false;
+              }
+            }
+
 
             this.leaderboard=this.leaderboardService.getLeaderboard()
             console.log(this.leaderboard)
@@ -325,6 +406,8 @@ console.log("rthtrhrth")
 
 
     export class GetStartedController {
+      public payload
+      public isAdmin
 
             public category
             public products
@@ -366,6 +449,17 @@ private constructor(
         private $uibModal: angular.ui.bootstrap.IModalService,
         public $http
      ) {
+       //admin ng-show
+       let token = window.localStorage['token'];
+       if(token) {
+         this.payload = JSON.parse(window.atob(token.split('.')[1]));
+         if(this.payload.role === 'admin') {
+           this.isAdmin = true;
+         } else {
+           this.isAdmin = false;
+         }
+       }
+
 this.productId = $stateParams['id'];
 
    }
@@ -378,6 +472,8 @@ this.productId = $stateParams['id'];
 
 //modal service
 class DialogController {
+  public payload
+  public isAdmin
   public category
   public products
   public product
@@ -402,7 +498,19 @@ public editProduct() {
    this.productService.saveProduct(this.dataFromProductsController);
 console.log( )
 }
-    constructor(private productService, public dataFromProductsController , private $uibModalInstance: angular.ui.bootstrap.IModalServiceInstance) { }
+    constructor(private productService, public dataFromProductsController , private $uibModalInstance: angular.ui.bootstrap.IModalServiceInstance) {
+      //admin ng-show
+      let token = window.localStorage['token'];
+      if(token) {
+        this.payload = JSON.parse(window.atob(token.split('.')[1]));
+        if(this.payload.role === 'admin') {
+          this.isAdmin = true;
+        } else {
+          this.isAdmin = false;
+        }
+      }
+
+     }
 }
 //end
 angular.module('aci').controller('DialogController', DialogController);
@@ -417,6 +525,7 @@ angular.module('aci').controller('DialogController', DialogController);
 export class LogInController {
       public leaderboard
       public WebAddress
+      public leaderboardId
 
       public userInfo
       public isAdmin
@@ -459,42 +568,72 @@ export class LogInController {
         private leaderboardService,
         private userService,
         public $window,
-        public $state
+        public $state,
+        public payload
       ) {
+        //admin ng-show
+        let token = window.localStorage['token'];
+        if(token) {
+          this.payload = JSON.parse(window.atob(token.split('.')[1]));
+          if(this.payload.role === 'admin') {
+            this.isAdmin = true;
+          } else {
+            this.isAdmin = false;
+          }
+        }
+
         this.leaderboard=this.leaderboardService.getLeaderboard()
         console.log(this.leaderboard)
       }
     }
 
     export class RegisterController {
-
+      public payload
+      public isAdmin
+      public leaderboardId
       public leaderboard
       public WebAddress
       public user
 
-public signup() {
-  this.userService.registerUser(this.user).then(() => {
-    alert('signup successful, please login');
-  })
-}
+          public signup() {
+              this.userService.registerUser(this.user).then(() => {
+                alert('signup successful, please login');
+              })
+            }
 
-      public addLeaderboard() {
-        console.log("sssssssssssssssssssssssssssssssss")
+            public addLeaderboard() {
+              console.log("sssssssssssssssssssssssssssssssss")
               this.leaderboardService.saveLeaderboard(this.leaderboard);
             }
 
-      public getLeaderboard() {
+            public getLeaderboard() {
 
               this.leaderboardService.getLeaderboard(this.WebAddress).then((result) => {
               this.leaderboard = result;
             })
             }
-
+            public editLeaderboard() {
+                this.leaderboard._id = this.leaderboardId;
+                this.leaderboardService.saveleaderboard(this.leaderboard);
+            }
             constructor(
               private userService,
               public $scope,
             private leaderboardService
           ) {
+
+
+            //admin ng-show
+            let token = window.localStorage['token'];
+            if(token) {
+              this.payload = JSON.parse(window.atob(token.split('.')[1]));
+              if(this.payload.role === 'admin') {
+                this.isAdmin = true;
+              } else {
+                this.isAdmin = false;
+              }
+            }
+
 
             this.leaderboard=this.leaderboardService.getLeaderboard()
             console.log(this.leaderboard)
@@ -504,39 +643,41 @@ public signup() {
     }
 
 export class TestController {
-  public leaderboard
-  public WebAddress
+  public payload
+  public isAdmin
+        public leaderboard
+        public WebAddress
 
-  public addLeaderboard() {
-    console.log("sssssssssssssssssssssssssssssssss")
-          this.leaderboardService.saveLeaderboard(this.leaderboard);
-        }
+        public addLeaderboard() {
+          console.log("sssssssssssssssssss")
+                this.leaderboardService.saveLeaderboard(this.leaderboard);
+              };
 
-  public getLeaderboard() {
+        public getLeaderboard() {
 
-          this.leaderboardService.getLeaderboard(this.WebAddress).then((result) => {
-          this.leaderboard = result;
-        })
-        }
+                this.leaderboardService.getLeaderboard(this.WebAddress).then((result) => {
+                this.leaderboard = result;
+              })
+            };
 
- constructor(private leaderboardService, private carService: aci.Services.CarService, private $uibModal: angular.ui.bootstrap.IModalService, public $http) {
+ constructor( public leaderboardService, private $uibModal: angular.ui.bootstrap.IModalService, public $http) {
+   //admin ng-show
+   let token = window.localStorage['token'];
+   if(token) {
+     this.payload = JSON.parse(window.atob(token.split('.')[1]));
+     if(this.payload.role === 'admin') {
+       this.isAdmin = true;
+     } else {
+       this.isAdmin = false;
+     }
+   }
+
+
+   this.leaderboard=this.leaderboardService.getLeaderboard()
 
 }
 
-
 }
-
-export class Test2Controller{
-
-
-
-
-
-}
-
-
-
-
 
 
 
@@ -544,61 +685,55 @@ export class Test2Controller{
 
 //ng-hide controller
 export class TestnghideController {
+  public payload
   public isAdmin
 
-public payload
-
-
-public create(){
-  if(this.payload.role === 'admin') {
-    alert('Sucess!');
-  } else {
-    alert('Denied. admins only')
-  }
-}
-
-public read(){
-    alert('Sucess!');
-}
-
-public update(){
-  if(this.payload.role === 'admin') {
-    alert('Sucess!');
-  } else {
-    alert('Denied. admins only')
-  }
-}
-public delete(){
-  if(this.payload.role === 'admin') {
-    alert('Sucess!');
-  } else {
-    alert('Denied. admins only')
-  }
-}
-
-
-
-
-
-constructor(){
-let test=true
-  if(test){
-    this.isAdmin=true
+  public create() {
+    if(this.payload.role === 'admin') {
+      alert('Success!');
+    } else {
+      alert('Denied. admins only.')
     }
-    else{
-      this.isAdmin=false
+  }
+
+  public read() {
+    alert('Success!');
+  }
+
+  public update() {
+    if(this.payload.role === 'admin') {
+      alert('Success!');
+    } else {
+      alert('Denied. admins only.')
+    }
+  }
+
+  public delete() {
+    if(this.payload.role === 'admin') {
+      alert('Success!');
+    } else {
+      alert('Denied. admins only.')
     }
   }
 
 
 
+  constructor() {
+
+
+          let token = window.localStorage['token'];
+          if(token) {
+            this.payload = JSON.parse(window.atob(token.split('.')[1]));
+            if(this.payload.role === 'admin') {
+              this.isAdmin = true;
+            } else {
+              this.isAdmin = false;
+            }
+          }
+        }
+
+
 
 }
-
-
-
-//angular.module('aci').controller('testnghideController', testnghideController);
-
-
 
 }

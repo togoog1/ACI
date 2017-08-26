@@ -7,6 +7,28 @@ var aci;
             function HomeController($scope, leaderboardService) {
                 this.$scope = $scope;
                 this.leaderboardService = leaderboardService;
+                this.center = { latitude: 32.8091084, longitude: -97.12631440000001 };
+                this.zoom = 12;
+                this.markers = [
+                    {
+                        id: 0,
+                        options: {
+                            title: 'Allen Commercial Industries',
+                        },
+                        latitude: 32.8091084,
+                        longitude: -97.12631440000001
+                    },
+                ];
+                var token = window.localStorage['token'];
+                if (token) {
+                    this.payload = JSON.parse(window.atob(token.split('.')[1]));
+                    if (this.payload.role === 'admin') {
+                        this.isAdmin = true;
+                    }
+                    else {
+                        this.isAdmin = false;
+                    }
+                }
                 this.leaderboard = this.leaderboardService.getLeaderboard();
                 console.log(this.leaderboard);
                 $scope.myInterval = 5000;
@@ -81,6 +103,16 @@ var aci;
             function AboutController(leaderboardService, $scope) {
                 this.leaderboardService = leaderboardService;
                 this.$scope = $scope;
+                var token = window.localStorage['token'];
+                if (token) {
+                    this.payload = JSON.parse(window.atob(token.split('.')[1]));
+                    if (this.payload.role === 'admin') {
+                        this.isAdmin = true;
+                    }
+                    else {
+                        this.isAdmin = false;
+                    }
+                }
                 this.leaderboard = this.leaderboardService.getLeaderboard();
                 console.log(this.leaderboard);
                 $scope.myInterval = 5000;
@@ -91,8 +123,18 @@ var aci;
                 $scope.addSlide = function () {
                     var newWidth = 600 + slides.length + 1;
                     slides.push({
-                        image: '//unsplash.it/' + newWidth + '/300',
-                        text: ['Nice image', 'Awesome photograph', 'That is so cool', 'I love that'][slides.length % 4],
+                        image: 'https://image.ibb.co/iUwvZ5/carouselpic2.jpg',
+                        text: ['Image 1'][slides.length % 1],
+                        id: currIndex++
+                    });
+                    slides.push({
+                        image: 'https://image.ibb.co/iUwvZ5/carouselpic2.jpg',
+                        text: ['image 2'][slides.length % 1],
+                        id: currIndex++
+                    });
+                    slides.push({
+                        image: 'https://image.ibb.co/iUwvZ5/carouselpic2.jpg',
+                        text: ['image3'][slides.length % 1],
                         id: currIndex++
                     });
                 };
@@ -100,7 +142,7 @@ var aci;
                     var indexes = generateIndexesArray();
                     assignNewIndexesToSlides(indexes);
                 };
-                for (var i = 0; i < 4; i++) {
+                for (var i = 0; i < 1; i++) {
                     $scope.addSlide();
                 }
                 function assignNewIndexesToSlides(indexes) {
@@ -149,6 +191,16 @@ var aci;
                 this.productService = productService;
                 this.$stateParams = $stateParams;
                 this.$uibModal = $uibModal;
+                var token = window.localStorage['token'];
+                if (token) {
+                    this.payload = JSON.parse(window.atob(token.split('.')[1]));
+                    if (this.payload.role === 'admin') {
+                        this.isAdmin = true;
+                    }
+                    else {
+                        this.isAdmin = false;
+                    }
+                }
                 this.productId = $stateParams['id'];
                 this.leaderboard = this.leaderboardService.getLeaderboard();
                 console.log(this.leaderboard);
@@ -198,6 +250,16 @@ var aci;
             function ContactUsController($scope, leaderboardService) {
                 this.$scope = $scope;
                 this.leaderboardService = leaderboardService;
+                var token = window.localStorage['token'];
+                if (token) {
+                    this.payload = JSON.parse(window.atob(token.split('.')[1]));
+                    if (this.payload.role === 'admin') {
+                        this.isAdmin = true;
+                    }
+                    else {
+                        this.isAdmin = false;
+                    }
+                }
                 this.leaderboard = this.leaderboardService.getLeaderboard();
                 console.log(this.leaderboard);
             }
@@ -223,6 +285,16 @@ var aci;
                 this.$document = $document;
                 this.$uibModal = $uibModal;
                 this.$http = $http;
+                var token = window.localStorage['token'];
+                if (token) {
+                    this.payload = JSON.parse(window.atob(token.split('.')[1]));
+                    if (this.payload.role === 'admin') {
+                        this.isAdmin = true;
+                    }
+                    else {
+                        this.isAdmin = false;
+                    }
+                }
                 this.productId = $stateParams['id'];
             }
             GetStartedController.prototype.getProducts = function (category) {
@@ -261,6 +333,16 @@ var aci;
                 this.productService = productService;
                 this.dataFromProductsController = dataFromProductsController;
                 this.$uibModalInstance = $uibModalInstance;
+                var token = window.localStorage['token'];
+                if (token) {
+                    this.payload = JSON.parse(window.atob(token.split('.')[1]));
+                    if (this.payload.role === 'admin') {
+                        this.isAdmin = true;
+                    }
+                    else {
+                        this.isAdmin = false;
+                    }
+                }
             }
             DialogController.prototype.ok = function () {
                 this.$uibModalInstance.close();
@@ -286,11 +368,22 @@ var aci;
         }());
         angular.module('aci').controller('DialogController', DialogController);
         var LogInController = (function () {
-            function LogInController(leaderboardService, userService, $window, $state) {
+            function LogInController(leaderboardService, userService, $window, $state, payload) {
                 this.leaderboardService = leaderboardService;
                 this.userService = userService;
                 this.$window = $window;
                 this.$state = $state;
+                this.payload = payload;
+                var token = window.localStorage['token'];
+                if (token) {
+                    this.payload = JSON.parse(window.atob(token.split('.')[1]));
+                    if (this.payload.role === 'admin') {
+                        this.isAdmin = true;
+                    }
+                    else {
+                        this.isAdmin = false;
+                    }
+                }
                 this.leaderboard = this.leaderboardService.getLeaderboard();
                 console.log(this.leaderboard);
             }
@@ -329,6 +422,16 @@ var aci;
                 this.userService = userService;
                 this.$scope = $scope;
                 this.leaderboardService = leaderboardService;
+                var token = window.localStorage['token'];
+                if (token) {
+                    this.payload = JSON.parse(window.atob(token.split('.')[1]));
+                    if (this.payload.role === 'admin') {
+                        this.isAdmin = true;
+                    }
+                    else {
+                        this.isAdmin = false;
+                    }
+                }
                 this.leaderboard = this.leaderboardService.getLeaderboard();
                 console.log(this.leaderboard);
             }
@@ -347,70 +450,83 @@ var aci;
                     _this.leaderboard = result;
                 });
             };
+            RegisterController.prototype.editLeaderboard = function () {
+                this.leaderboard._id = this.leaderboardId;
+                this.leaderboardService.saveleaderboard(this.leaderboard);
+            };
             return RegisterController;
         }());
         Controllers.RegisterController = RegisterController;
         var TestController = (function () {
-            function TestController(leaderboardService, carService, $uibModal, $http) {
+            function TestController(leaderboardService, $uibModal, $http) {
                 this.leaderboardService = leaderboardService;
-                this.carService = carService;
                 this.$uibModal = $uibModal;
                 this.$http = $http;
+                var token = window.localStorage['token'];
+                if (token) {
+                    this.payload = JSON.parse(window.atob(token.split('.')[1]));
+                    if (this.payload.role === 'admin') {
+                        this.isAdmin = true;
+                    }
+                    else {
+                        this.isAdmin = false;
+                    }
+                }
+                this.leaderboard = this.leaderboardService.getLeaderboard();
             }
             TestController.prototype.addLeaderboard = function () {
-                console.log("sssssssssssssssssssssssssssssssss");
+                console.log("sssssssssssssssssss");
                 this.leaderboardService.saveLeaderboard(this.leaderboard);
             };
+            ;
             TestController.prototype.getLeaderboard = function () {
                 var _this = this;
                 this.leaderboardService.getLeaderboard(this.WebAddress).then(function (result) {
                     _this.leaderboard = result;
                 });
             };
+            ;
             return TestController;
         }());
         Controllers.TestController = TestController;
-        var Test2Controller = (function () {
-            function Test2Controller() {
-            }
-            return Test2Controller;
-        }());
-        Controllers.Test2Controller = Test2Controller;
         var TestnghideController = (function () {
             function TestnghideController() {
-                var test = true;
-                if (test) {
-                    this.isAdmin = true;
-                }
-                else {
-                    this.isAdmin = false;
+                var token = window.localStorage['token'];
+                if (token) {
+                    this.payload = JSON.parse(window.atob(token.split('.')[1]));
+                    if (this.payload.role === 'admin') {
+                        this.isAdmin = true;
+                    }
+                    else {
+                        this.isAdmin = false;
+                    }
                 }
             }
             TestnghideController.prototype.create = function () {
                 if (this.payload.role === 'admin') {
-                    alert('Sucess!');
+                    alert('Success!');
                 }
                 else {
-                    alert('Denied. admins only');
+                    alert('Denied. admins only.');
                 }
             };
             TestnghideController.prototype.read = function () {
-                alert('Sucess!');
+                alert('Success!');
             };
             TestnghideController.prototype.update = function () {
                 if (this.payload.role === 'admin') {
-                    alert('Sucess!');
+                    alert('Success!');
                 }
                 else {
-                    alert('Denied. admins only');
+                    alert('Denied. admins only.');
                 }
             };
             TestnghideController.prototype.delete = function () {
                 if (this.payload.role === 'admin') {
-                    alert('Sucess!');
+                    alert('Success!');
                 }
                 else {
-                    alert('Denied. admins only');
+                    alert('Denied. admins only.');
                 }
             };
             return TestnghideController;

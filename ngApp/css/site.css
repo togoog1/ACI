@@ -1,3 +1,123 @@
+.text {
+  padding: 20px;
+}
+
+.spacing{
+  padding: 10px;
+
+}
+
+
+.background{
+  background: white;
+  border-radius: 7px;
+padding: 10px;
+
+
+}
+
+.textbox{
+
+  padding: 10px;
+}
+
+
+
+.gmaps{
+  padding: 10px;
+}
+
+.hometext{
+  padding: 20px;
+}
+
+.angular-google-map-container {
+    height: 375px;
+    width: 540px;
+    border: 3px solid black;
+
+}
+
+.border{
+  border: 1px solid black;
+}
+
+.leaderboard {
+  width: 100%;
+  text-align: center;
+  overflow: hidden;
+  padding: 10px;
+}
+
+
+
+.container {
+background-color:  silver;
+}
+
+
+.footerspacing{
+  height: 70px;
+  padding-bottom: : 1px;
+
+  margin: 0px;
+
+
+}
+
+.footer-icons a{
+	display: inline-block;
+	width: 35px;
+	height: 35px;
+	cursor: pointer;
+	background-color:  #33383b;
+	border-radius: 2px;
+
+	font-size: 20px;
+	color: #ffffff;
+	text-align: center;
+	line-height: 35px;
+
+	margin-right: 3px;
+	margin-bottom: 5px;
+}
+
+
+.fcontainer {
+
+border: 1px solid black;
+
+background-color: #292c2f;
+box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+box-sizing: border-box;
+color: white;
+
+font: bold 16px sans-serif;
+}
+
+
+.fborder1 {
+
+padding: 1%;
+color: white;
+font-size: 12px;
+}
+
+
+.fborder2 {
+border: 1px solid black;
+color: white;
+font-size: 12px;
+}
+
+
+.fborder 3{
+border: 1px solid black;
+color: white;
+font-size: 12px;
+}
+
+
 
 
 .galleryB {
@@ -34,12 +154,6 @@ background-color: #5cb85c;
 }
 
 
-
-.angular-google-map-container {
-    height: 400px;
-    width: 700px;
-    border: 1px solid black;
-}
 
 
 
@@ -384,48 +498,25 @@ input[type=submit]:hover {
 
 .row {
   display: block;
-  border: 1px solid;
+
 
   margin: auto;
 
-  padding: 0;
+  padding: 1px;
 }
 
 
 
 
-.interval {
-  display: block;
-  border: 2px solid;
-  border-radius: 3px;
-  width: 30%;
-  border-color: #080808;
-  margin: auto;
-  text-align: center;
-  padding: 0;
-}
-
-.gallery {
-  display: block;
-  margin: auto;
-
-}
 
 
-p {
-    display: block;
-
-    text-align: left;
-    width: auto;
-    height: 100px;
-    border-color: #080808;
-    margin: auto;
-    padding: 0;
-
-}
 
 
-/*footer */
+
+
+
+
+/*footer
 .footer-distributed{
 
 	background-color: #292c2f;
@@ -452,13 +543,13 @@ p {
 	vertical-align: top;
 }
 
-/* Footer left */
+
 
 .footer-distributed .footer-left{
 	width: 40%;
 }
 
-/* The company logo */
+
 
 .footer-distributed h3{
 	color:  #ffffff;
@@ -470,7 +561,7 @@ p {
 	color:  #5383d3;
 }
 
-/* Footer links */
+
 
 .footer-distributed .footer-links{
 	color:  #ffffff;
@@ -492,7 +583,7 @@ p {
 	margin: 0;
 }
 
-/* Footer Center */
+
 
 .footer-distributed .footer-center{
 	width: 35%;
@@ -536,7 +627,6 @@ p {
 }
 
 
-/* Footer Right */
 
 .footer-distributed .footer-right{
 	width: 20%;
@@ -579,7 +669,7 @@ p {
 	margin-bottom: 5px;
 }
 
-/* If you don't want the footer to be responsive, remove these media queries */
+
 
 @media (max-width: 880px) {
 
@@ -600,4 +690,4 @@ p {
 		margin-left: 0;
 	}
 
-}
+}*/

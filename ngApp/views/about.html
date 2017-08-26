@@ -1,15 +1,13 @@
-<div class="container row bg-success">
+<div class="container row">
 
-<div id="leaderboard">
+<div >
    <center>
       <a target="leaderboard" href="index.html" >
-        <img ng-src={{vm.leaderboard.WebAddress}}>
+        <img class="leaderboard" ng-src={{vm.leaderboard.WebAddress}}>
 
       </a>
    </center>
 </div>
-
-
 
 
 
@@ -48,38 +46,25 @@
 
 
 
-  <!-- Carousel -->
+<!-- Carousel -->
 <div>
-  <div id=carousel style="height: 305px">
-    <div uib-carousel active="active" interval="myInterval" no-wrap="noWrapSlides">
-      <div uib-slide ng-repeat="slide in slides track by slide.id" index="slide.id">
-        <img ng-src="{{slide.image}}" style="margin:auto;">
-        <div class="carousel-caption">
-          <h4>Slide {{slide.id}}</h4>
-          <p>{{slide.text}}</p>
-        </div>
+<div id=carousel class="col-md-12">
+  <div uib-carousel active="active" interval="myInterval" no-wrap="noWrapSlides">
+        <div uib-slide ng-repeat="slide in slides track by slide.id" index="slide.id" >
+            <img ng-src="{{slide.image}}" style="margin:auto;" >
+          <div class="carousel-caption">
+            <h4>Slide {{slide.id}}</h4>
+            <p>{{slide.text}}</p>
+          </div>
       </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-1">
-      <button type="button" class="btn btn-info" ng-click="addSlide()">Add Slide</button>
-      <button type="button" class="btn btn-info" ng-click="randomize()">Randomize slides</button>
-      <div class="checkbox">
-        <label>
-          <input type="checkbox" ng-model="noWrapSlides">
-          Disable Slide Looping
-        </label>
-      </div>
-    </div>
-    <div class="col-md-6">
-      Interval, in milliseconds: <input type="number" class="form-control" ng-model="myInterval">
-      <br />Enter a negative number or 0 to stop the interval.
-    </div>
   </div>
 </div>
+</div>
+
 <!-- Carousel End -->
 
+<br>
+<button class="P-sorting" ng-click="vm.showLeaderboardModal()" >Change leaderboard</button>
 <button type="button" class="btn btn-primary" ng-model="singleModel" >
     View Full Gallery
 </button>
@@ -87,8 +72,8 @@
 <br>
 
 
-<p>What’s Behind the Cabinetry?
-Canyon Creek manufactures affordable, quality cabinets at our facility in Monroe, WA. We recognize the responsibility that comes with being a large manufacturer, and we are committed to being a good corporate citizen,
+<p class= "container text "><b>What’s Behind the Cabinetry?</b>
+Allen Commecial Industries manufactures affordable, quality cabinets at our facility in Monroe, WA. We recognize the responsibility that comes with being a large manufacturer, and we are committed to being a good corporate citizen,
 to the benefit of our employees, owners, and the community at large.</p>
 
 
@@ -110,10 +95,7 @@ to the benefit of our employees, owners, and the community at large.</p>
     </div>
   </script>
 
-  <p>
-    <button type="button" class="btn btn-default btn-sm" ng-click="status.open = !status.open">Toggle last panel</button>
-    <button type="button" class="btn btn-default btn-sm" ng-click="status.isFirstDisabled = ! status.isFirstDisabled">Enable / Disable first panel</button>
-  </p>
+
 
   <div class="checkbox">
     <label>
@@ -121,6 +103,10 @@ to the benefit of our employees, owners, and the community at large.</p>
       Open only one at a time
     </label>
   </div>
+
+  <div class="spacing">
+
+
   <uib-accordion  close-others="oneAtATime">
     <div uib-accordion-group class="panel-default" heading="Our capabuilities" is-open="status.isFirstOpen" is-disabled="status.isFirstDisabled">
       We are a full service company with a wide range of capabilities. Established in 1989. We provide full design, manufacture and Installation services. In addition, our installation fleet with crews are ready to deliver and install all of our products. We are currently located in a 20,000 sq. ft. facility on 2.5 acres centrally located in the Dallas Ft. Worth area.
@@ -138,9 +124,9 @@ We have a full millwork facility including;
    A full service paint booth
 
 Design is the limit!
-    </div>
+    </div >
 
-    <div uib-accordion-group class="panel-default" heading="Our mission" >
+    <div uib-accordion-group class="panel-default"  heading="Our mission" >
       This content is straight in the template.
     </div>
     <div uib-accordion-group class="panel-default" heading="Our turn-around" >
@@ -174,11 +160,11 @@ Design is the limit!</p>
 
 
 
-<footer class="footer-distributed">
+<footer class="row fcontainer border">
 
-  <div class="footer-left">
+  <div class="col-md-5 fborder1">
 
-    <h3>Allen Commercial Industries<span>.Inc</span></h3>
+    <h2><u>Allen Commercial Industries<span>.Inc</span></u></h2>
 
     <p class="footer-links">
       <a href="/">Home</a>
@@ -191,36 +177,34 @@ Design is the limit!</p>
       ·
       <a href="/getStarted">Get Started</a>
     </p>
-
-    <p class="footer-company-name">Allen Commercial industries &copy; 2017</p>
+<br>
+    <p><small>Allen Commercial industries &copy; 2017</small></p>
   </div>
 
-  <div class="footer-center">
-
-    <div>
-      <i class="fa fa-map-marker"></i>
-      <p><span>11301 Mosier Valley Rd</span> Euless, Texas 76040</p>
+  <div class="col-md-3 fborder2">
+<h2><u>Company Details</u></h2>
+    <div class="footerspacing">
+      <h4>Street address</h4>
+      <p><i class="fa fa-map-marker"></i><span>11301 Mosier Valley Rd</span> Euless, Texas 76040</p>
     </div>
-
-    <div>
-      <i class="fa fa-phone"></i>
-      <p>817-267-4919</p>
+    <div class="footerspacing">
+      <h4>Contact a representitive</h4>
+      <p><i class="fa fa-phone"></i>  817-267-4919</p>
     </div>
-
-    <div>
-      <i class="fa fa-envelope"></i>
-      <p><a href="mailto:support@ACI.com">support@ACI.com</a></p>
+    <div class="footerspacing">
+      <h4>Email Support</h4>
+      <p><i class="fa fa-envelope"></i><a href="mailto:support@ACI.com">  support@ACI.com</a></p>
     </div>
 
   </div>
 
-  <div class="footer-right">
+  <div class="col-md-3 fborder3">
 
-    <p class="footer-company-about">
-      <span>About the company</span>
+    <p class="ftext border">
+      <h2><u>About the company</u></h2>
       Feel free to follow us on social media for news and updates.
     </p>
-
+<br>
     <div class="footer-icons">
       <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
       <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
@@ -230,5 +214,6 @@ Design is the limit!</p>
   </div>
 
 </footer>
+
 
 </div>
