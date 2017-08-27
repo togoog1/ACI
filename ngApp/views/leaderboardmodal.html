@@ -1,88 +1,9 @@
-
-<div class="modal-header">
-    <h1 class="modal-title">Product Details</h1>
-</div>
-<div class="modal-body" ng-cloak>
-  <table class="table">
-      <tr>
-        <div class="container row">
-        <div id="banner">
-           <center>
-              <a target="banner" href="index.html" >
-                <img ng-src={{vm.banner.WebAddress}}>
-
-              </a>
-           </center>
-        </div>
-          <img class="modalI" ng-src={{vm.dataFromProductsController.image}}>
-          <ul>
-            <li ng-repeat="p in vm.getBanner">{{p.banner.WebAddress}}</li>
-          </ul>
-          <p>{{vm.banner.WebAddress}}</p>
-      </tr>
-</table>
-
-    <table class="table">
-      <tr>
-          <th>Name</th>
-          <td>{{vm.dataFromProductsController.name}}</td>
-      </tr>
-        <tr>
-            <th>Make</th>
-            <td>{{vm.dataFromProductsController.description}}</td>
-        </tr>
-        <tr>
-            <th>Price</th>
-            <td>{{vm.dataFromProductsController.price}}</td>
-        </tr>
-        <tr>
-            <th>Number in stock</th>
-            <td>{{vm.dataFromProductsController.numberinstock}}</td>
-        </tr>
-    </table>
+<h2>Edit Leaderboard</h2>
+<input type="text" placeholder="WebAddress..." ng-model="vm.dataFromLeaderboardController.WebAddress" />
+<button type="button" ng-click="vm.addLeaderboard()">Add</button>
 
 
 
-
-
-    <div class="modal-body">
-      <h2>Edit Product</h2>
-      <h5>Name</h5>
-
-      <h2>Add Place</h2>
-      <input type="text" placeholder="WebAddress..." ng-model="vm.banner.WebAddress" />
-      <button type="button" ng-click="vm.addBanner()">Add</button>
-
-
-
-
-
-
-
-
-</div>
-
-</div>
 <div class="modal-footer">
-    <button class="btn-primary" ng-click="vm.ok()">OK</button>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-<hr>
-
-<p>{{vm.WebAddress}}</p>
-<hr>
-
-
-
-
+<button class="btn-primary" ng-click="vm.ok()">OK</button>
 </div>

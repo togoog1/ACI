@@ -4,9 +4,11 @@ var aci;
     (function (Controllers) {
         var apiUrl = '/api/cars/search/';
         var HomeController = (function () {
-            function HomeController($scope, leaderboardService) {
+            function HomeController($scope, leaderboardService, $uibModal, $http) {
                 this.$scope = $scope;
                 this.leaderboardService = leaderboardService;
+                this.$uibModal = $uibModal;
+                this.$http = $http;
                 this.center = { latitude: 32.8091084, longitude: -97.12631440000001 };
                 this.zoom = 12;
                 this.markers = [
@@ -87,13 +89,26 @@ var aci;
                 }
             }
             HomeController.prototype.addLeaderboard = function () {
-                console.log("sssssssssssssssssssssssssssssssss");
+                console.log("sssssssssssssssssss");
                 this.leaderboardService.saveLeaderboard(this.leaderboard);
             };
+            ;
             HomeController.prototype.getLeaderboard = function () {
                 var _this = this;
                 this.leaderboardService.getLeaderboard(this.WebAddress).then(function (result) {
                     _this.leaderboard = result;
+                });
+            };
+            ;
+            HomeController.prototype.showLeaderboardModal = function (leaderboard) {
+                this.$uibModal.open({
+                    templateUrl: '/ngApp/views/leaderboardmodal.html',
+                    controller: 'LeaderboardDialogController',
+                    controllerAs: 'vm',
+                    resolve: {
+                        dataFromHomeController: function () { return leaderboard; }
+                    },
+                    size: 'lg'
                 });
             };
             return HomeController;
@@ -243,6 +258,14 @@ var aci;
                     size: 'lg'
                 });
             };
+            ProductsController.prototype.showAddProductModal = function (product) {
+                this.$uibModal.open({
+                    templateUrl: '/ngApp/views/addproductmodal.html',
+                    controller: 'AddProductDialogController',
+                    controllerAs: 'vm',
+                    size: 'lg'
+                });
+            };
             return ProductsController;
         }());
         Controllers.ProductsController = ProductsController;
@@ -278,13 +301,9 @@ var aci;
         }());
         Controllers.ContactUsController = ContactUsController;
         var GetStartedController = (function () {
-            function GetStartedController($stateParams, productService, $log, $document, $uibModal, $http) {
-                this.$stateParams = $stateParams;
-                this.productService = productService;
-                this.$log = $log;
-                this.$document = $document;
-                this.$uibModal = $uibModal;
-                this.$http = $http;
+            function GetStartedController(leaderboardService, $scope) {
+                this.leaderboardService = leaderboardService;
+                this.$scope = $scope;
                 var token = window.localStorage['token'];
                 if (token) {
                     this.payload = JSON.parse(window.atob(token.split('.')[1]));
@@ -295,34 +314,71 @@ var aci;
                         this.isAdmin = false;
                     }
                 }
-                this.productId = $stateParams['id'];
+                this.leaderboard = this.leaderboardService.getLeaderboard();
+                console.log(this.leaderboard);
+                $scope.myInterval = 5000;
+                $scope.noWrapSlides = false;
+                $scope.active = 0;
+                var slides = $scope.slides = [];
+                var currIndex = 0;
+                $scope.addSlide = function () {
+                    var newWidth = 600 + slides.length + 1;
+                    slides.push({
+                        image: 'https://image.ibb.co/iUwvZ5/carouselpic2.jpg',
+                        text: ['Image 1'][slides.length % 1],
+                        id: currIndex++
+                    });
+                    slides.push({
+                        image: 'https://image.ibb.co/iUwvZ5/carouselpic2.jpg',
+                        text: ['image 2'][slides.length % 1],
+                        id: currIndex++
+                    });
+                    slides.push({
+                        image: 'https://image.ibb.co/iUwvZ5/carouselpic2.jpg',
+                        text: ['image3'][slides.length % 1],
+                        id: currIndex++
+                    });
+                };
+                $scope.randomize = function () {
+                    var indexes = generateIndexesArray();
+                    assignNewIndexesToSlides(indexes);
+                };
+                for (var i = 0; i < 1; i++) {
+                    $scope.addSlide();
+                }
+                function assignNewIndexesToSlides(indexes) {
+                    for (var i = 0, l = slides.length; i < l; i++) {
+                        slides[i].id = indexes.pop();
+                    }
+                }
+                function generateIndexesArray() {
+                    var indexes = [];
+                    for (var i = 0; i < currIndex; ++i) {
+                        indexes[i] = i;
+                    }
+                    return shuffle(indexes);
+                }
+                function shuffle(array) {
+                    var tmp, current, top = array.length;
+                    if (top) {
+                        while (--top) {
+                            current = Math.floor(Math.random() * (top + 1));
+                            tmp = array[current];
+                            array[current] = array[top];
+                            array[top] = tmp;
+                        }
+                    }
+                    return array;
+                }
             }
-            GetStartedController.prototype.getProducts = function (category) {
+            GetStartedController.prototype.addLeaderboard = function () {
+                console.log("sssssssssssssssssssssssssssssssss");
+                this.leaderboardService.saveLeaderboard(this.leaderboard);
+            };
+            GetStartedController.prototype.getLeaderboard = function () {
                 var _this = this;
-                this.productService.getProducts(category).then(function (result) {
-                    _this.products = result;
-                    console.log(_this.products);
-                });
-            };
-            GetStartedController.prototype.deleteProduct = function (productId) {
-                this.productService.removeProduct(productId);
-            };
-            GetStartedController.prototype.addProduct = function () {
-                this.productService.saveProduct(this.product);
-            };
-            GetStartedController.prototype.editProduct = function () {
-                this.product._id = this.productId;
-                this.productService.saveProduct(this.product);
-            };
-            GetStartedController.prototype.showProductModal = function (product) {
-                this.$uibModal.open({
-                    templateUrl: '/ngApp/views/productmodal.html',
-                    controller: 'DialogController',
-                    controllerAs: 'vm',
-                    resolve: {
-                        dataFromProductsController: function () { return product; }
-                    },
-                    size: 'lg'
+                this.leaderboardService.getLeaderboard(this.WebAddress).then(function (result) {
+                    _this.leaderboard = result;
                 });
             };
             return GetStartedController;
@@ -367,13 +423,36 @@ var aci;
             return DialogController;
         }());
         angular.module('aci').controller('DialogController', DialogController);
+        var AddProductDialogController = (function () {
+            function AddProductDialogController(productService, $uibModalInstance) {
+                this.productService = productService;
+                this.$uibModalInstance = $uibModalInstance;
+                var token = window.localStorage['token'];
+                if (token) {
+                    this.payload = JSON.parse(window.atob(token.split('.')[1]));
+                    if (this.payload.role === 'admin') {
+                        this.isAdmin = true;
+                    }
+                    else {
+                        this.isAdmin = false;
+                    }
+                }
+            }
+            AddProductDialogController.prototype.ok = function () {
+                this.$uibModalInstance.close();
+            };
+            AddProductDialogController.prototype.addProduct = function () {
+                this.productService.saveProduct(this.product);
+            };
+            return AddProductDialogController;
+        }());
+        angular.module('aci').controller('AddProductDialogController', AddProductDialogController);
         var LogInController = (function () {
-            function LogInController(leaderboardService, userService, $window, $state, payload) {
+            function LogInController(leaderboardService, userService, $window, $state) {
                 this.leaderboardService = leaderboardService;
                 this.userService = userService;
                 this.$window = $window;
                 this.$state = $state;
-                this.payload = payload;
                 var token = window.localStorage['token'];
                 if (token) {
                     this.payload = JSON.parse(window.atob(token.split('.')[1]));
@@ -486,9 +565,54 @@ var aci;
                 });
             };
             ;
+            TestController.prototype.showLeaderboardModal = function (leaderboard) {
+                this.$uibModal.open({
+                    templateUrl: '/ngApp/views/leaderboardmodal.html',
+                    controller: 'LeaderboardDialogController',
+                    controllerAs: 'vm',
+                    resolve: {
+                        dataFromTestController: function () { return leaderboard; }
+                    },
+                    size: 'lg'
+                });
+            };
             return TestController;
         }());
         Controllers.TestController = TestController;
+        var LeaderboardDialogController = (function () {
+            function LeaderboardDialogController(leaderboardService, dataFromHomeController, $uibModalInstance) {
+                this.leaderboardService = leaderboardService;
+                this.dataFromHomeController = dataFromHomeController;
+                this.$uibModalInstance = $uibModalInstance;
+                var token = window.localStorage['token'];
+                if (token) {
+                    this.payload = JSON.parse(window.atob(token.split('.')[1]));
+                    if (this.payload.role === 'admin') {
+                        this.isAdmin = true;
+                    }
+                    else {
+                        this.isAdmin = false;
+                    }
+                }
+            }
+            LeaderboardDialogController.prototype.ok = function () {
+                this.$uibModalInstance.close();
+            };
+            LeaderboardDialogController.prototype.addLeaderboard = function () {
+                console.log("sssssssssssssssssss");
+                this.leaderboardService.saveLeaderboard(this.leaderboard);
+            };
+            ;
+            LeaderboardDialogController.prototype.getLeaderboard = function () {
+                var _this = this;
+                this.leaderboardService.getLeaderboard(this.WebAddress).then(function (result) {
+                    _this.leaderboard = result;
+                });
+            };
+            ;
+            return LeaderboardDialogController;
+        }());
+        angular.module('aci').controller('LeaderboardDialogController', LeaderboardDialogController);
         var TestnghideController = (function () {
             function TestnghideController() {
                 var token = window.localStorage['token'];

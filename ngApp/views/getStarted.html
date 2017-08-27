@@ -1,90 +1,175 @@
+
+
+
 <div class="container row">
 
-<!--
- -->
+<div >
+   <center>
+      <a target="leaderboard" href="index.html" >
+        <img class="leaderboard" ng-src={{vm.leaderboard.WebAddress}}>
 
-<div class="container">
-
-
-  <h2>Categories</h2>
-<div class="btn-group">
-<button class="P-sorting" ng-click="vm.getProducts('Cabnets')" >Cabnets</button>
-<button class="P-sorting" ng-click="vm.getProducts('Storefront Signs')" >Storefront Sign</button>
-<button class="P-sorting" ng-click="vm.getProducts('Isle Signs')" >Isle Sign</button>
+      </a>
+   </center>
 </div>
 
 
 
 
 
-</div>
 
 
-<br>
-
-
-<div class="container" ng-repeat="p in vm.products">
-
-          <img class="col-sm-3 bg-warning" src={{p.image}}>
-          </p>
-          <ul>
-            <li >Name:{{p.name}}</li>
-          <li >Price: {{p.price}}</li>
-
-          <li >Description: {{p.description}}</li>
-          <li >Number in stock: {{p.numberinstock}}</li>
-          </ul>
-          <button class="P-sorting" ng-click="vm.showModal(p)" >Edit product</button>
-
-</div>
-
-
-<br>
-
-<div class="container">
-
-<h2>Add Product</h2>
-<h4>name</h4>
-<input type="text" productholder="Name..." ng-model="vm.product.name" />
-<h4>price</h4>
-<input type="text" productholder="price..." ng-model="vm.product.price" />
-<h4>image</h4>
-<input type="text" productholder="image..." ng-model="vm.product.image" />
-<h4>description</h4>
-<input type="text" productholder="description..." ng-model="vm.product.description" />
-<h4>numberinstock</h4>
-<input type="text" productholder="numberinstock..." ng-model="vm.product.numberinstock" />
-<h4>category</h4>
-<select ng-model="vm.product.category">
-  <option value="Cabnets">Cabnets</option>
-  <option value="Storefront Signs">Storefront Sign</option>
-  <option value="Isle Signs">Isle Sign</option>
-</select>
-
-<button type="button" ng-click="vm.addProduct()">Add</button>
-
+<!-- Nav Bar-->
+<div id='cssmenu'>
+<ul>
+   <li><a href='/'><span>Home</span></a></li>
+   <li class='active has-sub'><a href='#'><span>Products</span></a>
+      <ul>
+         <li class='has-sub'><a href='/products'><span>Product 1</span></a>
+            <ul>
+               <li><a href='#'><span>Sub Product</span></a></li>
+               <li class='last'><a href='#'><span>Sub Product</span></a></li>
+            </ul>
+         </li>
+         <li class='has-sub'><a href='#'><span>Product 2</span></a>
+            <ul>
+               <li><a href='#'><span>Sub Product</span></a></li>
+               <li class='last'><a href='#'><span>Sub Product</span></a></li>
+            </ul>
+         </li>
+      </ul>
+   </li>
+   <li><a href='/about'><span>About</span></a></li>
+   <li class='last'><a href='/contactUs'><span>Contact Us</span></a></li>
+   <li class='last'><a href='/getStarted'><span>Get Started</span></a></li>
+   <li id='login' class='last'><a href='/logIn'><span>Log In</span></a></li>
+</ul>
 </div>
 
 
 
 
-<h2>Edit Product</h2>
 
-<input type="text" productholder="New Name..." ng-model="vm.product.name" />
-<input type="text" productholder="New price..." ng-model="vm.product.price" />
-<input type="text" productholder="New image..." ng-model="vm.product.image" />
-<button type="button" ng-click="vm.editProduct()">Edit</button>
+<!-- Carousel -->
+<div>
+<div id=carousel class="col-md-12">
+  <div uib-carousel active="active" interval="myInterval" no-wrap="noWrapSlides">
+        <div uib-slide ng-repeat="slide in slides track by slide.id" index="slide.id" >
+            <img ng-src="{{slide.image}}" style="margin:auto;" >
+          <div class="carousel-caption">
+            <h4>Slide {{slide.id}}</h4>
+            <p>{{slide.text}}</p>
+          </div>
+      </div>
+  </div>
+</div>
+</div>
+
+<!-- Carousel End -->
 
 
 
-<p>breaking up the text</p>
+
+
+
+
+<p>      We are a full service company with a wide range of capabilities. Established in 1989. We provide full design, manufacture and Installation services. In addition, our installation fleet with crews are ready to deliver and install all of our products. We are currently located in a 20,000 sq. ft. facility on 2.5 acres centrally located in the Dallas Ft. Worth area.
+
+We have a full millwork facility including;
+   2 table saws
+   Sliding panel saw
+   Edge bander
+   Joiner
+   Planer
+   Cold press
+   Dual head 10' x 24' CNC router
+   Our vinyl department incorporates a mimaki Cg-160 FX cutting plotter
+   Mimaki JV3 Printer
+   A full service paint booth
+
+Design is the limit!</p>
+
+
+
+<div ng-app="myApp">
+	<div ng-controller="HomeCtrl as controller">
+		<videogular vg-theme="controller.config.theme">
+			<vg-media vg-src="controller.config.sources"
+					vg-tracks="controller.config.tracks">
+			</vg-media>
+		</videogular>
+	</div>
+</div>
+
+
+<p > We are a full service company with a wide range of capabilities. Established in 1989.
+  We provide full design, manufacture and Installation services. In addition, our installation fleet
+  with crews are ready to deliver and install all of our products. We are currently located in a 20,000 sq.
+  ft. facility on 2.5 acres centrally located in the Dallas Ft. Worth area.
+
+Design is the limit!</p>
 
 
 
 
 
-*/ this stuff /*
 
+
+
+
+<footer class="row fcontainer border">
+
+  <div class="col-md-5 fborder1">
+
+    <h2><u>Allen Commercial Industries<span>.Inc</span></u></h2>
+
+    <p class="footer-links">
+      <a href="/">Home</a>
+      ·
+      <a href="/products">Products</a>
+      ·
+      <a href="/about">About</a>
+      ·
+      <a href="/contactUs">Contact Us</a>
+      ·
+      <a href="/getStarted">Get Started</a>
+    </p>
 <br>
+    <p><small>Allen Commercial industries &copy; 2017</small></p>
+  </div>
 
+  <div class="col-md-3 fborder2">
+<h2><u>Company Details</u></h2>
+    <div class="footerspacing">
+      <h4>Street address</h4>
+      <p><i class="fa fa-map-marker"></i><span>11301 Mosier Valley Rd</span> Euless, Texas 76040</p>
+    </div>
+    <div class="footerspacing">
+      <h4>Contact a representitive</h4>
+      <p><i class="fa fa-phone"></i>  817-267-4919</p>
+    </div>
+    <div class="footerspacing">
+      <h4>Email Support</h4>
+      <p><i class="fa fa-envelope"></i><a href="mailto:support@ACI.com">  support@ACI.com</a></p>
+    </div>
+
+  </div>
+
+  <div class="col-md-3 fborder3">
+
+    <p class="ftext border">
+      <h2><u>About the company</u></h2>
+      Feel free to follow us on social media for news and updates.
+    </p>
 <br>
+    <div class="footer-icons">
+      <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+      <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+      <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+      <a href="#"><i class="fa fa-github" aria-hidden="true"></i></a>
+    </div>
+  </div>
+
+</footer>
+
+
+</div>

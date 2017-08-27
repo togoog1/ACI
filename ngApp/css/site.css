@@ -1,3 +1,120 @@
+/* products page   */
+
+
+.products-entry{
+  background: #dbdbdb;
+    border-radius: 15px;
+    border: 1px solid black;
+    padding: 10px;
+    margin: 10px;
+}
+
+
+.products-title{
+font-size:30px;
+
+}
+
+
+
+.product-entries{
+  background: white;
+    border-radius: 4px;
+    border:1px solid black;
+    padding: 10px;
+    border: 1px solid black;
+}
+
+
+.p-spacing{
+
+
+    padding: 15px;
+    background-color: #dbdbdb;
+    border-radius: 25px;
+
+    min-height: 1000px;
+
+
+}
+
+.product-text{
+
+padding: ;
+background-color: grey;
+
+}
+
+.p-image{
+
+    width: 400px;
+    background-color: red;
+    padding: 10px;
+    border-radius: 4px;
+    border:1px solid black;
+}
+
+.p-box {
+    background: black;
+    border-radius: 4px;
+    border:1px solid black;
+    text-color: black;
+}
+
+.product-row{
+
+}
+
+
+.productholder{
+
+  padding-left: 20px;
+
+}
+
+.productholder-inner{
+  min-height: 800px;
+  background-color: white;
+  border-radius: 10px;
+  border:1px solid black;
+}
+
+.P-categories {
+
+  border-radius: 5px;
+
+    width: 100%;
+    border: 1px solid #ccc; /* Gray border */
+    background-color:  #3768b7;
+    color: White;
+    padding: 5px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+
+font-size: 16px;
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Generic page css  */
+
 .text {
   padding: 20px;
 }
@@ -170,78 +287,8 @@ background-color: #5cb85c;
 }
 
 
-.left-sidebar{
-  border: 1px solid black;
-}
-
-.Sorting-c {
-  padding: 20px;
-}
-
-.p-items{
-  background: silver;
-    border-radius: 4px;
-    border:1px solid black;
-    padding: 10px;
-}
 
 
-.p-spacing{
-
-
-    padding: 15px;
-
-}
-
-.p-text{
-
-
-    padding: 35px;
-
-}
-
-.p-image{
-
-    width: 400px;
-    background-color: grey;
-    padding: 10px;
-    border-radius: 4px;
-    border:1px solid black;
-}
-
-.p-box {
-    background: silver;
-    border-radius: 4px;
-    border:1px solid black;
-}
-
-
-
-
-
-.P-sorting {
-
-
-    width: 100%;
-    border: 1px solid #ccc; /* Gray border */
-    border: none;
-    color: white;
-    padding: 5px 16px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    border: 1px solid black; /* Gray border */
-    border-radius: 3px;
-
-}
-
-
-
-a {
-  position: relative;
-  margin: auto;
-}
 
 /* About page drop down texts*/
 #aboutDrop{

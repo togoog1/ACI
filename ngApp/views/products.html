@@ -1,63 +1,107 @@
 
 
+<div class="container row">
+
+  <div >
+     <center>
+        <a target="leaderboard" href="index.html" >
+          <img class="leaderboard" ng-src={{vm.leaderboard.WebAddress}}>
+
+        </a>
+     </center>
+  </div>
 
 
 
 
 
-	<section class="container bg-success" >
 
 
 
-
-
-
-
-			<div class="row-sm-12">
-
-
-<div class="col-sm-3 bg-danger p-spacing">
-		 <div class="left-sidebar">
-            <div class="p-spacing">
-                                          <h2>Categories</h2>
-                    <div class="Sorting-c">
-                                <ul class="nav nav-pills nav-stacked">
-                                    <li><button class="P-sorting" ng-click="vm.getProducts('Cabnets')" >Cabnets</button></li>
-                                    <li><button class="P-sorting" ng-click="vm.getProducts('Storefront Signs')" value="Storefront Signs">Storefront Signs</button></li>
-                                    <li><button class="P-sorting" ng-click="vm.getProducts('Isle Signs')" value="Isle Signs">Isle Signs</button></li>
-                                </ul>
-                   </div>
-            </div>
-
-						<div class="brands_products">
-							                             <h1>Soritng Filters</h1>
-							                    <div>
-								                      <ul class="nav nav-pills nav-stacked">
-									                         <li><a href="#"> <span class="pull-right">(<--->)</span>Sort By price</a></li>
-									                         <li><a href="#"> <span class="pull-right">(<--->)</span>Sort by color</a></li>
-									                         <li><a href="#"> <span class="pull-right">(<--->)</span>sort by look</a></li>
-                                           <li><a href="#"> <span class="pull-right">(<--->)</span>sort by look</a></li>
-                                           <li><a href="#"> <span class="pull-right">(<--->)</span>sort by look</a></li>
-                                           <li><a href="#"> <span class="pull-right">(<--->)</span>sort by look</a></li>
-
-								                      </ul>
-							                    </div>
-            </div>
-
-
-			</div>
+<!-- Nav Bar-->
+<div id='cssmenu'>
+<ul>
+   <li><a href='/'><span>Home</span></a></li>
+   <li class='active has-sub'><a href='#'><span>Products</span></a>
+      <ul>
+      <li><a href='/products'><span>Cabnets</span></a></li>
+      <li><a href='#'><span>Signs/Decor</span></a></li>
+      </ul>
+   </li>
+   <li><a href='/about'><span>About</span></a></li>
+   <li class='last'><a href='/contactUs'><span>Contact Us</span></a></li>
+   <li class='last'><a href='/getStarted'><span>Get Started</span></a></li>
+   <li id='login' class='last'><a href='/logIn'><span>Log In</span></a></li>
+</ul>
 </div>
 
-<div class="col-sm-9 bg-success">
-
-						<h2 class="title text-center">Featured Prebuilts</h2>
 
 
-								<div class="p-spacing">
-															<div class="col-sm-12 p-items" ng-repeat="p in vm.products">
+
+
+
+
+
+
+
+
+
+
+<div class="products-entry">
+
+
+	<p>      We are a full service company with a wide range of capabilities. Established in 1989. We provide full design, manufacture and Installation services. In addition, our installation fleet with crews are ready to deliver and install all of our products. We are currently located in a 20,000 sq. ft. facility on 2.5 acres centrally located in the Dallas Ft. Worth area.
+
+
+
+
+	Design is the limit!</p>
+</div>
+
+<div class="container">
+
+
+
+
+
+
+<div class="row-sm-12 bg-danger">
+
+			<div class="col-sm-3 p-spacing">
+		 				<div>
+            <div >
+            			<h2>Categories</h2>
+                  <div >
+                        <ul class="nav nav-pills nav-stacked">
+                                <li><button class="P-categories" ng-click="vm.getProducts('Cabnets')" >Cabnets</button></li>
+																<br>
+                                <li><button class="P-categories" ng-click="vm.getProducts('Storefront Signs')" value="Storefront Signs">Storefront Signs</button></li>
+																<br>
+                                <li><button class="P-categories" ng-click="vm.getProducts('Isle Signs')" value="Isle Signs">Isle Signs</button></li>
+
+                        </ul>
+                  </div>
+            </div>
+						</div>
+
+
+
+      </div>
+
+</div>
+
+
+
+
+<div class="col-sm-9 productholder">
+						<h2 class="text-center text-center products-title">Featured Prebuilts</h2>
+								<div class="productholder-inner">
+															<div class="col-sm-12 product-entries" ng-repeat="p in vm.products">
 																			<img class="col-sm-7 p-image " src={{p.image}}>
 
-                                      <div class=" container p-text bg-danger col-sm-5">
+
+
+                                      <div class=" product-text col-sm-5">
                                       <ul>
                                         <li >Name:{{p.name}}</li>
                                         <li >Price: {{p.price}}</li>
@@ -66,15 +110,73 @@
                                       </ul>
                                       <button class="P-sorting" ng-click="vm.showProductModal(p)" ng-show="vm.isAdmin" >Edit Product</button>
                                       <button class="P-sorting" ng-click="vm.showProductModal(p)" >View Product</button>
+																			<button class="P-sorting" ng-click="vm.deleteProduct(p._id)" >Delete Product</button>
                                       </div>
                               </div>
-                                     <button class="P-sorting" ng-click="vm.showProductModal(p)" >Add Product</button>
+                          <button class="P-sorting" ng-click="vm.showAddProductModal(p)" ng-show="vm.isAdmin">Add Product</button>
                </div>
 
+</div>
+
+
+</div>
 
 
 
+		<footer class="row fcontainer border">
+
+		  <div class="col-md-5 fborder1">
+
+		    <h2><u>Allen Commercial Industries<span>.Inc</span></u></h2>
+
+		    <p class="footer-links">
+		      <a href="/">Home</a>
+		      ·
+		      <a href="/products">Products</a>
+		      ·
+		      <a href="/about">About</a>
+		      ·
+		      <a href="/contactUs">Contact Us</a>
+		      ·
+		      <a href="/getStarted">Get Started</a>
+		    </p>
+		<br>
+		    <p><small>Allen Commercial industries &copy; 2017</small></p>
+		  </div>
+
+		  <div class="col-md-3 fborder2">
+		<h2><u>Company Details</u></h2>
+		    <div class="footerspacing">
+		      <h4>Street address</h4>
+		      <p><i class="fa fa-map-marker"></i><span>11301 Mosier Valley Rd</span> Euless, Texas 76040</p>
+		    </div>
+		    <div class="footerspacing">
+		      <h4>Contact a representitive</h4>
+		      <p><i class="fa fa-phone"></i>  817-267-4919</p>
+		    </div>
+		    <div class="footerspacing">
+		      <h4>Email Support</h4>
+		      <p><i class="fa fa-envelope"></i><a href="mailto:support@ACI.com">  support@ACI.com</a></p>
+		    </div>
+
+		  </div>
+
+		  <div class="col-md-3 fborder3">
+
+		    <p class="ftext border">
+		      <h2><u>About the company</u></h2>
+		      Feel free to follow us on social media for news and updates.
+		    </p>
+		<br>
+		    <div class="footer-icons">
+		      <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+		      <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+		      <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+		      <a href="#"><i class="fa fa-github" aria-hidden="true"></i></a>
+		    </div>
+		  </div>
+
+		</footer>
 
 
-
-	</section>
+</div>
