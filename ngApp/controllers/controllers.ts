@@ -86,17 +86,17 @@ namespace aci.Controllers {
         $scope.addSlide = function() {
           var newWidth = 600 + slides.length + 1;
           slides.push({
-            image: 'https://image.ibb.co/iUwvZ5/carouselpic2.jpg',
+            image: 'https://image.ibb.co/nNDue5/carouselpic4.jpg',
             text: ['Image 1'][slides.length % 1],
             id: currIndex++
           });
           slides.push({
-            image: 'https://image.ibb.co/iUwvZ5/carouselpic2.jpg',
+            image: 'https://image.ibb.co/nNDue5/carouselpic4.jpg',
             text: ['image 2'][slides.length % 1],
             id: currIndex++
           });
           slides.push({
-            image: 'https://image.ibb.co/iUwvZ5/carouselpic2.jpg',
+            image: 'https://image.ibb.co/nNDue5/carouselpic4.jpg',
             text: ['image3'][slides.length % 1],
             id: currIndex++
           });
@@ -200,17 +200,17 @@ namespace aci.Controllers {
         $scope.addSlide = function() {
           var newWidth = 600 + slides.length + 1;
           slides.push({
-            image: 'https://image.ibb.co/iUwvZ5/carouselpic2.jpg',
+            image: 'https://image.ibb.co/nNDue5/carouselpic4.jpg',
             text: ['Image 1'][slides.length % 1],
             id: currIndex++
           });
           slides.push({
-            image: 'https://image.ibb.co/iUwvZ5/carouselpic2.jpg',
+            image: 'https://image.ibb.co/nNDue5/carouselpic4.jpg',
             text: ['image 2'][slides.length % 1],
             id: currIndex++
           });
           slides.push({
-            image: 'https://image.ibb.co/iUwvZ5/carouselpic2.jpg',
+            image: 'https://image.ibb.co/nNDue5/carouselpic4.jpg',
             text: ['image3'][slides.length % 1],
             id: currIndex++
           });
@@ -263,7 +263,6 @@ namespace aci.Controllers {
     }
 
     export class ProductsController {
-
       public leaderboard
       public WebAddress
 
@@ -278,7 +277,7 @@ namespace aci.Controllers {
               this.leaderboard = result;
             })
             }
-            public payload
+              public payload
               public isAdmin
                   public category
                   public products
@@ -312,6 +311,17 @@ namespace aci.Controllers {
                            size: 'lg'
                        });
                    }
+                   public viewProductModal(product:string) {
+                        this.$uibModal.open({
+                            templateUrl: '/ngApp/views/viewproductmodal.html',
+                            controller: 'DialogController',
+                            controllerAs: 'vm',
+                            resolve: {
+                                 dataFromProductsController: () => product
+                            },
+                            size: 'lg'
+                        });
+                    }
 
                    public showAddProductModal(product:string) {
                         this.$uibModal.open({
@@ -357,34 +367,127 @@ namespace aci.Controllers {
             this.leaderboard=this.leaderboardService.getLeaderboard()
             console.log(this.leaderboard)
 
-        /*    $scope.items = [
-              'The first choice!',
-              'And another choice for you.',
-              'but wait! A third!'
-            ];
-            $scope.status = {
-              isopen: false
-            };
-            $scope.toggled = function(open) {
-              $log.log('Dropdown is now: ', open);
-            };
-            $scope.toggleDropdown = function($event) {
-              $event.preventDefault();
-              $event.stopPropagation();
-              $scope.status.isopen = !$scope.status.isopen;
-            };
-            $scope.appendToEl = angular.element(document.querySelector('#dropdown-long-content'));
-          });*/
 
           }
-
-//inline dropdown
-
 
 
 
 
     }
+
+
+
+
+
+    export class CustomBuildsController {
+
+            public leaderboard
+            public WebAddress
+
+            public addLeaderboard() {
+              console.log("sssssssssssssssssssssssssssssssss")
+                    this.leaderboardService.saveLeaderboard(this.leaderboard);
+                  }
+
+            public getLeaderboard() {
+
+                    this.leaderboardService.getLeaderboard(this.WebAddress).then((result) => {
+                    this.leaderboard = result;
+                  })
+                  }
+                  public payload
+                  public isAdmin
+                        public category
+                        public products
+                        public product
+                        public productId
+
+                        public getProducts(category) {
+                          this.productService.getProducts(category).then((result) => {
+                            this.products = result;
+                            console.log(this.products)
+                          })
+                        }
+                        public deleteProduct(productId) {
+                          this.productService.removeProduct(productId);
+                        }
+                        public addProduct() {
+                          this.productService.saveProduct(this.product);
+                        }
+                        public editProduct() {
+                            this.product._id = this.productId;
+                            this.productService.saveProduct(this.product);
+                        }
+                        public showProductModal(product:string) {
+                             this.$uibModal.open({
+                                 templateUrl: '/ngApp/views/productmodal.html',
+                                 controller: 'DialogController',
+                                 controllerAs: 'vm',
+                                 resolve: {
+                                      dataFromProductsController: () => product
+                                 },
+                                 size: 'lg'
+                             });
+                         }
+                         public viewProductModal(product:string) {
+                              this.$uibModal.open({
+                                  templateUrl: '/ngApp/views/viewproductmodal.html',
+                                  controller: 'DialogController',
+                                  controllerAs: 'vm',
+                                  resolve: {
+                                       dataFromProductsController: () => product
+                                  },
+                                  size: 'lg'
+                              });
+                          }
+
+
+                          public showAddProductModal(product:string) {
+                               this.$uibModal.open({
+                                   templateUrl: '/ngApp/views/addproductmodal.html',
+                                   controller: 'AddProductDialogController',
+                                   controllerAs: 'vm',
+
+                                   size: 'lg'
+                               });
+                           }
+
+
+                public  constructor(
+                  public $scope,
+                  private leaderboardService,
+                  public $log,
+                  private productService,
+                  public $stateParams,
+                  private $uibModal: angular.ui.bootstrap.IModalService
+                ) {
+
+                        let token = window.localStorage['token'];
+                        if(token) {
+                          this.payload = JSON.parse(window.atob(token.split('.')[1]));
+                          if(this.payload.role === 'admin') {
+                            this.isAdmin = true;
+                          } else {
+                            this.isAdmin = false;
+                          }
+                        }
+
+
+                  this.productId = $stateParams['id'];
+                  this.leaderboard=this.leaderboardService.getLeaderboard()
+                  console.log(this.leaderboard)
+
+                }
+
+    }
+
+
+
+
+
+
+
+
     export class ContactUsController {
       public payload
       public isAdmin
@@ -484,17 +587,17 @@ console.log("rthtrhrth")
         $scope.addSlide = function() {
           var newWidth = 600 + slides.length + 1;
           slides.push({
-            image: 'https://image.ibb.co/iUwvZ5/carouselpic2.jpg',
+            image: 'https://image.ibb.co/nNDue5/carouselpic4.jpg',
             text: ['Image 1'][slides.length % 1],
             id: currIndex++
           });
           slides.push({
-            image: 'https://image.ibb.co/iUwvZ5/carouselpic2.jpg',
+            image: 'https://image.ibb.co/nNDue5/carouselpic4.jpg',
             text: ['image 2'][slides.length % 1],
             id: currIndex++
           });
           slides.push({
-            image: 'https://image.ibb.co/iUwvZ5/carouselpic2.jpg',
+            image: 'https://image.ibb.co/nNDue5/carouselpic4.jpg',
             text: ['image3'][slides.length % 1],
             id: currIndex++
           });
@@ -760,54 +863,6 @@ export class LogInController {
 
     }
 
-export class TestController {
-        public payload
-        public isAdmin
-        public leaderboard
-        public WebAddress
-
-        public addLeaderboard() {
-          console.log("sssssssssssssssssss")
-                this.leaderboardService.saveLeaderboard(this.leaderboard);
-              };
-
-        public getLeaderboard() {
-
-                this.leaderboardService.getLeaderboard(this.WebAddress).then((result) => {
-                this.leaderboard = result;
-              })
-            };
-            public showLeaderboardModal(leaderboard:string) {
-                 this.$uibModal.open({
-                     templateUrl: '/ngApp/views/leaderboardmodal.html',
-                     controller: 'LeaderboardDialogController',
-                     controllerAs: 'vm',
-                     resolve: {
-                          dataFromTestController: () => leaderboard
-                     },
-                     size: 'lg'
-                 });
-             }
-
-
- constructor( public leaderboardService, private $uibModal: angular.ui.bootstrap.IModalService, public $http) {
-   //admin ng-show
-   let token = window.localStorage['token'];
-   if(token) {
-     this.payload = JSON.parse(window.atob(token.split('.')[1]));
-     if(this.payload.role === 'admin') {
-       this.isAdmin = true;
-     } else {
-       this.isAdmin = false;
-     }
-   }
-
-
-   this.leaderboard=this.leaderboardService.getLeaderboard()
-
-}
-
-}
 
 
 

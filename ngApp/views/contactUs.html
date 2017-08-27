@@ -1,53 +1,48 @@
-<div class="container row bg-success">
-
-<div id="leaderboard">
-   <center>
-      <a target="leaderboard" href="index.html" >
-        <img ng-src={{vm.leaderboard.WebAddress}}>
-
-      </a>
-   </center>
-</div>
 
 
+<div class="container row">
+
+  <div >
+     <center>
+        <a target="leaderboard" href="index.html" >
+          <img class="leaderboard" ng-src={{vm.leaderboard.WebAddress}}>
+
+        </a>
+     </center>
+  </div>
 
 
 
-<!-- Nav Bar-->
-<div id='cssmenu'>
-<ul>
-   <li><a href='/'><span>Home</span></a></li>
-   <li class='active has-sub'><a href='#'><span>Products</span></a>
-      <ul>
-         <li class='has-sub'><a href='/products'><span>Product 1</span></a>
-            <ul>
-               <li><a href='#'><span>Sub Product</span></a></li>
-               <li class='last'><a href='#'><span>Sub Product</span></a></li>
-            </ul>
-         </li>
-         <li class='has-sub'><a href='#'><span>Product 2</span></a>
-            <ul>
-               <li><a href='#'><span>Sub Product</span></a></li>
-               <li class='last'><a href='#'><span>Sub Product</span></a></li>
-            </ul>
-         </li>
-      </ul>
-   </li>
-   <li><a href='/about'><span>About</span></a></li>
-   <li class='last'><a href='/contactUs'><span>Contact Us</span></a></li>
-   <li class='last'><a href='/getStarted'><span>Get Started</span></a></li>
-   <li id='login' class='last'><a href='/logIn'><span>Log In</span></a></li>
-</ul>
-</div>
 
-<div id='General' class="container">
-  <p > We are a full service company with a wide range of capabilities. Established in 1989.
-    We provide full design, manufacture and Installation services. In addition, our installation fleet
-    with crews are ready to deliver and install all of our products. We are currently located in a 20,000 sq.
-    ft. facility on 2.5 acres centrally located in the Dallas Ft. Worth area.
 
-  Design is the limit!</p>
-</div>
+
+
+
+  <!-- Nav Bar-->
+  <div id='cssmenu'>
+  <ul>
+     <li><a href='/'><span>Home</span></a></li>
+     <li class='active has-sub'><a href='#'><span>Products</span></a>
+        <ul>
+        <li><a href='/products'><span>Pre-Builts</span></a></li>
+        <li><a href='/custombuilds'><span>Custom Builds</span></a></li>
+        </ul>
+     </li>
+     <li><a href='/about'><span>About</span></a></li>
+     <li class='last'><a href='/contactUs'><span>Contact Us</span></a></li>
+     <li class='last'><a href='/getStarted'><span>Get Started</span></a></li>
+      <li class='last'><a href='/gallery'><span>Gallery</span></a></li>
+     <li id='login' class='last'><a href='/logIn'><span>Log In</span></a></li>
+  </ul>
+  </div>
+
+
+
+
+
+<p class= "container text "><b>Get in contact with us for your custom design or store interior.</b>
+Allen Commecial Industries manufactures affordable, quality cabinets at our facility in Monroe, WA. We recognize the responsibility that comes with being a large manufacturer, and we are committed to being a good corporate citizen,
+to the benefit of our employees, owners, and the community at large.</p>
 
 
 
@@ -63,9 +58,9 @@
 
     <label for="country">Country</label>
     <select id="country" name="country">
-      <option value="australia">Australia</option>
-      <option value="canada">Canada</option>
-      <option value="usa">USA</option>
+        <option value="usa">USA</option>
+        <option value="canada">Canada</option>
+        <option value="usa">Other</option>
     </select>
 
     <label for="subject">Subject</label>
@@ -74,4 +69,66 @@
     <input type="submit" value="Submit">
 
   </form>
+
+
+</div>
+
+  <footer class="row fcontainer border">
+
+    <div class="col-md-5 fborder1">
+
+      <h2><u>Allen Commercial Industries<span>.Inc</span></u></h2>
+
+      <p class="footer-links">
+        <a href="/">Home</a>
+        ·
+        <a href="/products">Products</a>
+        ·
+        <a href="/about">About</a>
+        ·
+        <a href="/contactUs">Contact Us</a>
+        ·
+        <a href="/getStarted">Get Started</a>
+      </p>
+  <br>
+      <p><small>Allen Commercial industries &copy; 2017</small></p>
+    </div>
+
+    <div class="col-md-3 fborder2">
+  <h2><u>Company Details</u></h2>
+      <div class="footerspacing">
+        <h4>Street address</h4>
+        <p><i class="fa fa-map-marker"></i><span>11301 Mosier Valley Rd</span> Euless, Texas 76040</p>
+      </div>
+      <div class="footerspacing">
+        <h4>Contact a representitive</h4>
+        <p><i class="fa fa-phone"></i>  817-267-4919</p>
+      </div>
+      <div class="footerspacing">
+        <h4>Email Support</h4>
+        <p><i class="fa fa-envelope"></i><a href="mailto:support@ACI.com">  support@ACI.com</a></p>
+      </div>
+
+    </div>
+
+    <div class="col-md-3 fborder3">
+
+      <p class="ftext border">
+        <h2><u>About the company</u></h2>
+        Feel free to follow us on social media for news and updates.
+      </p>
+  <br>
+      <div class="footer-icons">
+        <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+        <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+        <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+        <a href="#"><i class="fa fa-github" aria-hidden="true"></i></a>
+      </div>
+    </div>
+
+  </footer>
+
+
+
+
 </div>

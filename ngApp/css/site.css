@@ -19,12 +19,17 @@ font-size:30px;
 
 .product-entries{
   background: white;
-    border-radius: 4px;
-    border:1px solid black;
+    border-radius: 10px;
+
     padding: 10px;
-    border: 1px solid black;
+
 }
 
+
+.product-entries-inner{
+  background: white;
+
+}
 
 .p-spacing{
 
@@ -39,16 +44,19 @@ font-size:30px;
 }
 
 .product-text{
-
-padding: ;
-background-color: grey;
+  border-radius: 4px;
+  border:1px solid black;
+padding: 30px;
+background-color: #b2b8c1;
+height: 225px;
+    width: 390px;
 
 }
 
 .p-image{
-
-    width: 400px;
-    background-color: red;
+height: 225px;
+    width: 390px;
+    background-color: #b2b8c1;
     padding: 10px;
     border-radius: 4px;
     border:1px solid black;
@@ -169,7 +177,7 @@ padding: 10px;
 
 
 .container {
-background-color:  silver;
+background-color: #b2b8c1;
 }
 
 

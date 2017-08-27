@@ -1,0 +1,222 @@
+
+
+
+
+
+
+
+
+<div class="container row"><!-- Page Container-->
+
+
+
+
+  <!-- Leaderboard-->
+  <div >
+     <center>
+        <a target="leaderboard" href="index.html" >
+          <img class="leaderboard" ng-src={{vm.leaderboard.WebAddress}}>
+        </a>
+     </center>
+  </div>
+  <!-- Leaderboard End-->
+
+
+
+
+
+
+  <!-- Nav Bar-->
+  <div id='cssmenu'>
+  <ul>
+     <li><a href='/'><span>Home</span></a></li>
+     <li class='active has-sub'><a href='#'><span>Products</span></a>
+        <ul>
+        <li><a href='/products'><span>Pre-Builts</span></a></li>
+        <li><a href='/custombuilds'><span>Custom Builds</span></a></li>
+        </ul>
+     </li>
+     <li><a href='/about'><span>About</span></a></li>
+     <li class='last'><a href='/contactUs'><span>Contact Us</span></a></li>
+     <li class='last'><a href='/getStarted'><span>Get Started</span></a></li>
+      <li class='last'><a href='/gallery'><span>Gallery</span></a></li>
+     <li id='login' class='last'><a href='/logIn'><span>Log In</span></a></li>
+  </ul>
+  </div>
+  <!-- Nav Bar End-->
+
+
+
+
+
+
+
+  <!-- Product introductory-->
+<div class="products-entry">
+		<p>
+			We are a full service company with a wide range of capabilities. Established in 1989. We provide full design, manufacture and Installation services. In addition,
+			our installation fleet with crews are ready to deliver and install all of our products. We are currently located in a 20,000 sq. ft. facility on 2.5 acres centrally
+			located in the Dallas Ft. Worth area.
+			Design is the limit!
+		</p>
+</div>
+  <!-- Product introductory End-->
+
+
+
+
+
+
+
+	<div class="container"><!-- Category Row-->
+
+	<div class="row-sm-12 bg-danger">  <!-- Category Pick -->
+
+				<div class="col-sm-3 p-spacing">
+			 				<div>
+	            <div >
+	            			<h2>Categories</h2>
+	                  <div >
+	                        <ul class="nav nav-pills nav-stacked">
+                                <li><button class="P-categories" ng-click="vm.getProducts('Cabnets')" >Cabnets</button></li>
+																<br>
+                                <li><button class="P-categories" ng-click="vm.getProducts('Storefront Signs')" value="Storefront Signs">Storefront Signs</button></li>
+																<br>
+                                <li><button class="P-categories" ng-click="vm.getProducts('Lit Signs')" value="Lit Signs">Lit Signs</button></li>
+                                <br>
+                                <li><button class="P-categories" ng-click="vm.getProducts('Cigarette Racks')" value="Cigarette Racks">Cigarette Racks</button></li>
+                                <br>
+                                <li><button class="P-categories" ng-click="vm.getProducts('Beer Caves')" value="Beer Caves">Beer Caves</button></li>
+                                <br>
+                                <li><button class="P-categories" ng-click="vm.getProducts('Coffee Centers')" value="Coffee Centers">Coffee Centers</button></li>
+                                <br>
+                                <li><button class="P-categories" ng-click="vm.getProducts('Fountain Counters')" value="Fountain Counters">Fountain Counters</button></li>
+                                <br>
+                                <li><button class="P-categories" ng-click="vm.getProducts('Ice Down Bins')" value="Ice Down Bins">Ice Down Bins</button></li>
+                                <br>
+                                <li><button class="P-categories" ng-click="vm.getProducts('Dimensional Signs')" value="Dimensional Signs">Dimensional Signs</button></li>
+                                <br>
+                                <li><button class="P-categories" ng-click="vm.getProducts('Wine Racks')" value="Wine Racks">Wine Racks</button></li>
+                                <br>
+                                <li><button class="P-categories" ng-click="vm.getProducts('Menu Boards')" value="Menu Boards">Menu Boards</button></li>
+                                <br>
+                                <li><button class="P-categories" ng-click="vm.getProducts('Sales Counters')" value="Sales Counters">Sales Counters</button></li>
+                                <br>
+                                <li><button class="P-categories" ng-click="vm.getProducts('Color Bands')" value="Color Bands">Color Bands</button></li>
+                                <br>
+                                <li><button class="P-categories" ng-click="vm.getProducts('Sneeze Guards')" value="Sneeze Guards">Sneeze Guards</button></li>
+                                <br>
+                                <li><button class="P-categories" ng-click="vm.getProducts('Trash Cans')" value="Trash Cans">Trash Cans</button></li>
+															</ul>
+			                  </div>
+			            </div>
+									</div>
+			      </div>
+
+			</div>
+
+  <!-- Category Pick End-->
+
+
+
+  <!-- Category Show-->
+    <div class="col-sm-9 productholder">
+						<h2 class="text-center text-center products-title">Featured Prebuilts</h2>
+
+									<div class="productholder-inner">
+
+															<div class="col-sm-12 product-entries" ng-repeat="p in vm.products">
+
+																			<img class="col-sm-7 p-image " src={{p.image}}>
+
+                                      <div class=" product-text col-sm-5">
+                                        					<h2>{{p.name}}</h2>
+                                      		<ul>
+                                        			<li >Price: {{p.price}}</li>
+                                        			<li >Description: {{p.description}}</li>
+                                        			<li >Number in stock: {{p.numberinstock}}</li>
+                                      		</ul>
+																				<button class="P-sorting" ng-click="vm.viewProductModal(p)" >View Product</button>
+                                      	<button class="P-sorting" ng-click="vm.showProductModal(p)" ng-show="vm.isAdmin" >Edit Product</button>
+																				<button class="P-sorting" ng-click="vm.deleteProduct(p._id)" ng-show="vm.isAdmin" >Delete Product</button>
+                                      </div>
+                              </div>
+
+                  </div>
+                          <button class="P-sorting" ng-click="vm.showAddProductModal(p)" >Add Product</button>
+
+    </div>
+		<!-- Category Show End-->
+
+
+</div><!-- Category Row End-->
+
+
+
+
+
+
+
+
+
+<!-- Footer-->
+		<footer class="row fcontainer border">
+
+		  <div class="col-sm-5 fborder1">
+
+		    <h2><u>Allen Commercial Industries<span>.Inc</span></u></h2>
+
+		    <p class="footer-links">
+		      <a href="/">Home</a>
+		      ·
+		      <a href="/products">Products</a>
+		      ·
+		      <a href="/about">About</a>
+		      ·
+		      <a href="/contactUs">Contact Us</a>
+		      ·
+		      <a href="/getStarted">Get Started</a>
+		    </p>
+		<br>
+		    <p><small>Allen Commercial industries &copy; 2017</small></p>
+		  </div>
+
+		  <div class="col-sm-3 fborder2">
+		<h2><u>Company Details</u></h2>
+		    <div class="footerspacing">
+		      <h4>Street address</h4>
+		      <p><i class="fa fa-map-marker"></i><span>11301 Mosier Valley Rd</span> Euless, Texas 76040</p>
+		    </div>
+		    <div class="footerspacing">
+		      <h4>Contact a representitive</h4>
+		      <p><i class="fa fa-phone"></i>  817-267-4919</p>
+		    </div>
+		    <div class="footerspacing">
+		      <h4>Email Support</h4>
+		      <p><i class="fa fa-envelope"></i><a href="mailto:support@ACI.com">  support@ACI.com</a></p>
+		    </div>
+
+		  </div>
+
+		  <div class="col-sm-3 fborder3">
+
+		    <p class="ftext border">
+		      <h2><u>About the company</u></h2>
+		      Feel free to follow us on social media for news and updates.
+		    </p>
+		<br>
+		    <div class="footer-icons">
+		      <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+		      <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+		      <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+		      <a href="#"><i class="fa fa-github" aria-hidden="true"></i></a>
+		    </div>
+		  </div>
+
+		</footer><!-- Footer End-->
+
+
+
+
+
+</div><!-- Page Container End-->

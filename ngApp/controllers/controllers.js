@@ -41,17 +41,17 @@ var aci;
                 $scope.addSlide = function () {
                     var newWidth = 600 + slides.length + 1;
                     slides.push({
-                        image: 'https://image.ibb.co/iUwvZ5/carouselpic2.jpg',
+                        image: 'https://image.ibb.co/nNDue5/carouselpic4.jpg',
                         text: ['Image 1'][slides.length % 1],
                         id: currIndex++
                     });
                     slides.push({
-                        image: 'https://image.ibb.co/iUwvZ5/carouselpic2.jpg',
+                        image: 'https://image.ibb.co/nNDue5/carouselpic4.jpg',
                         text: ['image 2'][slides.length % 1],
                         id: currIndex++
                     });
                     slides.push({
-                        image: 'https://image.ibb.co/iUwvZ5/carouselpic2.jpg',
+                        image: 'https://image.ibb.co/nNDue5/carouselpic4.jpg',
                         text: ['image3'][slides.length % 1],
                         id: currIndex++
                     });
@@ -138,17 +138,17 @@ var aci;
                 $scope.addSlide = function () {
                     var newWidth = 600 + slides.length + 1;
                     slides.push({
-                        image: 'https://image.ibb.co/iUwvZ5/carouselpic2.jpg',
+                        image: 'https://image.ibb.co/nNDue5/carouselpic4.jpg',
                         text: ['Image 1'][slides.length % 1],
                         id: currIndex++
                     });
                     slides.push({
-                        image: 'https://image.ibb.co/iUwvZ5/carouselpic2.jpg',
+                        image: 'https://image.ibb.co/nNDue5/carouselpic4.jpg',
                         text: ['image 2'][slides.length % 1],
                         id: currIndex++
                     });
                     slides.push({
-                        image: 'https://image.ibb.co/iUwvZ5/carouselpic2.jpg',
+                        image: 'https://image.ibb.co/nNDue5/carouselpic4.jpg',
                         text: ['image3'][slides.length % 1],
                         id: currIndex++
                     });
@@ -258,6 +258,17 @@ var aci;
                     size: 'lg'
                 });
             };
+            ProductsController.prototype.viewProductModal = function (product) {
+                this.$uibModal.open({
+                    templateUrl: '/ngApp/views/viewproductmodal.html',
+                    controller: 'DialogController',
+                    controllerAs: 'vm',
+                    resolve: {
+                        dataFromProductsController: function () { return product; }
+                    },
+                    size: 'lg'
+                });
+            };
             ProductsController.prototype.showAddProductModal = function (product) {
                 this.$uibModal.open({
                     templateUrl: '/ngApp/views/addproductmodal.html',
@@ -269,6 +280,88 @@ var aci;
             return ProductsController;
         }());
         Controllers.ProductsController = ProductsController;
+        var CustomBuildsController = (function () {
+            function CustomBuildsController($scope, leaderboardService, $log, productService, $stateParams, $uibModal) {
+                this.$scope = $scope;
+                this.leaderboardService = leaderboardService;
+                this.$log = $log;
+                this.productService = productService;
+                this.$stateParams = $stateParams;
+                this.$uibModal = $uibModal;
+                var token = window.localStorage['token'];
+                if (token) {
+                    this.payload = JSON.parse(window.atob(token.split('.')[1]));
+                    if (this.payload.role === 'admin') {
+                        this.isAdmin = true;
+                    }
+                    else {
+                        this.isAdmin = false;
+                    }
+                }
+                this.productId = $stateParams['id'];
+                this.leaderboard = this.leaderboardService.getLeaderboard();
+                console.log(this.leaderboard);
+            }
+            CustomBuildsController.prototype.addLeaderboard = function () {
+                console.log("sssssssssssssssssssssssssssssssss");
+                this.leaderboardService.saveLeaderboard(this.leaderboard);
+            };
+            CustomBuildsController.prototype.getLeaderboard = function () {
+                var _this = this;
+                this.leaderboardService.getLeaderboard(this.WebAddress).then(function (result) {
+                    _this.leaderboard = result;
+                });
+            };
+            CustomBuildsController.prototype.getProducts = function (category) {
+                var _this = this;
+                this.productService.getProducts(category).then(function (result) {
+                    _this.products = result;
+                    console.log(_this.products);
+                });
+            };
+            CustomBuildsController.prototype.deleteProduct = function (productId) {
+                this.productService.removeProduct(productId);
+            };
+            CustomBuildsController.prototype.addProduct = function () {
+                this.productService.saveProduct(this.product);
+            };
+            CustomBuildsController.prototype.editProduct = function () {
+                this.product._id = this.productId;
+                this.productService.saveProduct(this.product);
+            };
+            CustomBuildsController.prototype.showProductModal = function (product) {
+                this.$uibModal.open({
+                    templateUrl: '/ngApp/views/productmodal.html',
+                    controller: 'DialogController',
+                    controllerAs: 'vm',
+                    resolve: {
+                        dataFromProductsController: function () { return product; }
+                    },
+                    size: 'lg'
+                });
+            };
+            CustomBuildsController.prototype.viewProductModal = function (product) {
+                this.$uibModal.open({
+                    templateUrl: '/ngApp/views/viewproductmodal.html',
+                    controller: 'DialogController',
+                    controllerAs: 'vm',
+                    resolve: {
+                        dataFromProductsController: function () { return product; }
+                    },
+                    size: 'lg'
+                });
+            };
+            CustomBuildsController.prototype.showAddProductModal = function (product) {
+                this.$uibModal.open({
+                    templateUrl: '/ngApp/views/addproductmodal.html',
+                    controller: 'AddProductDialogController',
+                    controllerAs: 'vm',
+                    size: 'lg'
+                });
+            };
+            return CustomBuildsController;
+        }());
+        Controllers.CustomBuildsController = CustomBuildsController;
         var ContactUsController = (function () {
             function ContactUsController($scope, leaderboardService) {
                 this.$scope = $scope;
@@ -324,17 +417,17 @@ var aci;
                 $scope.addSlide = function () {
                     var newWidth = 600 + slides.length + 1;
                     slides.push({
-                        image: 'https://image.ibb.co/iUwvZ5/carouselpic2.jpg',
+                        image: 'https://image.ibb.co/nNDue5/carouselpic4.jpg',
                         text: ['Image 1'][slides.length % 1],
                         id: currIndex++
                     });
                     slides.push({
-                        image: 'https://image.ibb.co/iUwvZ5/carouselpic2.jpg',
+                        image: 'https://image.ibb.co/nNDue5/carouselpic4.jpg',
                         text: ['image 2'][slides.length % 1],
                         id: currIndex++
                     });
                     slides.push({
-                        image: 'https://image.ibb.co/iUwvZ5/carouselpic2.jpg',
+                        image: 'https://image.ibb.co/nNDue5/carouselpic4.jpg',
                         text: ['image3'][slides.length % 1],
                         id: currIndex++
                     });
@@ -536,49 +629,6 @@ var aci;
             return RegisterController;
         }());
         Controllers.RegisterController = RegisterController;
-        var TestController = (function () {
-            function TestController(leaderboardService, $uibModal, $http) {
-                this.leaderboardService = leaderboardService;
-                this.$uibModal = $uibModal;
-                this.$http = $http;
-                var token = window.localStorage['token'];
-                if (token) {
-                    this.payload = JSON.parse(window.atob(token.split('.')[1]));
-                    if (this.payload.role === 'admin') {
-                        this.isAdmin = true;
-                    }
-                    else {
-                        this.isAdmin = false;
-                    }
-                }
-                this.leaderboard = this.leaderboardService.getLeaderboard();
-            }
-            TestController.prototype.addLeaderboard = function () {
-                console.log("sssssssssssssssssss");
-                this.leaderboardService.saveLeaderboard(this.leaderboard);
-            };
-            ;
-            TestController.prototype.getLeaderboard = function () {
-                var _this = this;
-                this.leaderboardService.getLeaderboard(this.WebAddress).then(function (result) {
-                    _this.leaderboard = result;
-                });
-            };
-            ;
-            TestController.prototype.showLeaderboardModal = function (leaderboard) {
-                this.$uibModal.open({
-                    templateUrl: '/ngApp/views/leaderboardmodal.html',
-                    controller: 'LeaderboardDialogController',
-                    controllerAs: 'vm',
-                    resolve: {
-                        dataFromTestController: function () { return leaderboard; }
-                    },
-                    size: 'lg'
-                });
-            };
-            return TestController;
-        }());
-        Controllers.TestController = TestController;
         var LeaderboardDialogController = (function () {
             function LeaderboardDialogController(leaderboardService, dataFromHomeController, $uibModalInstance) {
                 this.leaderboardService = leaderboardService;

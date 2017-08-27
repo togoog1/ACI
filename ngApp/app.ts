@@ -27,6 +27,12 @@ namespace aci {
                 controller: aci.Controllers.ProductsController,
                 controllerAs: 'vm'
                 })
+                .state('custombuilds', {
+                    url: '/custombuilds',
+                    templateUrl: '/ngApp/views/custombuilds.html',
+                    controller: aci.Controllers.CustomBuildsController,
+                    controllerAs: 'vm'
+                    })
             .state('contactUs', {
                 url: '/contactUs',
                 templateUrl: '/ngApp/views/contactUs.html',

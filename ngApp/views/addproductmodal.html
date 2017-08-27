@@ -1,0 +1,52 @@
+<div class="modal-header">
+    <h1 class="modal-title">Add Product</h1>
+</div>
+<div class="modal-body" ng-cloak>
+
+
+
+      <div class="container">
+
+      <h2>Add Product</h2>
+      <h4>name</h4>
+      <input type="text" productholder="Name..." ng-model="vm.product.name" />
+      <h4>price</h4>
+      <input type="text" productholder="price..." ng-model="vm.product.price" />
+      <h4>image</h4>
+      <input type="text" productholder="image..." ng-model="vm.product.image" />
+      <h4>description</h4>
+      <input type="text" productholder="description..." ng-model="vm.product.description" />
+      <h4>numberinstock</h4>
+      <input type="text" productholder="numberinstock..." ng-model="vm.product.numberinstock" />
+      <h4>category</h4>
+      <select ng-model="vm.product.category">
+        <option value="Cabnets">Cabnets</option>
+        <option value="Storefront Signs">Storefront Sign</option>
+        <option value="Isle Signs">Isle Sign</option>
+        <option value="Storefront Signs">Lit Signs</option>
+        <option value="Cigarette Racks">Cigarette Racks</option>
+        <option value="Beer Caves">Beer Caves</option>
+        <option value="Coffee Centers">Coffee Centers</option>
+        <option value="Fountain Counters">Fountain Countersn</option>
+        <option value="Ice Down Bins">Ice Down Bins</option>
+        <option value="Dimensional Signs">Dimensional Signs</option>
+        <option value="Wine Racks">Wine Racks</option>
+        <option value="Menu Boards">Menu Boards</option>
+        <option value="Sales Counters">Sales Counters</option>
+        <option value="Color Bands">Color Bands</option>
+        <option value="Sneeze Guards">Sneeze Guards</option>
+        <option value="Trash Cans">Trash Cans</option>
+      </select>
+
+      <button type="button" ng-click="vm.addProduct()">Add</button>
+
+      </div>
+
+
+
+</div>
+
+</div>
+<div class="modal-footer">
+    <button class="btn-primary" ng-click="vm.ok()">OK</button>
+</div>
