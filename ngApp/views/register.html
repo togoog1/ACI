@@ -1,21 +1,133 @@
-<div class="container row">
-<div id="leaderboard">
-   <center>
-      <a target="leaderboard" href="index.html" >
-        <img ng-src={{vm.leaderboard.WebAddress}}>
-
-      </a>
-   </center>
-</div>
+<div class="container row"><!-- Page Container-->
 
 
+    <!-- Leaderboard-->
+    <div >
+       <center>
+          <a target="leaderboard" href="index.html" >
+            <img class="leaderboard" ng-src={{vm.leaderboard.WebAddress}}>
+          </a>
+       </center>
+    </div>
+    <!-- Leaderboard End-->
 
-<h2>New Account</h2>
-<input type="text" placeholder="username" ng-model="vm.user.username"/>
-<input type="text" placeholder="email" ng-model="vm.user.email"/>
-<input type="password" placeholder="password" ng-model="vm.user.password"/>
-<button type="button" ng-click="vm.signup()">Submit</button>
 
+        <!-- Nav Bar-->
+        <div id='cssmenu'>
+        <ul>
+           <li><a href='/'><span>Home</span></a></li>
+           <li class='active has-sub'><a href='#'><span>Products</span></a>
+              <ul>
+              <li><a href='/products'><span>Pre-Builts</span></a></li>
+              <li><a href='/custombuilds'><span>Custom Builds</span></a></li>
+              </ul>
+           </li>
+           <li><a href='/about'><span>About</span></a></li>
+           <li class='last'><a href='/contactUs'><span>Contact Us</span></a></li>
+           <li class='last'><a href='/getStarted'><span>Get Started</span></a></li>
+
+           <li id='login' class='last'><a href='/logIn'><span>Log In</span></a></li>
+        </ul>
+        </div>
+        <!-- Nav Bar End-->
+
+
+
+        <!--Register-->
+        <div class="container">
+          <div class="row">
+            <h2>New Account</h2>
+          </div>
+          <div class="row login-entry">
+              <div class="row">
+                      <div class="col-sm-3 login-names">
+                          <h3><u>User Name</u></h3>
+                          <input class="login-input" placeholder="username" ng-model="vm.user.username"/>
+                      </div>
+
+
+                      <div class="col-sm-3 login-names">
+                        <h3><u>Password</u></h3>
+                          <input class="login-input"  placeholder="password" ng-model="vm.user.password"/>
+                      </div>
+                      <div class="col-sm-3 login-names">
+                        <h3><u>Email</u></h3>
+                          <input class="login-input"  placeholder="email" ng-model="vm.user.email"/>
+                      </div>
+                                        <br>
+                </div>
+
+                <div class="col-sm-4">
+                  <button class="login-btn" ng-click="vm.signup()">Submit</button>
+
+                </div>
+
+            </div>
+            <br>
+        </div>
+        <!-- Register End-->
+
+
+
+
+
+
+
+<!-- Footer-->
+		<footer class="row fcontainer border">
+
+		  <div class="col-sm-5 fborder1">
+
+		    <h2><u>Allen Commercial Industries<span>.Inc</span></u></h2>
+
+		    <p class="footer-links">
+		      <a href="/">Home</a>
+		      ·
+		      <a href="/products">Products</a>
+		      ·
+		      <a href="/about">About</a>
+		      ·
+		      <a href="/contactUs">Contact Us</a>
+		      ·
+		      <a href="/getStarted">Get Started</a>
+		    </p>
+		<br>
+		    <p><small>Allen Commercial industries &copy; 2017</small></p>
+		  </div>
+
+		  <div class="col-sm-3 fborder2">
+		<h2><u>Company Details</u></h2>
+		    <div class="footerspacing">
+		      <h4>Street address</h4>
+		      <p><i class="fa fa-map-marker"></i><span>11301 Mosier Valley Rd</span> Euless, Texas 76040</p>
+		    </div>
+		    <div class="footerspacing">
+		      <h4>Contact a representitive</h4>
+		      <p><i class="fa fa-phone"></i>  817-267-4919</p>
+		    </div>
+		    <div class="footerspacing">
+		      <h4>Email Support</h4>
+		      <p><i class="fa fa-envelope"></i><a href="mailto:support@ACI.com">  support@ACI.com</a></p>
+		    </div>
+
+		  </div>
+
+		  <div class="col-sm-3 fborder3">
+
+		    <p class="ftext border">
+		      <h2><u>About the company</u></h2>
+		      Feel free to follow us on social media for news and updates.
+		    </p>
+		<br>
+		    <div class="footer-icons">
+		      <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+		      <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+		      <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+		      <a href="#"><i class="fa fa-github" aria-hidden="true"></i></a>
+		    </div>
+		  </div>
+
+		</footer><!-- Footer End-->
 
 
 </div>

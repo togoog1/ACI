@@ -50,40 +50,10 @@ var aci;
             controller: aci.Controllers.RegisterController,
             controllerAs: 'vm'
         })
-            .state('test', {
-            url: '/test',
-            templateUrl: '/ngApp/views/test.html',
-            controller: aci.Controllers.TestController,
-            controllerAs: 'vm'
-        })
             .state('testnghide', {
             url: '/testnghide',
             templateUrl: '/ngApp/views/testnghide.html',
             controller: aci.Controllers.TestnghideController,
-            controllerAs: 'vm'
-        })
-            .state('test2', {
-            url: '/test2',
-            templateUrl: '/ngApp/views/test2.html',
-            controller: aci.Controllers.Test2Controller,
-            controllerAs: 'vm',
-        })
-            .state('shoppingcart', {
-            url: '/shoppingcart',
-            templateUrl: '/ngApp/views/shoppingcart.html',
-            controller: aci.Controllers.ShoppingcartController,
-            controllerAs: 'vm'
-        })
-            .state('gallery', {
-            url: '/gallery',
-            templateUrl: '/ngApp/views/gallery.html',
-            controller: aci.Controllers.GalleryController,
-            controllerAs: 'vm'
-        })
-            .state('productview', {
-            url: '/productview',
-            templateUrl: '/ngApp/views/productview.html',
-            controller: aci.Controllers.ProductviewController,
             controllerAs: 'vm'
         })
             .state('notFound', {

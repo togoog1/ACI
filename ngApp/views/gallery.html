@@ -1,0 +1,254 @@
+
+<!--                      Page Under Constructon                 -->
+
+
+
+
+<div class="container row"><!-- Page Container-->
+
+
+    <!-- Leaderboard-->
+    <div >
+       <center>
+          <a target="leaderboard" href="index.html" >
+            <img class="leaderboard" ng-src={{vm.leaderboard.WebAddress}}>
+          </a>
+       </center>
+    </div>
+    <!-- Leaderboard End-->
+
+
+    <!-- Nav Bar-->
+    <div id='cssmenu'>
+    <ul>
+       <li><a href='/'><span>Home</span></a></li>
+       <li class='active has-sub'><a href='#'><span>Products</span></a>
+          <ul>
+          <li><a href='/products'><span>Pre-Builts</span></a></li>
+          <li><a href='/custombuilds'><span>Custom Builds</span></a></li>
+          </ul>
+       </li>
+       <li><a href='/about'><span>About</span></a></li>
+       <li class='last'><a href='/contactUs'><span>Contact Us</span></a></li>
+       <li class='last'><a href='/getStarted'><span>Get Started</span></a></li>
+        <li class='last'><a href='/gallery'><span>Gallery</span></a></li>
+       <li id='login' class='last'><a href='/logIn'><span>Log In</span></a></li>
+    </ul>
+    </div>
+    <!-- Nav Bar End-->
+
+
+
+  <!-- Product introductory-->
+<div class="products-entry">
+		<p>
+			We are a full service company with a wide range of capabilities. Established in 1989. We provide full design, manufacture and Installation services. In addition,
+			our installation fleet with crews are ready to deliver and install all of our products. We are currently located in a 20,000 sq. ft. facility on 2.5 acres centrally
+			located in the Dallas Ft. Worth area.
+			Design is the limit!
+		</p>
+</div>
+  <!-- Product introductory End-->
+
+
+
+
+  <div class="container"><!-- Category Row-->
+
+
+
+<h2>Stores Done</h2>
+  <div class="container"><!-- Category Pick -->
+
+
+
+
+
+
+
+
+<button class="G-categories" ng-click="vm.changeslides()" >changeslides</button>
+
+
+<div class="col-sm-12">
+
+
+
+
+
+
+
+
+
+
+
+  			<div class="col-sm-3 G-spacing">
+  		 				<div>
+              <div >
+
+                    <div >
+                          <ul class="G-sort">
+                                  <li><button class="G-categories" ng-click="vm.getProducts('Cabnets')" >Cabnets</button></li>
+                                  <li><button class="G-categories" ng-click="vm.getProducts('Storefront Signs')" value="Storefront Signs">Storefront Signs</button></li>
+                                  <li><button class="G-categories" ng-click="vm.getProducts('Isle Signs')" value="Isle Signs">Isle Signs</button></li>
+                          </ul>
+                    </div>
+              </div>
+  						</div>
+        </div>
+        <div class="col-sm-3 G-spacing">
+              <div>
+              <div >
+
+                    <div >
+                          <ul class="G-sort">
+                                  <li><button class="G-categories" ng-click="vm.getProducts('Cabnets')" >Cabnets</button></li>
+                                  <li><button class="G-categories" ng-click="vm.getProducts('Storefront Signs')" value="Storefront Signs">Storefront Signs</button></li>
+                                  <li><button class="G-categories" ng-click="vm.getProducts('Isle Signs')" value="Isle Signs">Isle Signs</button></li>
+                          </ul>
+                    </div>
+              </div>
+              </div>
+        </div>
+        <div class="col-sm-3 G-spacing">
+              <div>
+              <div >
+
+                    <div >
+                          <ul class="G-sort">
+                                  <li><button class="G-categories" ng-click="vm.getProducts('Cabnets')" >Cabnets</button></li>
+                                  <li><button class="G-categories" ng-click="vm.getProducts('Storefront Signs')" value="Storefront Signs">Storefront Signs</button></li>
+                                  <li><button class="G-categories" ng-click="vm.getProducts('Isle Signs')" value="Isle Signs">Isle Signs</button></li>
+                          </ul>
+                    </div>
+              </div>
+              </div>
+        </div>
+        <div class="col-sm-3 G-spacing">
+              <div>
+              <div >
+
+                    <div >
+                          <ul class="G-sort">
+                                  <li><button class="G-categories" ng-click="vm.getProducts('Cabnets')" >Cabnets</button></li>
+                                  <li><button class="G-categories" ng-click="vm.getProducts('Storefront Signs')" value="Storefront Signs">Storefront Signs</button></li>
+                                  <li><button class="G-categories" ng-click="vm.getProducts('Isle Signs')" value="Isle Signs">Isle Signs</button></li>
+                          </ul>
+                    </div>
+              </div>
+              </div>
+        </div>
+
+</div>
+  </div>
+
+
+
+
+
+
+  </div><!-- Category Row End-->
+
+ <button ng-click="carouselnumber1()">Carousel1</button>
+
+
+
+  <!-- Carousel -->
+  <div>
+  <div id=carousel class="col-md-12">
+    <div uib-carousel active="active" interval="myInterval" no-wrap="noWrapSlides">
+          <div uib-slide ng-repeat="slide in slides track by slide.id" index="slide.id" >
+              <img ng-src="{{slide.image}}" style="margin:auto;" >
+            <div class="carousel-caption">
+              <h4>Slide {{slide.id}}</h4>
+              <p>{{slide.text}}</p>
+            </div>
+        </div>
+    </div>
+  </div>
+  </div>
+
+  <!-- Carousel End -->
+
+
+  <!-- Carousel -->
+  <div>
+  <div id=carousel class="col-md-12">
+    <div uib-carousel active="active1" interval="myInterval1" no-wrap="noWrapSlides1">
+          <div uib-slide ng-repeat="slide1 in slides1 track by slide1.id1" index="slide1.id" >
+              <img ng-src="{{slide1.image1}}" style="margin:auto;" >
+            <div class="carousel-caption">
+              <h4>Slide {{slide1.id}}</h4>
+              <p>{{slide1.text}}</p>
+            </div>
+        </div>
+    </div>
+  </div>
+  </div>
+
+  <!-- Carousel End -->
+
+
+
+
+
+
+<!-- Footer-->
+		<footer class="row fcontainer border">
+
+		  <div class="col-sm-5 fborder1">
+
+		    <h2><u>Allen Commercial Industries<span>.Inc</span></u></h2>
+
+		    <p class="footer-links">
+		      <a href="/">Home</a>
+		      ·
+		      <a href="/products">Products</a>
+		      ·
+		      <a href="/about">About</a>
+		      ·
+		      <a href="/contactUs">Contact Us</a>
+		      ·
+		      <a href="/getStarted">Get Started</a>
+		    </p>
+		<br>
+		    <p><small>Allen Commercial industries &copy; 2017</small></p>
+		  </div>
+
+		  <div class="col-sm-3 fborder2">
+		<h2><u>Company Details</u></h2>
+		    <div class="footerspacing">
+		      <h4>Street address</h4>
+		      <p><i class="fa fa-map-marker"></i><span>11301 Mosier Valley Rd</span> Euless, Texas 76040</p>
+		    </div>
+		    <div class="footerspacing">
+		      <h4>Contact a representitive</h4>
+		      <p><i class="fa fa-phone"></i>  817-267-4919</p>
+		    </div>
+		    <div class="footerspacing">
+		      <h4>Email Support</h4>
+		      <p><i class="fa fa-envelope"></i><a href="mailto:support@ACI.com">  support@ACI.com</a></p>
+		    </div>
+
+		  </div>
+
+		  <div class="col-sm-3 fborder3">
+
+		    <p class="ftext border">
+		      <h2><u>About the company</u></h2>
+		      Feel free to follow us on social media for news and updates.
+		    </p>
+		<br>
+		    <div class="footer-icons">
+		      <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+		      <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+		      <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+		      <a href="#"><i class="fa fa-github" aria-hidden="true"></i></a>
+		    </div>
+		  </div>
+
+		</footer><!-- Footer End-->
+
+
+
+</div><!-- Page Container End-->
