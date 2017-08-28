@@ -54,11 +54,81 @@
 </div>
 </div>
 
+
 <!-- Carousel End -->
 
 
 
+<p class= "container text "><b>Help us get started on your project or venue</b>
+Allen Commecial Industries manufactures affordable, quality cabinets at our facility in Monroe, WA. We recognize the responsibility that comes with being a large manufacturer, and we are committed to being a good corporate citizen,
+to the benefit of our employees, owners, and the community at large.</p>
 
+
+
+
+<div id='aboutDrop'>
+  <script type="text/ng-template" id="group-template.html">
+    <div class="panel-heading">
+      <h4 class="panel-title" style="color:#fa39c3">
+        <a href tabindex="0" class="accordion-toggle" ng-click="toggleOpen()" uib-accordion-transclude="heading">
+          <span uib-accordion-header ng-class="{'text-muted': isDisabled}">
+            {{heading}}
+          </span>
+        </a>
+      </h4>
+    </div>
+    <div class="panel-collapse collapse" uib-collapse="!isOpen">
+      <div class="panel-body" style="text-align: right" ng-transclude></div>
+    </div>
+  </script>
+
+
+
+  <div class="checkbox">
+    <label>
+      <input type="checkbox" ng-model="oneAtATime">
+      Open only one at a time
+    </label>
+  </div>
+
+  <div class="spacing">
+
+
+  <uib-accordion  close-others="oneAtATime">
+    <div uib-accordion-group class="panel-default" heading="Step 1 -decide the cope of the job" is-open="status.isFirstOpen" is-disabled="status.isFirstDisabled">
+      We are a full service company with a wide range of capabilities. Established in 1989. We provide full design, manufacture and Installation services. In addition, our installation fleet with crews are ready to deliver and install all of our products. We are currently located in a 20,000 sq. ft. facility on 2.5 acres centrally located in the Dallas Ft. Worth area.
+
+We have a full millwork facility including;
+   2 table saws
+   Sliding panel saw
+   Edge bander
+   Joiner
+   Planer
+   Cold press
+   Dual head 10' x 24' CNC router
+   Our vinyl department incorporates a mimaki Cg-160 FX cutting plotter
+   Mimaki JV3 Printer
+   A full service paint booth
+
+Design is the limit!
+    </div >
+
+    <div uib-accordion-group class="panel-default"  heading="Step 2 -submit any relivent data on the item or job" >
+      Design is the limit!
+    </div>
+    <div uib-accordion-group class="panel-default" heading="Step 3 -work with us to decide the best fit for your situation" >
+    Design is the limit!
+    </div>
+    <div uib-accordion-group class="panel-default" heading="Step 4 -See the updates as the job progresses" >
+      Design is the limit!
+    </div>
+    <div uib-accordion-group class="panel-default" heading="Step 5 -Go over the final details, and any minor ajustments" >
+    Design is the limit!
+    </div>
+
+
+  </uib-accordion>
+</div>
 
 
 
@@ -80,15 +150,6 @@ Design is the limit!</p>
 
 
 
-<div ng-app="myApp">
-	<div ng-controller="HomeCtrl as controller">
-		<videogular vg-theme="controller.config.theme">
-			<vg-media vg-src="controller.config.sources"
-					vg-tracks="controller.config.tracks">
-			</vg-media>
-		</videogular>
-	</div>
-</div>
 
 
 <p > We are a full service company with a wide range of capabilities. Established in 1989.
